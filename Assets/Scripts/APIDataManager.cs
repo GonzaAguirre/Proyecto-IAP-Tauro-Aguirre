@@ -1,70 +1,68 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.Linq; // Nos ayuda a buscar en listas fácilmente
+using System.Linq;
 
 public class DataManager : MonoBehaviour
 {
-    // Dependencia: El servicio de descarga
-    private DataService dataService;
+    // EN LUGAR DE URL, AHORA USAMOS UN ARCHIVO LOCAL
+    [Header("Archivo JSON Local")]
+    public TextAsset jsonFile; 
 
-    // Almacenamiento local de los datos cargados
+    // Almacenamiento interno
     private List<PestData> allPests = new List<PestData>();
     private List<CallData> allCalls = new List<CallData>();
 
-    // Evento para avisar cuando los datos estén listos
     public bool IsDataLoaded { get; private set; } = false;
 
-    public void Initialize(DataService service)
+    // Ya no necesitamos Initialize ni DataService por ahora
+    
+    // Cambiamos Start o un método público para cargar al iniciar
+    void Start()
     {
-        this.dataService = service;
-    }
-
-    // Método para iniciar la carga
-    public void LoadAllData(string url)
-    {
-        if (dataService == null)
+        if (jsonFile != null)
         {
-            Debug.LogError("DataService no inicializado en DataManager.");
-            return;
+            LoadLocalData();
         }
-
-        Debug.Log("Iniciando descarga de datos...");
-        // Como DataService no es MonoBehaviour, quien corre la Corrutina soy YO (DataManager)
-        StartCoroutine(dataService.FetchJsonFromURL(url, OnDataLoadSuccess, OnDataLoadError));
+        else
+        {
+            Debug.LogError("¡Falta asignar el archivo JSON en el Inspector!");
+        }
     }
 
-    // Se ejecuta si la descarga fue exitosa
-    private void OnDataLoadSuccess(string jsonText)
+    public void LoadLocalData()
     {
-        Debug.Log("Datos descargados correctamente. Procesando...");
+        Debug.Log("Cargando datos desde archivo local...");
 
         try
         {
-            // 1. Convertir el texto JSON en objetos C#
+            // Leemos el texto directamente del archivo
+            string jsonText = jsonFile.text;
+
+            // Parseamos (Convertimos texto a objetos)
             GameDataCollection data = JsonUtility.FromJson<GameDataCollection>(jsonText);
 
-            // 2. Guardar en nuestras listas
-            allPests = data.pests;
-            allCalls = data.calls;
-            
-            IsDataLoaded = true;
-            Debug.Log($"¡Éxito! Cargadas {allPests.Count} plagas y {allCalls.Count} llamadas. Temática: {data.themeName}");
+            if (data != null)
+            {
+                allPests = data.pests;
+                allCalls = data.calls;
+                IsDataLoaded = true;
+
+                Debug.Log($"✅ ÉXITO LOCAL: Cargadas {allPests.Count} plagas y {allCalls.Count} llamadas.");
+                Debug.Log($"Temática: {data.themeName}");
+            }
+            else
+            {
+                Debug.LogError("El JSON parece estar vacío o mal formado.");
+            }
         }
         catch (System.Exception e)
         {
-            Debug.LogError($"Error al leer el JSON: {e.Message}");
+            Debug.LogError($"Error crítico leyendo el JSON local: {e.Message}");
         }
     }
 
-    // Se ejecuta si la descarga falló
-    private void OnDataLoadError(string error)
-    {
-        Debug.LogError($"Error crítico descargando datos: {error}");
-    }
-
-    // --- MÉTODOS PÚBLICOS PARA EL PRESENTER ---
-
+    // --- GETTERS (Igual que antes) ---
     public PestData GetPestByID(string id)
     {
         // Busca en la lista la plaga con ese ID
@@ -76,4 +74,9 @@ public class DataManager : MonoBehaviour
         // Devuelve todas las llamadas asignadas a ese día
         return allCalls.Where(c => c.day == day).ToList();
     }
-}   
+    
+    public CallData GetCallByID(string id)
+    {
+         return allCalls.FirstOrDefault(c => c.ID == id);
+    }
+}
