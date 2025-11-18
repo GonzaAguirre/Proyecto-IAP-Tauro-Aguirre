@@ -4,6 +4,8 @@ using UnityEngine;
 public class GamePresenter
 {
      private IGameView view;
+     private DataManager dataManager;
+
      private List<PestData> allPlagues;
      private CallData currentCall;
      private string selectedPlagueId;
@@ -11,22 +13,42 @@ public class GamePresenter
      public GamePresenter(IGameView view)
      {
           this.view = view;
+          this.dataManager = new DataManager();
 
-          view.OnPlagueSelected += HandlePlagueSelection;
-          view.OnSubmitAnswer += HandleSubmit;
+          // Suscripciones
+          this.view.OnPlagueSelected += HandlePlagueSelection;
+          this.view.OnSubmitAnswer += HandleSubmit;
 
-          LoadDummyData(); // Aca se cargan los datos reales 
+          // Si los datos ya están, iniciamos. Si no, esperamos el evento.
+          if (dataManager.IsDataLoaded) StartGame();
+          else dataManager.OnDataReady += StartGame;
      }
 
-     private void LoadDummyData()
+     private void StartGame()
      {
-          // TODO: Aca se implementa la carga (JSON o LLM)
-          // Por ahora creamos datos falsos para probar
-          allPlagues = new List<PestData>();
-          // Agregar plagas a la lista 
-
-          // Mandamos la lista a la vista para que genere los botones
+          Debug.Log("Presenter: Iniciando juego...");
+          allPlagues = dataManager.GetAllPests();
+          
+          // 1. Llenar la lista visual
           view.PopulateEntriesList(allPlagues);
+
+          // 2. Cargar la primera llamada (Para probar)
+          LoadNewCall(dataManager.GetFirstCall());
+     }
+
+     private void LoadNewCall(CallData call)
+     {
+          if (call == null) return;
+          currentCall = call;
+
+          // Ponemos una imagen temporal o null mientras carga
+          view.UpdateCallerInfo(call.callerName, call.message, null); 
+
+          // Pedimos al Manager que descargue la foto del cliente
+          dataManager.RequestImage(call.callerImageURL, (sprite) => {
+               // Cuando termine, actualizamos solo la foto
+               view.UpdateCallerInfo(call.callerName, call.message, sprite);
+          });
      }
 
      // Lógica cuando el usuario selecciona una plaga de la lista

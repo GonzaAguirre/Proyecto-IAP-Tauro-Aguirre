@@ -12,11 +12,17 @@ public class DataManager : MonoBehaviour
     // Almacenamiento interno
     private List<PestData> allPests = new List<PestData>();
     private List<CallData> allCalls = new List<CallData>();
+    private DataService dataService = new DataService(); // Instancia del servicio
 
     public bool IsDataLoaded { get; private set; } = false;
 
-    // Ya no necesitamos Initialize ni DataService por ahora
-    
+    public event System.Action OnDataReady;
+
+    public void Initialize()
+    {
+        if (jsonFile != null) LoadLocalData();
+    }
+        
     // Cambiamos Start o un método público para cargar al iniciar
     void Start()
     {
@@ -62,6 +68,10 @@ public class DataManager : MonoBehaviour
         }
     }
 
+    public List<PestData> GetAllPests() => allPests;
+    
+    public CallData GetFirstCall() => allCalls.Count > 0 ? allCalls[0] : null; // Para probar
+
     // --- GETTERS (Igual que antes) ---
     public PestData GetPestByID(string id)
     {
@@ -78,5 +88,10 @@ public class DataManager : MonoBehaviour
     public CallData GetCallByID(string id)
     {
          return allCalls.FirstOrDefault(c => c.id == id);
+    }
+
+    public void RequestImage(string url, System.Action<Sprite> callback)
+    {
+        StartCoroutine(dataService.DownloadImage(url, callback));
     }
 }

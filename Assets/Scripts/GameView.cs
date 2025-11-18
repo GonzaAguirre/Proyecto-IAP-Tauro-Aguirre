@@ -4,7 +4,7 @@ using UnityEngine.UI;
 using System.Collections.Generic;
 using System;
 
-public class GameView : MonoBehaviour, IGameView 
+public class GameView : MonoBehaviour, IGameView
 {
     [Header("Calling screen")]
     [SerializeField] private TextMeshProUGUI callerNameText;
@@ -32,9 +32,9 @@ public class GameView : MonoBehaviour, IGameView
     {
         // Asignar listener al botón de enviar
         submitAnswerButton.onClick.AddListener(() => OnSubmitAnswer?.Invoke());
-        
-        // Iniciar el presentador
-        presenter = new GamePresenter(this);
+
+        // BORRA ESTO: presenter = new GamePresenter(this); 
+        // El Bootstrap se encarga ahora.
     }
 
     // --- Implementación de la Interfaz ---
@@ -65,7 +65,7 @@ public class GameView : MonoBehaviour, IGameView
             GameObject btnObj = Instantiate(entryButtonPrefab, entriesContainer);
             // Asumimos que el prefab tiene un TextMeshProUGUI hijo
             btnObj.GetComponentInChildren<TextMeshProUGUI>().text = plague.name;
-            
+
             // Configurar el click del botón
             Button btn = btnObj.GetComponent<Button>();
             string id = plague.id; // Capturar variable para la lambda
