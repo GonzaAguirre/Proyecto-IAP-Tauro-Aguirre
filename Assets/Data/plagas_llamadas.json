@@ -1,0 +1,43 @@
+{
+  "themeName": "Control de Plagas Urbanas",
+  "pests": [
+    {
+      "ID": "pest_001",
+      "Name": "Ratones",
+      "ImageURL": "https://placehold.co/400x300/png",
+      "Description": "Pequeños roedores. Se escuchan ruidos de roer y aparecen excrementos.",
+      "Danger": "Portadores de enfermedades.",
+      "Solution": "Colocar trampas y sellar entradas.",
+      "Type": "Normal"
+    },
+    {
+      "ID": "pest_002",
+      "Name": "Duende de Lámpara",
+      "ImageURL": "https://placehold.co/400x300/png",
+      "Description": "Habitan en bombillas. Causan parpadeos y olor a quemado.",
+      "Danger": "No son peligrosos si no se les provoca.",
+      "Solution": "Esperar a que la lámpara se funda sola.",
+      "Type": "Extraño"
+    }
+  ],
+  "calls": [
+    {
+      "ID": "call_01",
+      "CallerName": "Señoraínez",
+      "CallerImageURL": "https://placehold.co/100x100/png",
+      "Message": "Oiga, mi lámpara no para de parpadear y huele raro. ¿Qué hago?",
+      "CorrectPestID": "pest_002",
+      "Day": 1,
+      "CallType": "Consejo"
+    },
+    {
+      "ID": "call_02",
+      "CallerName": "SeñorJirafales",
+      "CallerImageURL": "https://placehold.co/100x100/png",
+      "Message": "Oiga, hay un enano en casa",
+      "CorrectPestID": "pest_002",
+      "Day": 1,
+      "CallType": "Consejo"
+    }
+  ]
+}
