@@ -54,7 +54,7 @@ public class GameView : MonoBehaviour, IGameView
         entryInfoImage.sprite = image;
     }
 
-    public void PopulateEntriesList(List<PlagueData> plagues)
+    public void PopulateEntriesList(List<PestData> plagues)
     {
         // 1. Limpiar lista actual
         foreach (Transform child in entriesContainer) Destroy(child.gameObject);

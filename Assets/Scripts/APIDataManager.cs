@@ -65,16 +65,18 @@ public class DataManager : MonoBehaviour
     // --- GETTERS (Igual que antes) ---
     public PestData GetPestByID(string id)
     {
-        return allPests.FirstOrDefault(p => p.ID == id);
+        // Busca en la lista la plaga con ese ID
+        return allPests.FirstOrDefault(p => p.id == id);
     }
 
     public List<CallData> GetCallsForDay(int day)
     {
-        return allCalls.Where(c => c.Day == day).ToList();
+        // Devuelve todas las llamadas asignadas a ese día
+        return allCalls.Where(c => c.day == day).ToList();
     }
     
     public CallData GetCallByID(string id)
     {
-         return allCalls.FirstOrDefault(c => c.ID == id);
+         return allCalls.FirstOrDefault(c => c.id == id);
     }
 }

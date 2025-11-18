@@ -4,8 +4,8 @@ using UnityEngine;
 public class GamePresenter
 {
      private IGameView view;
-     private List<PlagueData> allPlagues;
-     private CallerData currentCall;
+     private List<PestData> allPlagues;
+     private CallData currentCall;
      private string selectedPlagueId;
 
      public GamePresenter(IGameView view)
@@ -22,7 +22,7 @@ public class GamePresenter
      {
           // TODO: Aca se implementa la carga (JSON o LLM)
           // Por ahora creamos datos falsos para probar
-          allPlagues = new List<PlagueData>();
+          allPlagues = new List<PestData>();
           // Agregar plagas a la lista 
 
           // Mandamos la lista a la vista para que genere los botones
@@ -37,14 +37,27 @@ public class GamePresenter
 
           if (plague != null)
           {
-               view.UpdateEntryInfo(plague.name, plague.description, plague.danger, plague.image);
+               // Try to load a Sprite from Resources using the stored image path; if not found, pass null.
+               Sprite sprite = LoadSpriteFromPath(plague.imageURL);
+               view.UpdateEntryInfo(plague.name, plague.description, plague.danger, sprite);
           }
+     }
+
+     // Helper to load a Sprite from a Resources path; returns null if not found or path is empty.
+     private Sprite LoadSpriteFromPath(string path)
+     {
+          if (string.IsNullOrEmpty(path))
+               return null;
+
+          // Assumes image paths are stored as Resources-compatible paths (without file extension).
+          Sprite s = Resources.Load<Sprite>(path);
+          return s;
      }
 
      private void HandleSubmit()
      {
           // Lógica de validación
-          if (currentCall != null && selectedPlagueId == currentCall.correctPlagueId)
+          if (currentCall != null && selectedPlagueId == currentCall.correctPestID)
           {
                Debug.Log("¡Respuesta Correcta!");
                // Lógica para pasar al siguiente día o llamada
