@@ -27,4 +27,4 @@ public class CallerData
 
 public enum PlagueType { Normal, Strange, Special }
 
-public enum CallType , Emergency }
+public enum CallType { Advice, Emergency }
