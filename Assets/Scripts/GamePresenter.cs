@@ -13,7 +13,7 @@ public class GamePresenter
      public GamePresenter(IGameView view)
      {
           this.view = view;
-          this.dataManager = new DataManager();
+          dataManager = new DataManager();
 
           // Suscripciones
           this.view.OnPlagueSelected += HandlePlagueSelection;
@@ -61,7 +61,7 @@ public class GamePresenter
           {
                // Try to load a Sprite from Resources using the stored image path; if not found, pass null.
                Sprite sprite = LoadSpriteFromPath(plague.imageURL);
-               view.UpdateEntryInfo(plague.name, plague.description, plague.danger, sprite);
+               view.UpdateEntryInfo(plague.name, plague.description, plague.danger, plague.solution, sprite);
           }
      }
 

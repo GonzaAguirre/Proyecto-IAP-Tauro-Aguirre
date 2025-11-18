@@ -19,7 +19,8 @@ public class GameView : MonoBehaviour, IGameView
     [Header("Entry info screen")]
     [SerializeField] private TextMeshProUGUI entryInfoTitleText;
     [SerializeField] private TextMeshProUGUI entryInfoDescriptionText;
-    [SerializeField] private TextMeshProUGUI entryInfoAdditionalInfoText;
+    [SerializeField] private TextMeshProUGUI entryInfoDangerText;
+    [SerializeField] private TextMeshProUGUI entryInfoSolutionText;
     [SerializeField] private Image entryInfoImage;
 
     // Eventos de la Interfaz
@@ -30,11 +31,7 @@ public class GameView : MonoBehaviour, IGameView
 
     void Start()
     {
-        // Asignar listener al botón de enviar
-        submitAnswerButton.onClick.AddListener(() => OnSubmitAnswer?.Invoke());
-
-        // BORRA ESTO: presenter = new GamePresenter(this); 
-        // El Bootstrap se encarga ahora.
+        presenter = new GamePresenter(this); 
     }
 
     // --- Implementación de la Interfaz ---
@@ -46,11 +43,12 @@ public class GameView : MonoBehaviour, IGameView
         callerImage.sprite = image;
     }
 
-    public void UpdateEntryInfo(string title, string desc, string extra, Sprite image)
+    public void UpdateEntryInfo(string title, string desc, string danger, string solution, Sprite image)
     {
         entryInfoTitleText.text = title;
         entryInfoDescriptionText.text = desc;
-        entryInfoAdditionalInfoText.text = extra;
+        entryInfoDangerText.text = danger;
+        entryInfoSolutionText.text = solution;
         entryInfoImage.sprite = image;
     }
 
