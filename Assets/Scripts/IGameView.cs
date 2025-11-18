@@ -8,7 +8,7 @@ public interface IGameView
     void UpdateEntryInfo(string title, string desc, string extra, Sprite image);
     
     // Método para poblar la lista de entradas (plagas)
-    void PopulateEntriesList(List<PlagueData> plagues);
+    void PopulateEntriesList(List<PestData> plagues);
 
     // Eventos
     event System.Action OnSubmitAnswer;

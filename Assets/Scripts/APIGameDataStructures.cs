@@ -5,25 +5,25 @@ using System.Collections.Generic;
 [Serializable]
 public class PestData
 {
-    public string ID;           // Ej: "pest_raton"
-    public string Name;         // Ej: "Ratones"
-    public string ImageURL;     // URL de la imagen en internet
-    public string Description;  // Descripción física
-    public string Danger;       // Por qué es peligroso
-    public string Solution;     // Cómo solucionarlo
-    public string Type;         // "Normal", "Extraño", "Especial"
+    public string id;           
+    public string name;         
+    public string imageURL;     
+    public string description;  
+    public string danger;       
+    public string solution;     
+    public string type;         // "Normal", "Extraño", "Especial"
 }
 
 [Serializable]
 public class CallData
 {
-    public string ID;               // Ej: "call_001"
-    public string CallerName;       // Nombre del cliente
-    public string CallerImageURL;   // Foto del cliente
-    public string Message;          // Lo que dice (transcripción)
-    public string CorrectPestID;    // ID de la plaga correcta (Ej: "pest_raton")
-    public int Day;                 // Día en que aparece (1, 2 o 3)
-    public string CallType;         // "Consejo", "Confirmacion", "Extra"
+    public string id;               
+    public string callerName;       
+    public string callerImageURL;   
+    public string message;          
+    public string correctPestID;    
+    public int day;                 
+    public string callType;         // "Consejo", "Confirmacion", "Extra"
 }
 
 // Esta clase "Root" es necesaria porque el JsonUtility de Unity
