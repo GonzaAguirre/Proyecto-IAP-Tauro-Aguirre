@@ -2,222 +2,222 @@
   "themeName": "Leyendas y Plagas Argentinas",
   "pests": [
     {
-      "ID": "pest_001",
-      "Name": "Cucaracha de Cocina",
-      "ImageURL": "https://placehold.co/400x300/png?text=Cucaracha",
-      "Description": "El clásico invasor urbano. Marrón, rápida y se esconde en lugares húmedos.",
-      "Danger": "Contamina la comida y da asco. Si vuela, causa pánico general.",
-      "Solution": "Insecticida en aerosol y la chancleta de una abuela.",
-      "Type": "Normal"
+      "id": "pest_001",
+      "name": "Cucaracha de Cocina",
+      "imageURL": "https://placehold.co/400x300/png?text=Cucaracha",
+      "description": "El clásico invasor urbano. Marrón, rápida y se esconde en lugares húmedos.",
+      "danger": "Contamina la comida y da asco. Si vuela, causa pánico general.",
+      "solution": "Insecticida en aerosol y la chancleta de una abuela.",
+      "type": "Normal"
     },
     {
-      "ID": "pest_002",
-      "Name": "Mosquito del Delta",
-      "ImageURL": "https://placehold.co/400x300/png?text=Mosquito",
-      "Description": "Insecto volador que emite un zumbido insoportable al intentar dormir.",
-      "Danger": "Transmite Dengue y te arruina el asado.",
-      "Solution": "Espirales, repelente y vaciar los tachos con agua.",
-      "Type": "Normal"
+      "id": "pest_002",
+      "name": "Mosquito del Delta",
+      "imageURL": "https://placehold.co/400x300/png?text=Mosquito",
+      "description": "Insecto volador que emite un zumbido insoportable al intentar dormir.",
+      "danger": "Transmite Dengue y te arruina el asado.",
+      "solution": "Espirales, repelente y vaciar los tachos con agua.",
+      "type": "Normal"
     },
     {
-      "ID": "pest_003",
-      "Name": "Ratón de Conurbano",
-      "ImageURL": "https://placehold.co/400x300/png?text=Raton",
-      "Description": "Pequeño roedor gris. Deja excrementos circulares y roe cables de luz.",
-      "Danger": "Puede transmitir Hantavirus y comerse tus ahorros.",
-      "Solution": "Trampas de pegamento o adoptar un gato callejero.",
-      "Type": "Normal"
+      "id": "pest_003",
+      "name": "Ratón de Conurbano",
+      "imageURL": "https://placehold.co/400x300/png?text=Raton",
+      "description": "Pequeño roedor gris. Deja excrementos circulares y roe cables de luz.",
+      "danger": "Puede transmitir Hantavirus y comerse tus ahorros.",
+      "solution": "Trampas de pegamento o adoptar un gato callejero.",
+      "type": "Normal"
     },
     {
-      "ID": "pest_004",
-      "Name": "Hormiga Podadora",
-      "ImageURL": "https://placehold.co/400x300/png?text=Hormiga",
-      "Description": "Hormigas negras que caminan en fila india llevándose hojas.",
-      "Danger": "Te dejan el rosal pelado en una noche.",
-      "Solution": "Arroz partido o cebo granulado cerca del hormiguero.",
-      "Type": "Normal"
+      "id": "pest_004",
+      "name": "Hormiga Podadora",
+      "imageURL": "https://placehold.co/400x300/png?text=Hormiga",
+      "description": "Hormigas negras que caminan en fila india llevándose hojas.",
+      "danger": "Te dejan el rosal pelado en una noche.",
+      "solution": "Arroz partido o cebo granulado cerca del hormiguero.",
+      "type": "Normal"
     },
     {
-      "ID": "pest_005",
-      "Name": "Vinchuca",
-      "ImageURL": "https://placehold.co/400x300/png?text=Vinchuca",
-      "Description": "Chinche grande con franjas amarillas o naranjas en el costado.",
-      "Danger": "Transmite el Mal de Chagas. Muy peligroso.",
-      "Solution": "No aplastar (esparce el parásito). Capturar en frasco y llamar a fumigación profesional.",
-      "Type": "Normal"
+      "id": "pest_005",
+      "name": "Vinchuca",
+      "imageURL": "https://placehold.co/400x300/png?text=Vinchuca",
+      "description": "Chinche grande con franjas amarillas o naranjas en el costado.",
+      "danger": "Transmite el Mal de Chagas. Muy peligroso.",
+      "solution": "No aplastar (esparce el parásito). Capturar en frasco y llamar a fumigación profesional.",
+      "type": "Normal"
     },
     {
-      "ID": "pest_006",
-      "Name": "El Pombero",
-      "ImageURL": "https://placehold.co/400x300/png?text=Pombero",
-      "Description": "Duende del litoral, petiso y peludo. Se anuncia con un silbido agudo.",
-      "Danger": "Secuestra niños a la hora de la siesta y embaraza mujeres solteras. Toca a la gente con sus manos frías.",
-      "Solution": "Dejarle ofrendas de tabaco, miel y caña fuera de la casa para hacerse amigo.",
-      "Type": "Extraño"
+      "id": "pest_006",
+      "name": "El Pombero",
+      "imageURL": "https://placehold.co/400x300/png?text=Pombero",
+      "description": "Duende del litoral, petiso y peludo. Se anuncia con un silbido agudo.",
+      "danger": "Secuestra niños a la hora de la siesta y embaraza mujeres solteras. Toca a la gente con sus manos frías.",
+      "solution": "Dejarle ofrendas de tabaco, miel y caña fuera de la casa para hacerse amigo.",
+      "type": "Extraño"
     },
     {
-      "ID": "pest_007",
-      "Name": "Duende del Mate",
-      "ImageURL": "https://placehold.co/400x300/png?text=Duende+Mate",
-      "Description": "Pequeño ser invisible que habita en las alacenas.",
-      "Danger": "Te lava el mate instantáneamente, esconde la bombilla y vuelca el azúcar.",
-      "Solution": "Dejar un paquete de galletitas abierto como distracción.",
-      "Type": "Extraño"
+      "id": "pest_007",
+      "name": "Duende del Mate",
+      "imageURL": "https://placehold.co/400x300/png?text=Duende+Mate",
+      "description": "Pequeño ser invisible que habita en las alacenas.",
+      "danger": "Te lava el mate instantáneamente, esconde la bombilla y vuelca el azúcar.",
+      "solution": "Dejar un paquete de galletitas abierto como distracción.",
+      "type": "Extraño"
     },
     {
-      "ID": "pest_008",
-      "Name": "El Chupacabras",
-      "ImageURL": "https://placehold.co/400x300/png?text=Chupacabras",
-      "Description": "Criatura con espinas en la espalda y ojos rojos brillantes.",
-      "Danger": "Ataca al ganado y a las mascotas dejándolos sin una gota de sangre.",
-      "Solution": "Instalar cercas eléctricas y luces potentes en el patio.",
-      "Type": "Extraño"
+      "id": "pest_008",
+      "name": "El Chupacabras",
+      "imageURL": "https://placehold.co/400x300/png?text=Chupacabras",
+      "description": "Criatura con espinas en la espalda y ojos rojos brillantes.",
+      "danger": "Ataca al ganado y a las mascotas dejándolos sin una gota de sangre.",
+      "solution": "Instalar cercas eléctricas y luces potentes en el patio.",
+      "type": "Extraño"
     },
     {
-      "ID": "pest_009",
-      "Name": "Luz Mala",
-      "ImageURL": "https://placehold.co/400x300/png?text=Luz+Mala",
-      "Description": "Luces fosforescentes que flotan a ras del suelo en el campo durante la noche.",
-      "Danger": "Representan almas en pena. Si la luz es roja, es un alma peligrosa.",
-      "Solution": "No mirar la luz, morder la vaina de un cuchillo y rezar.",
-      "Type": "Especial"
+      "id": "pest_009",
+      "name": "Luz Mala",
+      "imageURL": "https://placehold.co/400x300/png?text=Luz+Mala",
+      "description": "Luces fosforescentes que flotan a ras del suelo en el campo durante la noche.",
+      "danger": "Representan almas en pena. Si la luz es roja, es un alma peligrosa.",
+      "solution": "No mirar la luz, morder la vaina de un cuchillo y rezar.",
+      "type": "Especial"
     },
     {
-      "ID": "pest_010",
-      "Name": "El Lobizón",
-      "ImageURL": "https://placehold.co/400x300/png?text=Lobizon",
-      "Description": "Séptimo hijo varón que se transforma en perro negro gigante en luna llena.",
-      "Danger": "Ataca ferozmente si se cruza en tu camino. Aúlla a la luna.",
-      "Solution": "Solo se detiene con una bala bendecida, pero mejor quedarse encerrado hasta que amanezca.",
-      "Type": "Especial"
+      "id": "pest_010",
+      "name": "El Lobizón",
+      "imageURL": "https://placehold.co/400x300/png?text=Lobizon",
+      "description": "Séptimo hijo varón que se transforma en perro negro gigante en luna llena.",
+      "danger": "Ataca ferozmente si se cruza en tu camino. Aúlla a la luna.",
+      "solution": "Solo se detiene con una bala bendecida, pero mejor quedarse encerrado hasta que amanezca.",
+      "type": "Especial"
     },
     {
-      "ID": "pest_011",
-      "Name": "La Llorona",
-      "ImageURL": "https://placehold.co/400x300/png?text=Llorona",
-      "Description": "Espectro de mujer vestida de blanco que llora cerca de fuentes de agua.",
-      "Danger": "Su llanto paraliza y atrae la desgracia. Busca a sus hijos.",
-      "Solution": "Correr en dirección contraria al llanto. No responderle nunca.",
-      "Type": "Especial"
+      "id": "pest_011",
+      "name": "La Llorona",
+      "imageURL": "https://placehold.co/400x300/png?text=Llorona",
+      "description": "Espectro de mujer vestida de blanco que llora cerca de fuentes de agua.",
+      "danger": "Su llanto paraliza y atrae la desgracia. Busca a sus hijos.",
+      "solution": "Correr en dirección contraria al llanto. No responderle nunca.",
+      "type": "Especial"
     },
     {
-      "ID": "pest_012",
-      "Name": "Enano de Jardín Maldito",
-      "ImageURL": "https://placehold.co/400x300/png?text=Enano+Maldito",
-      "Description": "Estatuas de cerámica que cambian de posición cuando no las miras.",
-      "Danger": "Te hacen tropezar y rompen vidrios por la noche.",
-      "Solution": "Romper la estatua con un martillo y tirar los restos en una iglesia.",
-      "Type": "Extraño"
+      "id": "pest_012",
+      "name": "Enano de Jardín Maldito",
+      "imageURL": "https://placehold.co/400x300/png?text=Enano+Maldito",
+      "description": "Estatuas de cerámica que cambian de posición cuando no las miras.",
+      "danger": "Te hacen tropezar y rompen vidrios por la noche.",
+      "solution": "Romper la estatua con un martillo y tirar los restos en una iglesia.",
+      "type": "Extraño"
     }
   ],
   "calls": [
     {
-      "ID": "call_001",
-      "CallerName": "Leo M.",
-      "CallerImageURL": "https://placehold.co/100x100/png?text=Leo",
-      "Message": "Hola, ¿qué tal? Habla Leo. Mirá, estoy acá en el patio con los nenes y escucho un silbido raro... Anto dice que vio algo petiso y peludo cerca de la parrilla. ¿Qué te parece que sea?",
-      "CorrectPestID": "pest_006",
-      "Day": 1,
-      "CallType": "Consejo"
+      "id": "call_001",
+      "callerName": "Leo M.",
+      "callerImageURL": "https://placehold.co/100x100/png?text=Leo",
+      "message": "Hola, ¿qué tal? Habla Leo. Mirá, estoy acá en el patio con los nenes y escucho un silbido raro... Anto dice que vio algo petiso y peludo cerca de la parrilla. ¿Qué te parece que sea?",
+      "correctPestID": "pest_006",
+      "day": 1,
+      "callType": "Consejo"
     },
     {
-      "ID": "call_002",
-      "CallerName": "Mirtha L.",
-      "CallerImageURL": "https://placehold.co/100x100/png?text=Mirtha",
-      "Message": "Buenas noches. Soy yo, la Chiqui. Estoy en mi estancia y veo unas luces flotando allá a lo lejos, cerca del alambrado. No son linternas, querido, flotan. Me da un miedo terrible, carajo mierda.",
-      "CorrectPestID": "pest_009",
-      "Day": 1,
-      "CallType": "Consejo"
+      "id": "call_002",
+      "callerName": "Mirtha L.",
+      "callerImageURL": "https://placehold.co/100x100/png?text=Mirtha",
+      "message": "Buenas noches. Soy yo, la Chiqui. Estoy en mi estancia y veo unas luces flotando allá a lo lejos, cerca del alambrado. No son linternas, querido, flotan. Me da un miedo terrible, carajo mierda.",
+      "correctPestID": "pest_009",
+      "day": 1,
+      "callType": "Consejo"
     },
     {
-      "ID": "call_003",
-      "CallerName": "Guillermo F.",
-      "CallerImageURL": "https://placehold.co/100x100/png?text=Guillermo",
-      "Message": "¡Hermosa mañana, verdad! Bueno, no tanto. Fui a ver mis rosales y están pelados. No quedó ni una hoja. Vi un camino negro en el piso que se mueve. ¿Me podés ayudar?",
-      "CorrectPestID": "pest_004",
-      "Day": 1,
-      "CallType": "Consejo"
+      "id": "call_003",
+      "callerName": "Guillermo F.",
+      "callerImageURL": "https://placehold.co/100x100/png?text=Guillermo",
+      "message": "¡Hermosa mañana, verdad! Bueno, no tanto. Fui a ver mis rosales y están pelados. No quedó ni una hoja. Vi un camino negro en el piso que se mueve. ¿Me podés ayudar?",
+      "correctPestID": "pest_004",
+      "day": 1,
+      "callType": "Consejo"
     },
     {
-      "ID": "call_004",
-      "CallerName": "Javier M.",
-      "CallerImageURL": "https://placehold.co/100x100/png?text=Javier",
-      "Message": "Osea, digamos... tengo un problema de stock. Me desaparecen las hojas de mis escritos. Encuentro pedacitos de papel y unas bolitas negras chiquitas. ¡Es un ataque a la propiedad privada!",
-      "CorrectPestID": "pest_003",
-      "Day": 2,
-      "CallType": "Consejo"
+      "id": "call_004",
+      "callerName": "Javier M.",
+      "callerImageURL": "https://placehold.co/100x100/png?text=Javier",
+      "message": "Osea, digamos... tengo un problema de stock. Me desaparecen las hojas de mis escritos. Encuentro pedacitos de papel y unas bolitas negras chiquitas. ¡Es un ataque a la propiedad privada!",
+      "correctPestID": "pest_003",
+      "day": 2,
+      "callType": "Consejo"
     },
     {
-      "ID": "call_005",
-      "CallerName": "Susana G.",
-      "CallerImageURL": "https://placehold.co/100x100/png?text=Susana",
-      "Message": "¡Hola mi amor! Escuchame, hay un perro enorme en el jardín. ¡Pero enorme! Y camina en dos patas, te juro. Pensé que era un dinosaurio... ¿Vivo? No sé, está aullando.",
-      "CorrectPestID": "pest_010",
-      "Day": 2,
-      "CallType": "Consejo"
+      "id": "call_005",
+      "callerName": "Susana G.",
+      "callerImageURL": "https://placehold.co/100x100/png?text=Susana",
+      "message": "¡Hola mi amor! Escuchame, hay un perro enorme en el jardín. ¡Pero enorme! Y camina en dos patas, te juro. Pensé que era un dinosaurio... ¿Vivo? No sé, está aullando.",
+      "correctPestID": "pest_010",
+      "day": 2,
+      "callType": "Consejo"
     },
     {
-      "ID": "call_006",
-      "CallerName": "Moria C.",
-      "CallerImageURL": "https://placehold.co/100x100/png?text=Moria",
-      "Message": "Hello amores. Tengo un poltergeist de outlet en la cocina. Me cebo un mate y a los dos segundos está lavado. ¡El decorado se calla, pero el azúcar desaparece! Estoy muy 'vistima'.",
-      "CorrectPestID": "pest_007",
-      "Day": 2,
-      "CallType": "Consejo"
+      "id": "call_006",
+      "callerName": "Moria C.",
+      "callerImageURL": "https://placehold.co/100x100/png?text=Moria",
+      "message": "Hello amores. Tengo un poltergeist de outlet en la cocina. Me cebo un mate y a los dos segundos está lavado. ¡El decorado se calla, pero el azúcar desaparece! Estoy muy 'vistima'.",
+      "correctPestID": "pest_007",
+      "day": 2,
+      "callType": "Consejo"
     },
     {
-      "ID": "call_007",
-      "CallerName": "Diego (Spirit)",
-      "CallerImageURL": "https://placehold.co/100x100/png?text=Diego",
-      "Message": "Eeeeehhhh... hola maestro. Mirá, no me dejan dormir la siesta. Hay un zumbido... zzzzz... que me está volviendo loco. Me picaron todo el tobillo. Hacé algo, fiera.",
-      "CorrectPestID": "pest_002",
-      "Day": 2,
-      "CallType": "Consejo"
+      "id": "call_007",
+      "callerName": "Diego (Spirit)",
+      "callerImageURL": "https://placehold.co/100x100/png?text=Diego",
+      "message": "Eeeeehhhh... hola maestro. Mirá, no me dejan dormir la siesta. Hay un zumbido... zzzzz... que me está volviendo loco. Me picaron todo el tobillo. Hacé algo, fiera.",
+      "correctPestID": "pest_002",
+      "day": 2,
+      "callType": "Consejo"
     },
     {
-      "ID": "call_008",
-      "CallerName": "Ricardo F.",
-      "CallerImageURL": "https://placehold.co/100x100/png?text=Ricardo",
-      "Message": "¡Basta chicos! ¡Mamá! Cortaste toda la looz... Ah no, pará. Veo unos ojos rojos en el patio y mis gatos están asustados. ¡Maiameee! ¡Hagan algo con esa cosa con espinas!",
-      "CorrectPestID": "pest_008",
-      "Day": 3,
-      "CallType": "Consejo"
+      "id": "call_008",
+      "callerName": "Ricardo F.",
+      "callerImageURL": "https://placehold.co/100x100/png?text=Ricardo",
+      "message": "¡Basta chicos! ¡Mamá! Cortaste toda la looz... Ah no, pará. Veo unos ojos rojos en el patio y mis gatos están asustados. ¡Maiameee! ¡Hagan algo con esa cosa con espinas!",
+      "correctPestID": "pest_008",
+      "day": 3,
+      "callType": "Consejo"
     },
     {
-      "ID": "call_009",
-      "CallerName": "Pity A.",
-      "CallerImageURL": "https://placehold.co/100x100/png?text=Pity",
-      "Message": "Loco, el gnomo ese del jardín... me mira mal. Ayer estaba mirando pal norte y hoy mira pal sur. Yo no lo toqué. Se mueve solo, te juro que no consumí nada raro.",
-      "CorrectPestID": "pest_012",
-      "Day": 3,
-      "CallType": "Consejo"
+      "id": "call_009",
+      "callerName": "Pity A.",
+      "callerImageURL": "https://placehold.co/100x100/png?text=Pity",
+      "message": "Loco, el gnomo ese del jardín... me mira mal. Ayer estaba mirando pal norte y hoy mira pal sur. Yo no lo toqué. Se mueve solo, te juro que no consumí nada raro.",
+      "correctPestID": "pest_012",
+      "day": 3,
+      "callType": "Consejo"
     },
     {
-      "ID": "call_010",
-      "CallerName": "La Scaloneta",
-      "CallerImageURL": "https://placehold.co/100x100/png?text=Scaloni",
-      "Message": "Estamos concentrando cerca del río y se escucha una mujer llorando. No deja descansar a los jugadores. Grita 'mis hiiijooos'. ¿Es mufa esto?",
-      "CorrectPestID": "pest_011",
-      "Day": 3,
-      "CallType": "Consejo"
+      "id": "call_010",
+      "callerName": "La Scaloneta",
+      "callerImageURL": "https://placehold.co/100x100/png?text=Scaloni",
+      "message": "Estamos concentrando cerca del río y se escucha una mujer llorando. No deja descansar a los jugadores. Grita 'mis hiiijooos'. ¿Es mufa esto?",
+      "correctPestID": "pest_011",
+      "day": 3,
+      "callType": "Consejo"
     },
     {
-      "ID": "call_011",
-      "CallerName": "Darío B.",
-      "CallerImageURL": "https://placehold.co/100x100/png?text=Barassi",
-      "Message": "¡Raro! ¡Esto es raro! Encontré un bicho en la pared, tiene rayas naranjas en el costado. Mi abuela dice que es peligroso pal corazón. ¡Decime qué es o me da un algo!",
-      "CorrectPestID": "pest_005",
-      "Day": 1,
-      "CallType": "Consejo"
+      "id": "call_011",
+      "callerName": "Darío B.",
+      "callerImageURL": "https://placehold.co/100x100/png?text=Barassi",
+      "message": "¡Raro! ¡Esto es raro! Encontré un bicho en la pared, tiene rayas naranjas en el costado. Mi abuela dice que es peligroso pal corazón. ¡Decime qué es o me da un algo!",
+      "correctPestID": "pest_005",
+      "day": 1,
+      "callType": "Consejo"
     },
     {
-      "ID": "call_013",
-      "CallerName": "La Triple T",
-      "CallerImageURL": "https://placehold.co/100x100/png?text=Tini",
-      "Message": "Hola, ¿sí? Tipo... estoy en crisis mal. Fui a la cocina por agua y salió un bicho marrón corriendo a los re pedos. ¡Posta, casi me muero del asco! O sea, se metió abajo de la heladera y no sale. ¡Sáquenlo ya que me da mucha ansiedad!",
-      "CorrectPestID": "pest_001",
-      "Day": 1,
-      "CallType": "Consejo"
+      "id": "call_013",
+      "callerName": "Tini",
+      "callerImageURL": "https://placehold.co/100x100/png?text=Tini",
+      "message": "Amooor, hola, ¿sí? Tipo... estoy en crisis mal. Fui a la cocina por agua y salió un bicho marrón corriendo a los re pedos. ¡Posta, casi me muero del asco! O sea, se metió abajo de la heladera y no sale. ¡Sáquenlo ya que me da mucha ansiedad!",
+      "correctPestID": "pest_001",
+      "day": 1,
+      "callType": "Consejo"
     }
   ]
 }

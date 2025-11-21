@@ -22,6 +22,7 @@ public class GameView : MonoBehaviour, IGameView
     [SerializeField] private TextMeshProUGUI entryInfoDangerText;
     [SerializeField] private TextMeshProUGUI entryInfoSolutionText;
     [SerializeField] private Image entryInfoImage;
+    [SerializeField] private DataManager dataManager; // <--- Arrastra el DataManager aquí en el Inspector  
 
     // Eventos de la Interfaz
     public event Action OnSubmitAnswer;
@@ -31,9 +32,9 @@ public class GameView : MonoBehaviour, IGameView
 
     void Start()
     {
-        presenter = new GamePresenter(this); 
+        // Pasamos 'this' (la vista) y 'dataManager' (el modelo)
+        presenter = new GamePresenter(this, dataManager);
     }
-
     // --- Implementación de la Interfaz ---
 
     public void UpdateCallerInfo(string name, string message, Sprite image)

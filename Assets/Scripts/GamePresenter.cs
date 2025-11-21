@@ -10,18 +10,17 @@ public class GamePresenter
      private CallData currentCall;
      private string selectedPlagueId;
 
-     public GamePresenter(IGameView view)
+// GamePresenter.cs
+     public GamePresenter(IGameView view, DataManager model) // <--- Agregamos el parámetro
      {
-          this.view = view;
-          dataManager = new DataManager();
+     this.view = view;
+     this.dataManager = model; // <--- Lo asignamos, NO hacemos new()
 
-          // Suscripciones
-          this.view.OnPlagueSelected += HandlePlagueSelection;
-          this.view.OnSubmitAnswer += HandleSubmit;
+     this.view.OnPlagueSelected += HandlePlagueSelection;
+     this.view.OnSubmitAnswer += HandleSubmit;
 
-          // Si los datos ya están, iniciamos. Si no, esperamos el evento.
-          if (dataManager.IsDataLoaded) StartGame();
-          else dataManager.OnDataReady += StartGame;
+     if (dataManager.IsDataLoaded) StartGame();
+     else dataManager.OnDataReady += StartGame;
      }
 
      private void StartGame()
@@ -52,18 +51,33 @@ public class GamePresenter
      }
 
      // Lógica cuando el usuario selecciona una plaga de la lista
+ // REEMPLAZAR ESTE MÉTODO EN GamePresenter.cs
+
      private void HandlePlagueSelection(string plagueId)
      {
-          selectedPlagueId = plagueId;
-          var plague = allPlagues.Find(p => p.id == plagueId);
+     selectedPlagueId = plagueId;
+     var plague = allPlagues.Find(p => p.id == plagueId);
 
-          if (plague != null)
+     if (plague != null)
+     {
+          // 1. Mostramos el texto inmediatamente (con imagen null/vacía por ahora)
+          //    Esto hace que la interfaz se sienta rápida.
+          view.UpdateEntryInfo(plague.name, plague.description, plague.danger, plague.solution, null);
+
+          // 2. Pedimos descargar la imagen de internet
+          dataManager.RequestImage(plague.imageURL, (sprite) => 
           {
-               // Try to load a Sprite from Resources using the stored image path; if not found, pass null.
-               Sprite sprite = LoadSpriteFromPath(plague.imageURL);
-               view.UpdateEntryInfo(plague.name, plague.description, plague.danger, plague.solution, sprite);
-          }
+               // 3. Verificamos si el usuario TODAVÍA tiene seleccionada esta plaga
+               //    (Por si cambió rápido a otra mientras descargaba)
+               if (selectedPlagueId == plagueId)
+               {
+                    view.UpdateEntryInfo(plague.name, plague.description, plague.danger, plague.solution, sprite);
+               }
+          });
      }
+     }
+
+// Puedes borrar el método 'LoadSpriteFromPath' ya que no lo usaremos.
 
      // Helper to load a Sprite from a Resources path; returns null if not found or path is empty.
      private Sprite LoadSpriteFromPath(string path)
