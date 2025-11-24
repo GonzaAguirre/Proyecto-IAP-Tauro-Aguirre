@@ -55,20 +55,52 @@ public class GameView : MonoBehaviour, IGameView
 
     public void PopulateEntriesList(List<PestData> plagues)
     {
-        // 1. Limpiar lista actual
+        // Limpiar lista
         foreach (Transform child in entriesContainer) Destroy(child.gameObject);
 
-        // 2. Crear nuevos botones
+        if (plagues == null) { Debug.LogError("LA LISTA DE PLAGAS ES NULL"); return; }
+
+        Debug.Log($"Generando {plagues.Count} botones...");
+
         foreach (var plague in plagues)
         {
-            GameObject btnObj = Instantiate(entryButtonPrefab, entriesContainer);
-            // Asumimos que el prefab tiene un TextMeshProUGUI hijo
-            btnObj.GetComponentInChildren<TextMeshProUGUI>().text = plague.name;
+            // Chequeo 1: ¿El objeto datos existe?
+            if (plague == null)
+            {
+                Debug.LogError("¡ALERTA! Hay una 'plague' nula en la lista.");
+                continue;
+            }
 
-            // Configurar el click del botón
+            GameObject btnObj = Instantiate(entryButtonPrefab, entriesContainer);
+
+            // Chequeo 2: ¿Encontró el componente?
+            var tmpComponent = btnObj.GetComponentInChildren<TextMeshProUGUI>();
+
+            if (tmpComponent == null)
+            {
+                // Si entra acá, el Prefab NO tiene el componente, aunque creas que sí.
+                Debug.LogError($"ERROR FATAL: El objeto '{btnObj.name}' NO tiene TextMeshProUGUI. Componentes encontrados:");
+                foreach (var comp in btnObj.GetComponentsInChildren<Component>())
+                    Debug.Log($"- {comp.GetType().Name}");
+
+                continue; // Saltamos para no romper el juego
+            }
+
+            // Chequeo 3: ¿El nombre es nulo? (Problema de JSON)
+            if (plague.name == null)
+            {
+                Debug.LogWarning($"OJO: El nombre de la plaga ID '{plague.id}' es NULL. Revisa mayúsculas/minúsculas en JSON vs Script.");
+                tmpComponent.text = "SIN NOMBRE";
+            }
+            else
+            {
+                tmpComponent.text = plague.name;
+            }
+
+            // Click listener...
             Button btn = btnObj.GetComponent<Button>();
-            string id = plague.id; // Capturar variable para la lambda
-            btn.onClick.AddListener(() => OnPlagueSelected?.Invoke(id));
+            string id = plague.id;
+            if (btn) btn.onClick.AddListener(() => OnPlagueSelected?.Invoke(id));
         }
     }
 }

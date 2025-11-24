@@ -7,7 +7,7 @@
 /[Ll]ogs/
 /[Uu]ser[Ss]ettings/
 
-# --- ARCHIVOS GENERADOS AUTOMÁTICAMENTE (Causa de tu conflicto) ---
+
 # Estos archivos los genera Unity en cada PC, no deben compartirse
 *.csproj
 *.unityproj
