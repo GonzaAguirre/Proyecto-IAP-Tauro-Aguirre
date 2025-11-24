@@ -35,7 +35,17 @@ public class GameView : MonoBehaviour, IGameView
 
     void Start()
     {
-        // Pasamos 'this' (la vista) y 'dataManager' (el modelo)
+        // 1. CONECTAR EL BOTÓN (Esto faltaba)
+        if (submitAnswerButton != null)
+        {
+            submitAnswerButton.onClick.AddListener(() => OnSubmitAnswer?.Invoke());
+        }
+        else
+        {
+            Debug.LogError("⚠️ ¡El botón Submit no está asignado en el Inspector!");
+        }
+
+        // 2. INICIALIZAR PRESENTER
         presenter = new GamePresenter(this, dataManager);
     }
     // --- Implementación de la Interfaz ---

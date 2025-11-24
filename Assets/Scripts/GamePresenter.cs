@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,15 +7,18 @@ public class GamePresenter
      private IGameView view;
      private DataManager dataManager;
 
+     // Listas y Estado
      private List<PestData> allPlagues;
-     private CallData currentCall;
-     private string selectedPlagueId;
+     private List<CallData> dailyCalls; // La lista de llamadas de hoy
+     private CallData currentCall;      // La llamada actual en pantalla
 
-     // GamePresenter.cs
-     public GamePresenter(IGameView view, DataManager model) // <--- Agregamos el parámetro
+     private string selectedPlagueId;
+     private int currentCallIndex = 0;  // Para saber por cuál vamos (0, 1, 2...)
+
+     public GamePresenter(IGameView view, DataManager model)
      {
           this.view = view;
-          this.dataManager = model; // <--- Lo asignamos, NO hacemos new()
+          this.dataManager = model;
 
           this.view.OnPlagueSelected += HandlePlagueSelection;
           this.view.OnSubmitAnswer += HandleSubmit;
@@ -25,94 +29,107 @@ public class GamePresenter
 
      private void StartGame()
      {
-          Debug.Log("Presenter: Iniciando juego...");
+          Debug.Log("🚀 PRESENTER: Iniciando ciclo de juego...");
+
           allPlagues = dataManager.GetAllPests();
 
-          // 1. Llenar la lista visual
+          // 1. Cargamos TODAS las llamadas del Día 1
+          dailyCalls = dataManager.GetCallsForDay(1);
+
+          Debug.Log($"📊 Datos: {allPlagues.Count} plagas | {dailyCalls.Count} llamadas para hoy.");
+
+          // 2. Llenar la UI
           view.PopulateEntriesList(allPlagues);
 
-          // 2. Cargar la primera llamada (Para probar)
-          LoadNewCall(dataManager.GetFirstCall());
+          // 3. Empezar por la primera llamada (Índice 0)
+          currentCallIndex = 0;
+          LoadCallByIndex(currentCallIndex);
      }
 
-     private void HandleSubmit()
+     private void LoadCallByIndex(int index)
      {
-          // Validación de seguridad
-          if (currentCall == null) return;
-
-          // Lógica de validación
-          // Comparamos lo que seleccionó el usuario vs lo que dice la llamada
-          if (selectedPlagueId == currentCall.correctPestID) // OJO: CorrectPestID en mayúscula si cambiaste APIGameDataStructures
+          // Chequeo de seguridad: ¿Existen llamadas?
+          if (dailyCalls == null || dailyCalls.Count == 0)
           {
-               Debug.Log("¡Respuesta Correcta!");
-               view.ShowFeedback(true); // <--- Muestra VERDE
-
-               // Aquí luego pondremos la lógica para cargar la siguiente llamada
-          }
-          else
-          {
-               Debug.Log("Respuesta Incorrecta...");
-               view.ShowFeedback(false); // <--- Muestra ROJO
-          }
-     }
-
-     private void LoadNewCall(CallData call)
-     {
-          if (call == null)
-          {
-               Debug.LogError("PRESENTER: LoadNewCall recibió null. ¿La lista de llamadas está vacía?");
+               Debug.LogError("❌ No hay llamadas cargadas para este día.");
                return;
           }
-          currentCall = call;
 
-          // Ponemos una imagen temporal o null mientras carga
-          view.UpdateCallerInfo(call.callerName, call.message, null);
-
-          // Pedimos al Manager que descargue la foto del cliente
-          dataManager.RequestImage(call.callerImageURL, (sprite) =>
+          // Chequeo de fin de juego: ¿Ya no hay más llamadas?
+          if (index >= dailyCalls.Count)
           {
-               // Cuando termine, actualizamos solo la foto
-               view.UpdateCallerInfo(call.callerName, call.message, sprite);
+               Debug.Log("🏁 FIN DEL TURNO");
+               view.UpdateCallerInfo("FIN DEL DÍA", "¡Has completado todas las llamadas! Buen trabajo.", null);
+               return;
+          }
+
+          // Cargar la llamada actual
+          currentCall = dailyCalls[index];
+          selectedPlagueId = ""; // Reseteamos la selección del jugador
+
+          // Mostrar info básica (mientras carga la foto)
+          view.UpdateCallerInfo(currentCall.callerName, currentCall.message, null);
+
+          // Descargar foto del cliente
+          dataManager.RequestImage(currentCall.callerImageURL, (sprite) =>
+          {
+               // Verificar que seguimos en la misma llamada (por si tardó mucho)
+               if (currentCall == dailyCalls[index])
+                    view.UpdateCallerInfo(currentCall.callerName, currentCall.message, sprite);
           });
      }
-
-     // Lógica cuando el usuario selecciona una plaga de la lista
-     // REEMPLAZAR ESTE MÉTODO EN GamePresenter.cs
 
      private void HandlePlagueSelection(string plagueId)
      {
           selectedPlagueId = plagueId;
-          var plague = allPlagues.Find(p => p.id == plagueId);
-          Debug.Log($"PRESENTER RECIBIÓ: {plagueId}"); // <--- Pista 2
+          var plague = allPlagues.Find(p => p.id == plagueId); // minúsculas 'id'
+
           if (plague != null)
           {
-               // 1. Mostramos el texto inmediatamente (con imagen null/vacía por ahora)
-               //    Esto hace que la interfaz se sienta rápida.
                view.UpdateEntryInfo(plague.name, plague.description, plague.danger, plague.solution, null);
 
-               // 2. Pedimos descargar la imagen de internet
                dataManager.RequestImage(plague.imageURL, (sprite) =>
                {
-                    // 3. Verificamos si el usuario TODAVÍA tiene seleccionada esta plaga
-                    //    (Por si cambió rápido a otra mientras descargaba)
                     if (selectedPlagueId == plagueId)
-                    {
                          view.UpdateEntryInfo(plague.name, plague.description, plague.danger, plague.solution, sprite);
-                    }
                });
           }
      }
 
-     // Puedes borrar el método 'LoadSpriteFromPath' ya que no lo usaremos.
-
-     // Helper to load a Sprite from a Resources path; returns null if not found or path is empty.
-     private Sprite LoadSpriteFromPath(string path)
+     private void HandleSubmit()
      {
-          if (string.IsNullOrEmpty(path))
-               return null;
+          if (currentCall == null) return;
 
-          // Assumes image paths are stored as Resources-compatible paths (without file extension).
-          Sprite s = Resources.Load<Sprite>(path);
-          return s;
+          // 1. Validar si el jugador seleccionó algo
+          if (string.IsNullOrEmpty(selectedPlagueId))
+          {
+               Debug.Log("⚠️ Selecciona una plaga primero.");
+               return;
+          }
+
+          Debug.Log($"📝 Respuesta: {selectedPlagueId} | Correcta: {currentCall.correctPestID}");
+
+          // 2. Verificar respuesta
+          bool isCorrect = (selectedPlagueId == currentCall.correctPestID);
+
+          if (isCorrect)
+          {
+               view.ShowFeedback(true); // VERDE
+               AdvanceToNextCall();
+          }
+          else
+          {
+               view.ShowFeedback(false); // ROJO
+               // Opcional: ¿Quieres que avance igual aunque falle? 
+               // Por ahora digamos que sí para que el juego fluya:
+               AdvanceToNextCall();
+          }
+     }
+
+     private void AdvanceToNextCall()
+     {
+          currentCallIndex++;
+          // Cargamos la siguiente
+          LoadCallByIndex(currentCallIndex);
      }
 }
