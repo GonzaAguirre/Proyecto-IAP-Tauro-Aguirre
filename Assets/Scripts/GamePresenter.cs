@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,11 +8,14 @@ public class GamePresenter
 
      // Listas y Estado
      private List<PestData> allPlagues;
-     private List<CallData> dailyCalls; // La lista de llamadas de hoy
-     private CallData currentCall;      // La llamada actual en pantalla
+     private List<CallData> dailyCalls; // Las llamadas del día actual
+     private CallData currentCall;
 
      private string selectedPlagueId;
-     private int currentCallIndex = 0;  // Para saber por cuál vamos (0, 1, 2...)
+     private int currentCallIndex = 0;
+
+     // --- NUEVA VARIABLE: Controla el día actual (1, 2 o 3) ---
+     private int currentDay = 1;
 
      public GamePresenter(IGameView view, DataManager model)
      {
@@ -29,60 +31,81 @@ public class GamePresenter
 
      private void StartGame()
      {
-          Debug.Log("🚀 PRESENTER: Iniciando ciclo de juego...");
+          Debug.Log("🚀 PRESENTER: Iniciando juego...");
 
           allPlagues = dataManager.GetAllPests();
+          currentDay = 1; // Aseguramos empezar en el Día 1
 
-          // 1. Cargamos TODAS las llamadas del Día 1
-          dailyCalls = dataManager.GetCallsForDay(1);
+          LoadDayData(); // Función auxiliar para cargar el día
+     }
 
-          Debug.Log($"📊 Datos: {allPlagues.Count} plagas | {dailyCalls.Count} llamadas para hoy.");
+     // --- LÓGICA DE CARGA POR DÍA ---
+     private void LoadDayData()
+     {
+          // 1. Pedimos al Manager las llamadas del día actual
+          dailyCalls = dataManager.GetCallsForDay(currentDay);
 
-          // 2. Llenar la UI
+          Debug.Log($"🌞 INICIANDO DÍA {currentDay} | Llamadas: {dailyCalls.Count}");
+
+          // 2. Llenar la lista visual de plagas (si quisieras filtrar plagas por día, sería aquí)
           view.PopulateEntriesList(allPlagues);
 
-          // 3. Empezar por la primera llamada (Índice 0)
+          // 3. Resetear índice y cargar primera llamada
           currentCallIndex = 0;
           LoadCallByIndex(currentCallIndex);
      }
 
      private void LoadCallByIndex(int index)
      {
-          // Chequeo de seguridad: ¿Existen llamadas?
+          // Seguridad: Si no hay llamadas hoy
           if (dailyCalls == null || dailyCalls.Count == 0)
           {
-               Debug.LogError("❌ No hay llamadas cargadas para este día.");
+               view.UpdateCallerInfo($"DÍA {currentDay}", "No hay llamadas programadas para hoy.", null);
                return;
           }
 
-          // Chequeo de fin de juego: ¿Ya no hay más llamadas?
+          // --- DETECCIÓN DE FIN DE DÍA (Automática) ---
           if (index >= dailyCalls.Count)
           {
-               Debug.Log("🏁 FIN DEL TURNO");
-               view.UpdateCallerInfo("FIN DEL DÍA", "¡Has completado todas las llamadas! Buen trabajo.", null);
+               Debug.Log("🏁 FIN DEL TURNO ACTUAL.");
+               StartNextDay(); // <--- Saltamos al siguiente día
                return;
           }
+          // --------------------------------------------
 
-          // Cargar la llamada actual
           currentCall = dailyCalls[index];
-          selectedPlagueId = ""; // Reseteamos la selección del jugador
+          selectedPlagueId = "";
 
-          // Mostrar info básica (mientras carga la foto)
           view.UpdateCallerInfo(currentCall.callerName, currentCall.message, null);
 
-          // Descargar foto del cliente
           dataManager.RequestImage(currentCall.callerImageURL, (sprite) =>
           {
-               // Verificar que seguimos en la misma llamada (por si tardó mucho)
                if (currentCall == dailyCalls[index])
                     view.UpdateCallerInfo(currentCall.callerName, currentCall.message, sprite);
           });
      }
 
+     // --- LÓGICA PARA AVANZAR AL SIGUIENTE DÍA ---
+     private void StartNextDay()
+     {
+          currentDay++; // Avanzamos (1 -> 2, 2 -> 3)
+
+          // Chequeo de Final del Juego (Después del día 3)
+          if (currentDay > 3)
+          {
+               Debug.Log("🏆 JUEGO COMPLETADO");
+               view.UpdateCallerInfo("FIN DEL CONTRATO", "¡Felicidades! Has completado los 3 días de prueba.", null);
+               return;
+          }
+
+          // Si seguimos jugando, cargamos los datos del nuevo día
+          LoadDayData();
+     }
+
      private void HandlePlagueSelection(string plagueId)
      {
           selectedPlagueId = plagueId;
-          var plague = allPlagues.Find(p => p.id == plagueId); // minúsculas 'id'
+          var plague = allPlagues.Find(p => p.id == plagueId);
 
           if (plague != null)
           {
@@ -100,28 +123,23 @@ public class GamePresenter
      {
           if (currentCall == null) return;
 
-          // 1. Validar si el jugador seleccionó algo
           if (string.IsNullOrEmpty(selectedPlagueId))
           {
                Debug.Log("⚠️ Selecciona una plaga primero.");
                return;
           }
 
-          Debug.Log($"📝 Respuesta: {selectedPlagueId} | Correcta: {currentCall.correctPestID}");
-
-          // 2. Verificar respuesta
           bool isCorrect = (selectedPlagueId == currentCall.correctPestID);
 
           if (isCorrect)
           {
-               view.ShowFeedback(true); // VERDE
+               view.ShowFeedback(true);
                AdvanceToNextCall();
           }
           else
           {
-               view.ShowFeedback(false); // ROJO
-               // Opcional: ¿Quieres que avance igual aunque falle? 
-               // Por ahora digamos que sí para que el juego fluya:
+               view.ShowFeedback(false);
+               // Avanzamos igual (podrías cambiar esto para obligar a reintentar)
                AdvanceToNextCall();
           }
      }
@@ -129,7 +147,6 @@ public class GamePresenter
      private void AdvanceToNextCall()
      {
           currentCallIndex++;
-          // Cargamos la siguiente
           LoadCallByIndex(currentCallIndex);
      }
 }

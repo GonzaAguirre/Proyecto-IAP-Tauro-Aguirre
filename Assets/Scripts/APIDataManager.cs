@@ -106,6 +106,29 @@ public class DataManager : MonoBehaviour
 
     public void RequestImage(string url, System.Action<Sprite> callback)
     {
-        StartCoroutine(dataService.DownloadImage(url, callback));
+        // VERIFICACIÓN INTELIGENTE:
+        // Si empieza con "http", descargamos de internet.
+        // Si no, asumimos que es un archivo local en la carpeta Resources.
+
+        if (url.StartsWith("http") || url.StartsWith("https"))
+        {
+            StartCoroutine(dataService.DownloadImage(url, callback));
+        }
+        else
+        {
+            // Carga instantánea desde la carpeta Resources
+            Sprite localSprite = Resources.Load<Sprite>(url);
+
+            if (localSprite != null)
+            {
+                callback?.Invoke(localSprite);
+            }
+            else
+            {
+                Debug.LogError($"❌ No se encontró la imagen en Resources: {url}");
+                // Opcional: Devolver null o una imagen por defecto
+                callback?.Invoke(null);
+            }
+        }
     }
 }
