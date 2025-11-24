@@ -24,6 +24,7 @@ public class CallData
     public string correctPestID;    
     public int day;                 
     public string callType;         // "Consejo", "Confirmacion", "Extra"
+    public string audio;            // Ruta al archivo de audio
 }
 
 // Esta clase "Root" es necesaria porque el JsonUtility de Unity

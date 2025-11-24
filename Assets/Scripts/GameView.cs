@@ -2,6 +2,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using System.Collections; // Necesario para IEnumerator
 using System;
 
 public class GameView : MonoBehaviour, IGameView
@@ -28,9 +29,17 @@ public class GameView : MonoBehaviour, IGameView
     [SerializeField] private Canvas feedbackCanvas;
     [SerializeField] private TextMeshProUGUI feedbackText;
 
+    [Header("New Call PopUp")]
+    [SerializeField] private Image newCallCanvas;
+    [SerializeField] private TextMeshProUGUI newCallText;
+    [SerializeField] private Button newCallButton;
+    [SerializeField] private Image newCallCallerImage;
+    [SerializeField] private AudioSource callAudioSource;
+
     // Eventos de la Interfaz
     public event Action OnSubmitAnswer;
     public event Action<string> OnPlagueSelected;
+    public event Action OnCallAnswered;
 
     private GamePresenter presenter;
 
@@ -50,6 +59,7 @@ public class GameView : MonoBehaviour, IGameView
         presenter = new GamePresenter(this, dataManager);
 
         entryInfoImage.gameObject.SetActive(false);
+        newCallCanvas.gameObject.SetActive(false);
     }
     // --- Implementación de la Interfaz ---
 
@@ -77,6 +87,7 @@ public class GameView : MonoBehaviour, IGameView
         entryInfoImage.sprite = image;
         entryInfoImage.gameObject.SetActive(true);
     }
+
     public void ShowFeedback(bool isCorrect)
     {
         feedbackText.gameObject.SetActive(true); // Nos aseguramos que se vea
@@ -102,6 +113,7 @@ public class GameView : MonoBehaviour, IGameView
         feedbackCanvas.gameObject.SetActive(false);
         feedbackText.gameObject.SetActive(false);
     }
+
     public void PopulateEntriesList(List<PestData> plagues)
     {
         Debug.Log($"INTENTANDO CREAR {plagues.Count} BOTONES..."); // <--- Agrega esto
@@ -156,6 +168,65 @@ public class GameView : MonoBehaviour, IGameView
             {
                 Debug.LogError("El Prefab no tiene un componente Button.");
             }
+        }
+    }
+
+    public void NewCallPopUp(string callerName, Sprite callerImage, string audioPath)
+    {
+        newCallCanvas.gameObject.SetActive(true);
+        newCallText.text = $"¡Nueva llamada de {callerName}!";
+        newCallCallerImage.sprite = callerImage;
+        
+        // Limpiamos listeners previos para evitar duplicados
+        newCallButton.onClick.RemoveAllListeners();
+        
+        newCallButton.onClick.AddListener(() => 
+        {
+            newCallCanvas.gameObject.SetActive(false);
+            OnCallAnswered?.Invoke(); 
+            PlayCallAudio(audioPath);
+        });
+    }
+
+    private void PlayCallAudio(string audioPath)
+    {
+        if (string.IsNullOrEmpty(audioPath)) return;
+
+        // Limpieza de ruta: Quitamos extensiones y prefijos si vienen del JSON
+        // Ejemplo entrada: "Assets/Audio/milei_audio/milei_call.mp3"
+        // Salida deseada: "Audio/milei_audio/milei_call"
+        
+        string resourcePath = audioPath;
+        
+        // 1. Quitar extensión
+        if (System.IO.Path.HasExtension(resourcePath))
+        {
+            resourcePath = resourcePath.Substring(0, resourcePath.LastIndexOf('.'));
+        }
+
+        // 2. Quitar "Assets/Resources/" o "Assets/" si existen, para dejar solo la ruta relativa a Resources
+        // (Esto es por robustez, idealmente el JSON ya debería traer la ruta limpia)
+        if (resourcePath.StartsWith("Assets/Resources/"))
+        {
+            resourcePath = resourcePath.Replace("Assets/Resources/", "");
+        }
+        else if (resourcePath.StartsWith("Assets/"))
+        {
+             // Si el usuario puso "Assets/Audio/...", y la carpeta Audio está dentro de Resources,
+             // entonces la ruta para Resources.Load debe ser "Audio/..."
+            resourcePath = resourcePath.Replace("Assets/", "");
+        }
+
+        AudioClip clip = Resources.Load<AudioClip>(resourcePath);
+
+        if (clip != null)
+        {
+            callAudioSource.clip = clip;
+            callAudioSource.Play();
+        }
+        else
+        {
+            Debug.LogWarning($"[GameView] No se pudo cargar el audio desde Resources: '{resourcePath}'. Asegúrate de que el archivo esté en una carpeta 'Resources' y la ruta sea correcta.");
         }
     }
 }

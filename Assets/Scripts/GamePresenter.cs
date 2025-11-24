@@ -77,11 +77,15 @@ public class GamePresenter
           selectedPlagueId = "";
 
           view.UpdateCallerInfo(currentCall.callerName, currentCall.message, null);
+          view.NewCallPopUp(currentCall.callerName, null, currentCall.audio);
 
           dataManager.RequestImage(currentCall.callerImageURL, (sprite) =>
           {
                if (currentCall == dailyCalls[index])
+               {
                     view.UpdateCallerInfo(currentCall.callerName, currentCall.message, sprite);
+                    view.NewCallPopUp(currentCall.callerName, sprite, currentCall.audio);
+               }
           });
      }
 

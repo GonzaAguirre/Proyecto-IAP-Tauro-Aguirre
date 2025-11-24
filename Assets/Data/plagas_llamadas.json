@@ -110,6 +110,11 @@
       "type": "Extraño"
     }
   ],
+
+
+
+
+
   "calls": [
     {
       "id": "call_001",
@@ -118,7 +123,8 @@
       "message": "Hola, ¿qué tal? Habla Leo. Mirá, estoy acá en el patio con los nenes y escucho un silbido raro... Anto dice que vio algo petiso y peludo cerca de la parrilla. ¿Qué te parece que sea?",
       "correctPestID": "pest_006",
       "day": 1,
-      "callType": "Consejo"
+      "callType": "Consejo",
+      "audio": "Audio/messi_audio/messi_call"
     },
     {
       "id": "call_002",
@@ -127,7 +133,8 @@
       "message": "Buenas noches. Soy yo, la Chiqui. Estoy en mi estancia y veo unas luces flotando allá a lo lejos, cerca del alambrado. No son linternas, querido, flotan. Me da un miedo terrible, carajo mierda.",
       "correctPestID": "pest_009",
       "day": 1,
-      "callType": "Consejo"
+      "callType": "Consejo",
+      "audio": "Audio/mirtha_audio/mirtha_call"
     },
     {
       "id": "call_003",
@@ -136,7 +143,8 @@
       "message": "¡Hermosa mañana, verdad! Bueno, no tanto. Fui a ver mis rosales y están pelados. No quedó ni una hoja. Vi un camino negro en el piso que se mueve. ¿Me podés ayudar?",
       "correctPestID": "pest_004",
       "day": 1,
-      "callType": "Consejo"
+      "callType": "Consejo",
+      "audio": "Audio/francella_audio/francella_call"
     },
     {
       "id": "call_004",
@@ -145,7 +153,8 @@
       "message": "Osea, digamos... tengo un problema de stock. Me desaparecen las hojas de mis escritos. Encuentro pedacitos de papel y unas bolitas negras chiquitas. ¡Es un ataque a la propiedad privada!",
       "correctPestID": "pest_003",
       "day": 2,
-      "callType": "Consejo"
+      "callType": "Consejo",
+      "audio": "Audio/milei_audio/milei_call"
     },
     {
       "id": "call_005",
@@ -154,7 +163,8 @@
       "message": "¡Hola mi amor! Escuchame, hay un perro enorme en el jardín. ¡Pero enorme! Y camina en dos patas, te juro. Pensé que era un dinosaurio... ¿Vivo? No sé, está aullando.",
       "correctPestID": "pest_010",
       "day": 2,
-      "callType": "Consejo"
+      "callType": "Consejo",
+      "audio": "Audio/susana_audio/susana_call"
     },
     {
       "id": "call_006",
@@ -163,7 +173,8 @@
       "message": "Hello amores. Tengo un poltergeist de outlet en la cocina. Me cebo un mate y a los dos segundos está lavado. ¡El decorado se calla, pero el azúcar desaparece! Estoy muy 'vistima'.",
       "correctPestID": "pest_007",
       "day": 2,
-      "callType": "Consejo"
+      "callType": "Consejo",
+      "audio": "Audio/moria_audio/moria_call"
     },
     {
       "id": "call_007",
@@ -172,7 +183,8 @@
       "message": "Eeeeehhhh... hola maestro. Mirá, no me dejan dormir la siesta. Hay un zumbido... zzzzz... que me está volviendo loco. Me picaron todo el tobillo. Hacé algo, fiera.",
       "correctPestID": "pest_002",
       "day": 2,
-      "callType": "Consejo"
+      "callType": "Consejo",
+      "audio": "Audio/maradona_audio/maradona_call"
     },
     {
       "id": "call_008",
@@ -181,7 +193,8 @@
       "message": "¡Basta chicos! ¡Mamá! Cortaste toda la looz... Ah no, pará. Veo unos ojos rojos en el patio y mis gatos están asustados. ¡Maiameee! ¡Hagan algo con esa cosa con espinas!",
       "correctPestID": "pest_008",
       "day": 3,
-      "callType": "Consejo"
+      "callType": "Consejo",
+      "audio": "Audio/fort_audio/fort_call"
     },
     {
       "id": "call_009",
@@ -190,7 +203,8 @@
       "message": "Loco, el gnomo ese del jardín... me mira mal. Ayer estaba mirando pal norte y hoy mira pal sur. Yo no lo toqué. Se mueve solo, te juro que no consumí nada raro.",
       "correctPestID": "pest_012",
       "day": 3,
-      "callType": "Consejo"
+      "callType": "Consejo",
+      "audio": "Audio/pity_audio/pity_call"
     },
     {
       "id": "call_010",
@@ -199,7 +213,8 @@
       "message": "Estamos concentrando cerca del río y se escucha una mujer llorando. No deja descansar a los jugadores. Grita 'mis hiiijooos'. ¿Es mufa esto?",
       "correctPestID": "pest_011",
       "day": 3,
-      "callType": "Consejo"
+      "callType": "Consejo",
+      "audio": "Audio/scaloni_audio/scaloni_call"
     },
     {
       "id": "call_011",
@@ -208,7 +223,8 @@
       "message": "¡Raro! ¡Esto es raro! Encontré un bicho en la pared, tiene rayas naranjas en el costado. Mi abuela dice que es peligroso pal corazón. ¡Decime qué es o me da un algo!",
       "correctPestID": "pest_005",
       "day": 1,
-      "callType": "Consejo"
+      "callType": "Consejo",
+      "audio": "Audio/dario_audio/dario_call"
     },
     {
       "id": "call_013",
@@ -217,7 +233,8 @@
       "message": "Amooor, hola, ¿sí? Tipo... estoy en crisis mal. Fui a la cocina por agua y salió un bicho marrón corriendo a los re pedos. ¡Posta, casi me muero del asco! O sea, se metió abajo de la heladera y no sale. ¡Sáquenlo ya que me da mucha ansiedad!",
       "correctPestID": "pest_001",
       "day": 1,
-      "callType": "Consejo"
+      "callType": "Consejo",
+      "audio": "Audio/tini_audio/tini_call"
     }
   ]
 }
