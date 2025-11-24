@@ -25,6 +25,7 @@ public class GameView : MonoBehaviour, IGameView
     [SerializeField] private DataManager dataManager; // <--- Arrastra el DataManager aquí en el Inspector  
 
     [Header("Feedback")]
+    [SerializeField] private Canvas feedbackCanvas;
     [SerializeField] private TextMeshProUGUI feedbackText;
 
     // Eventos de la Interfaz
@@ -47,6 +48,8 @@ public class GameView : MonoBehaviour, IGameView
 
         // 2. INICIALIZAR PRESENTER
         presenter = new GamePresenter(this, dataManager);
+
+        entryInfoImage.gameObject.SetActive(false);
     }
     // --- Implementación de la Interfaz ---
 
@@ -64,19 +67,21 @@ public class GameView : MonoBehaviour, IGameView
         entryInfoDangerText.text = danger;
         entryInfoSolutionText.text = solution;
         entryInfoImage.sprite = image;
+        entryInfoImage.gameObject.SetActive(true);
     }
     public void ShowFeedback(bool isCorrect)
     {
         feedbackText.gameObject.SetActive(true); // Nos aseguramos que se vea
+        feedbackCanvas.gameObject.SetActive(true);
 
         if (isCorrect)
         {
-            feedbackText.text = "¡CORRECTO! ENVIANDO EQUIPO...";
+            feedbackText.text = "¡CORRECTO!\nENVIANDO EQUIPO...";
             feedbackText.color = Color.green;
         }
         else
         {
-            feedbackText.text = "INCORRECTO. INTENTA DE NUEVO.";
+            feedbackText.text = "¡INCORRECTO!\nINTENTA DE NUEVO.";
             feedbackText.color = Color.red;
         }
 
@@ -86,6 +91,7 @@ public class GameView : MonoBehaviour, IGameView
 
     private void HideFeedback()
     {
+        feedbackCanvas.gameObject.SetActive(false);
         feedbackText.gameObject.SetActive(false);
     }
     public void PopulateEntriesList(List<PestData> plagues)
