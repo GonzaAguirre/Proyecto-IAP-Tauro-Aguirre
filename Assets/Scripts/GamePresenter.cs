@@ -6,101 +6,147 @@ public class GamePresenter
      private IGameView view;
      private DataManager dataManager;
 
+     // Listas y Estado
      private List<PestData> allPlagues;
+     private List<CallData> dailyCalls; // Las llamadas del día actual
      private CallData currentCall;
+
      private string selectedPlagueId;
+     private int currentCallIndex = 0;
 
-// GamePresenter.cs
-     public GamePresenter(IGameView view, DataManager model) // <--- Agregamos el parámetro
+     // --- NUEVA VARIABLE: Controla el día actual (1, 2 o 3) ---
+     private int currentDay = 1;
+
+     public GamePresenter(IGameView view, DataManager model)
      {
-     this.view = view;
-     this.dataManager = model; // <--- Lo asignamos, NO hacemos new()
+          this.view = view;
+          this.dataManager = model;
 
-     this.view.OnPlagueSelected += HandlePlagueSelection;
-     this.view.OnSubmitAnswer += HandleSubmit;
+          this.view.OnPlagueSelected += HandlePlagueSelection;
+          this.view.OnSubmitAnswer += HandleSubmit;
 
-     if (dataManager.IsDataLoaded) StartGame();
-     else dataManager.OnDataReady += StartGame;
+          if (dataManager.IsDataLoaded) StartGame();
+          else dataManager.OnDataReady += StartGame;
      }
 
      private void StartGame()
      {
-          Debug.Log("Presenter: Iniciando juego...");
-          allPlagues = dataManager.GetAllPests();
-          
-          // 1. Llenar la lista visual
-          view.PopulateEntriesList(allPlagues);
+          Debug.Log("🚀 PRESENTER: Iniciando juego...");
 
-          // 2. Cargar la primera llamada (Para probar)
-          LoadNewCall(dataManager.GetFirstCall());
+          allPlagues = dataManager.GetAllPests();
+          currentDay = 1; // Aseguramos empezar en el Día 1
+
+          LoadDayData(); // Función auxiliar para cargar el día
      }
 
-     private void LoadNewCall(CallData call)
+     // --- LÓGICA DE CARGA POR DÍA ---
+     private void LoadDayData()
      {
-          if (call == null) return;
-          currentCall = call;
+          // 1. Pedimos al Manager las llamadas del día actual
+          dailyCalls = dataManager.GetCallsForDay(currentDay);
 
-          // Ponemos una imagen temporal o null mientras carga
-          view.UpdateCallerInfo(call.callerName, call.message, null); 
+          Debug.Log($"🌞 INICIANDO DÍA {currentDay} | Llamadas: {dailyCalls.Count}");
 
-          // Pedimos al Manager que descargue la foto del cliente
-          dataManager.RequestImage(call.callerImageURL, (sprite) => {
-               // Cuando termine, actualizamos solo la foto
-               view.UpdateCallerInfo(call.callerName, call.message, sprite);
+          // 2. Llenar la lista visual de plagas (si quisieras filtrar plagas por día, sería aquí)
+          view.PopulateEntriesList(allPlagues);
+
+          // 3. Resetear índice y cargar primera llamada
+          currentCallIndex = 0;
+          LoadCallByIndex(currentCallIndex);
+     }
+
+     private void LoadCallByIndex(int index)
+     {
+          // Seguridad: Si no hay llamadas hoy
+          if (dailyCalls == null || dailyCalls.Count == 0)
+          {
+               view.UpdateCallerInfo($"DÍA {currentDay}", "No hay llamadas programadas para hoy.", null);
+               return;
+          }
+
+          // --- DETECCIÓN DE FIN DE DÍA (Automática) ---
+          if (index >= dailyCalls.Count)
+          {
+               Debug.Log("🏁 FIN DEL TURNO ACTUAL.");
+               StartNextDay(); // <--- Saltamos al siguiente día
+               return;
+          }
+          // --------------------------------------------
+
+          currentCall = dailyCalls[index];
+          selectedPlagueId = "";
+
+          view.UpdateCallerInfo(currentCall.callerName, currentCall.message, null);
+
+          dataManager.RequestImage(currentCall.callerImageURL, (sprite) =>
+          {
+               if (currentCall == dailyCalls[index])
+                    view.UpdateCallerInfo(currentCall.callerName, currentCall.message, sprite);
           });
      }
 
-     // Lógica cuando el usuario selecciona una plaga de la lista
- // REEMPLAZAR ESTE MÉTODO EN GamePresenter.cs
+     // --- LÓGICA PARA AVANZAR AL SIGUIENTE DÍA ---
+     private void StartNextDay()
+     {
+          currentDay++; // Avanzamos (1 -> 2, 2 -> 3)
+
+          // Chequeo de Final del Juego (Después del día 3)
+          if (currentDay > 3)
+          {
+               Debug.Log("🏆 JUEGO COMPLETADO");
+               view.UpdateCallerInfo("FIN DEL CONTRATO", "¡Felicidades! Has completado los 3 días de prueba.", null);
+               return;
+          }
+
+          // Si seguimos jugando, cargamos los datos del nuevo día
+          LoadDayData();
+     }
 
      private void HandlePlagueSelection(string plagueId)
      {
-     selectedPlagueId = plagueId;
-     var plague = allPlagues.Find(p => p.id == plagueId);
+          selectedPlagueId = plagueId;
+          var plague = allPlagues.Find(p => p.id == plagueId);
 
-     if (plague != null)
-     {
-          // 1. Mostramos el texto inmediatamente (con imagen null/vacía por ahora)
-          //    Esto hace que la interfaz se sienta rápida.
-          view.UpdateEntryInfo(plague.name, plague.description, plague.danger, plague.solution, null);
-
-          // 2. Pedimos descargar la imagen de internet
-          dataManager.RequestImage(plague.imageURL, (sprite) => 
+          if (plague != null)
           {
-               // 3. Verificamos si el usuario TODAVÍA tiene seleccionada esta plaga
-               //    (Por si cambió rápido a otra mientras descargaba)
-               if (selectedPlagueId == plagueId)
+               view.UpdateEntryInfo(plague.name, plague.description, plague.danger, plague.solution, null);
+
+               dataManager.RequestImage(plague.imageURL, (sprite) =>
                {
-                    view.UpdateEntryInfo(plague.name, plague.description, plague.danger, plague.solution, sprite);
-               }
-          });
-     }
-     }
-
-// Puedes borrar el método 'LoadSpriteFromPath' ya que no lo usaremos.
-
-     // Helper to load a Sprite from a Resources path; returns null if not found or path is empty.
-     private Sprite LoadSpriteFromPath(string path)
-     {
-          if (string.IsNullOrEmpty(path))
-               return null;
-
-          // Assumes image paths are stored as Resources-compatible paths (without file extension).
-          Sprite s = Resources.Load<Sprite>(path);
-          return s;
+                    if (selectedPlagueId == plagueId)
+                         view.UpdateEntryInfo(plague.name, plague.description, plague.danger, plague.solution, sprite);
+               });
+          }
      }
 
      private void HandleSubmit()
      {
-          // Lógica de validación
-          if (currentCall != null && selectedPlagueId == currentCall.correctPestID)
+          if (currentCall == null) return;
+
+          if (string.IsNullOrEmpty(selectedPlagueId))
           {
-               Debug.Log("¡Respuesta Correcta!");
-               // Lógica para pasar al siguiente día o llamada
+               Debug.Log("⚠️ Selecciona una plaga primero.");
+               return;
+          }
+
+          bool isCorrect = (selectedPlagueId == currentCall.correctPestID);
+
+          if (isCorrect)
+          {
+               view.ShowFeedback(true);
+               AdvanceToNextCall();
           }
           else
           {
-               Debug.Log("Respuesta Incorrecta...");
+               view.ShowFeedback(false);
+               // Avanzamos igual (podrías cambiar esto para obligar a reintentar)
+               AdvanceToNextCall();
           }
+     }
+
+     private void AdvanceToNextCall()
+     {
+          currentCallIndex++;
+          LoadCallByIndex(currentCallIndex);
      }
 }

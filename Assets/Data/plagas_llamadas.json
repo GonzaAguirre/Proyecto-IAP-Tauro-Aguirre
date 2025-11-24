@@ -49,7 +49,7 @@
     {
       "id": "pest_006",
       "name": "El Pombero",
-      "imageURL": "https://placehold.co/400x300/png?text=Pombero",
+      "imageURL": "Imagenes/imagenesPlagas/pombero",
       "description": "Duende del litoral, petiso y peludo. Se anuncia con un silbido agudo.",
       "danger": "Secuestra niños a la hora de la siesta y embaraza mujeres solteras. Toca a la gente con sus manos frías.",
       "solution": "Dejarle ofrendas de tabaco, miel y caña fuera de la casa para hacerse amigo.",
@@ -114,7 +114,7 @@
     {
       "id": "call_001",
       "callerName": "Leo M.",
-      "callerImageURL": "https://placehold.co/100x100/png?text=Leo",
+      "callerImageURL": "Imagenes/ImagenesLlamadas/messi",
       "message": "Hola, ¿qué tal? Habla Leo. Mirá, estoy acá en el patio con los nenes y escucho un silbido raro... Anto dice que vio algo petiso y peludo cerca de la parrilla. ¿Qué te parece que sea?",
       "correctPestID": "pest_006",
       "day": 1,

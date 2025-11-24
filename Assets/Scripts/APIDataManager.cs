@@ -5,25 +5,22 @@ using System.Linq;
 
 public class DataManager : MonoBehaviour
 {
-    // EN LUGAR DE URL, AHORA USAMOS UN ARCHIVO LOCAL
     [Header("Archivo JSON Local")]
-    public TextAsset jsonFile; 
+    public TextAsset jsonFile;
 
-    // Almacenamiento interno
+    // Inicializamos las listas aquí para evitar nulos por defecto
     private List<PestData> allPests = new List<PestData>();
     private List<CallData> allCalls = new List<CallData>();
-    private DataService dataService = new DataService(); // Instancia del servicio
+    private DataService dataService = new DataService();
 
     public bool IsDataLoaded { get; private set; } = false;
-
     public event System.Action OnDataReady;
 
     public void Initialize()
     {
         if (jsonFile != null) LoadLocalData();
     }
-        
-    // Cambiamos Start o un método público para cargar al iniciar
+
     void Start()
     {
         if (jsonFile != null)
@@ -42,24 +39,43 @@ public class DataManager : MonoBehaviour
 
         try
         {
-            // Leemos el texto directamente del archivo
+            if (jsonFile == null)
+            {
+                Debug.LogError("El archivo JSON es NULL en el Inspector.");
+                return;
+            }
+
             string jsonText = jsonFile.text;
 
-            // Parseamos (Convertimos texto a objetos)
+            if (string.IsNullOrEmpty(jsonText))
+            {
+                Debug.LogError("El archivo JSON está vacío.");
+                return;
+            }
+
+            Debug.Log("Contenido del JSON:");
+            Debug.Log(jsonText); // Imprime el contenido del JSON para depuración
+
             GameDataCollection data = JsonUtility.FromJson<GameDataCollection>(jsonText);
 
             if (data != null)
             {
-                allPests = data.pests;
-                allCalls = data.calls;
+                // --- Validación adicional ---
+                allPests = data.pests ?? new List<PestData>();
+                allCalls = data.calls ?? new List<CallData>();
+
                 IsDataLoaded = true;
 
                 Debug.Log($"✅ ÉXITO LOCAL: Cargadas {allPests.Count} plagas y {allCalls.Count} llamadas.");
                 Debug.Log($"Temática: {data.themeName}");
+
+                // Depuración antes de invocar el evento
+                Debug.Log("Invocando OnDataReady...");
+                OnDataReady?.Invoke();
             }
             else
             {
-                Debug.LogError("El JSON parece estar vacío o mal formado.");
+                Debug.LogError("El JSON parece estar vacío o mal formado (data es null). Verifica el formato del archivo.");
             }
         }
         catch (System.Exception e)
@@ -69,29 +85,50 @@ public class DataManager : MonoBehaviour
     }
 
     public List<PestData> GetAllPests() => allPests;
-    
-    public CallData GetFirstCall() => allCalls.Count > 0 ? allCalls[0] : null; // Para probar
 
-    // --- GETTERS (Igual que antes) ---
+    // Agregamos seguridad aquí también por si la lista está vacía
+    public CallData GetFirstCall() => allCalls.Count > 0 ? allCalls[0] : null;
+
     public PestData GetPestByID(string id)
     {
-        // Busca en la lista la plaga con ese ID
         return allPests.FirstOrDefault(p => p.id == id);
     }
 
     public List<CallData> GetCallsForDay(int day)
     {
-        // Devuelve todas las llamadas asignadas a ese día
         return allCalls.Where(c => c.day == day).ToList();
     }
-    
+
     public CallData GetCallByID(string id)
     {
-         return allCalls.FirstOrDefault(c => c.id == id);
+        return allCalls.FirstOrDefault(c => c.id == id);
     }
 
     public void RequestImage(string url, System.Action<Sprite> callback)
     {
-        StartCoroutine(dataService.DownloadImage(url, callback));
+        // VERIFICACIÓN INTELIGENTE:
+        // Si empieza con "http", descargamos de internet.
+        // Si no, asumimos que es un archivo local en la carpeta Resources.
+
+        if (url.StartsWith("http") || url.StartsWith("https"))
+        {
+            StartCoroutine(dataService.DownloadImage(url, callback));
+        }
+        else
+        {
+            // Carga instantánea desde la carpeta Resources
+            Sprite localSprite = Resources.Load<Sprite>(url);
+
+            if (localSprite != null)
+            {
+                callback?.Invoke(localSprite);
+            }
+            else
+            {
+                Debug.LogError($"❌ No se encontró la imagen en Resources: {url}");
+                // Opcional: Devolver null o una imagen por defecto
+                callback?.Invoke(null);
+            }
+        }
     }
 }

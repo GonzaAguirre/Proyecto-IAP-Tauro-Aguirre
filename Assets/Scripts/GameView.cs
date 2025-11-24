@@ -24,6 +24,9 @@ public class GameView : MonoBehaviour, IGameView
     [SerializeField] private Image entryInfoImage;
     [SerializeField] private DataManager dataManager; // <--- Arrastra el DataManager aquí en el Inspector  
 
+    [Header("Feedback")]
+    [SerializeField] private TextMeshProUGUI feedbackText;
+
     // Eventos de la Interfaz
     public event Action OnSubmitAnswer;
     public event Action<string> OnPlagueSelected;
@@ -32,7 +35,17 @@ public class GameView : MonoBehaviour, IGameView
 
     void Start()
     {
-        // Pasamos 'this' (la vista) y 'dataManager' (el modelo)
+        // 1. CONECTAR EL BOTÓN (Esto faltaba)
+        if (submitAnswerButton != null)
+        {
+            submitAnswerButton.onClick.AddListener(() => OnSubmitAnswer?.Invoke());
+        }
+        else
+        {
+            Debug.LogError("⚠️ ¡El botón Submit no está asignado en el Inspector!");
+        }
+
+        // 2. INICIALIZAR PRESENTER
         presenter = new GamePresenter(this, dataManager);
     }
     // --- Implementación de la Interfaz ---
@@ -52,13 +65,47 @@ public class GameView : MonoBehaviour, IGameView
         entryInfoSolutionText.text = solution;
         entryInfoImage.sprite = image;
     }
+    public void ShowFeedback(bool isCorrect)
+    {
+        feedbackText.gameObject.SetActive(true); // Nos aseguramos que se vea
 
+        if (isCorrect)
+        {
+            feedbackText.text = "¡CORRECTO! ENVIANDO EQUIPO...";
+            feedbackText.color = Color.green;
+        }
+        else
+        {
+            feedbackText.text = "INCORRECTO. INTENTA DE NUEVO.";
+            feedbackText.color = Color.red;
+        }
+
+        // Opcional: Ocultar el texto después de 2 segundos
+        Invoke("HideFeedback", 2f);
+    }
+
+    private void HideFeedback()
+    {
+        feedbackText.gameObject.SetActive(false);
+    }
     public void PopulateEntriesList(List<PestData> plagues)
     {
+        Debug.Log($"INTENTANDO CREAR {plagues.Count} BOTONES..."); // <--- Agrega esto
+
         // Limpiar lista
         foreach (Transform child in entriesContainer) Destroy(child.gameObject);
 
-        if (plagues == null) { Debug.LogError("LA LISTA DE PLAGAS ES NULL"); return; }
+        if (plagues == null)
+        {
+            Debug.LogError("LA LISTA DE PLAGAS ES NULL");
+            return;
+        }
+
+        if (entryButtonPrefab == null)
+        {
+            Debug.LogError("El prefab 'entryButtonPrefab' no está asignado en el Inspector.");
+            return;
+        }
 
         Debug.Log($"Generando {plagues.Count} botones...");
 
@@ -72,35 +119,29 @@ public class GameView : MonoBehaviour, IGameView
             }
 
             GameObject btnObj = Instantiate(entryButtonPrefab, entriesContainer);
+            btnObj.transform.localScale = Vector3.one;
 
             // Chequeo 2: ¿Encontró el componente?
             var tmpComponent = btnObj.GetComponentInChildren<TextMeshProUGUI>();
 
             if (tmpComponent == null)
             {
-                // Si entra acá, el Prefab NO tiene el componente, aunque creas que sí.
-                Debug.LogError($"ERROR FATAL: El objeto '{btnObj.name}' NO tiene TextMeshProUGUI. Componentes encontrados:");
-                foreach (var comp in btnObj.GetComponentsInChildren<Component>())
-                    Debug.Log($"- {comp.GetType().Name}");
-
-                continue; // Saltamos para no romper el juego
+                Debug.LogError("El Prefab no tiene un componente TextMeshProUGUI.");
+                continue;
             }
 
-            // Chequeo 3: ¿El nombre es nulo? (Problema de JSON)
-            if (plague.name == null)
+            tmpComponent.text = plague.name;
+
+            // Asignar evento al botón
+            var button = btnObj.GetComponent<Button>();
+            if (button != null)
             {
-                Debug.LogWarning($"OJO: El nombre de la plaga ID '{plague.id}' es NULL. Revisa mayúsculas/minúsculas en JSON vs Script.");
-                tmpComponent.text = "SIN NOMBRE";
+                button.onClick.AddListener(() => OnPlagueSelected?.Invoke(plague.id));
             }
             else
             {
-                tmpComponent.text = plague.name;
+                Debug.LogError("El Prefab no tiene un componente Button.");
             }
-
-            // Click listener...
-            Button btn = btnObj.GetComponent<Button>();
-            string id = plague.id;
-            if (btn) btn.onClick.AddListener(() => OnPlagueSelected?.Invoke(id));
         }
     }
 }
