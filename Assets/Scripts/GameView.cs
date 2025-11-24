@@ -58,6 +58,14 @@ public class GameView : MonoBehaviour, IGameView
         callerNameText.text = name;
         callMessageText.text = message;
         callerImage.sprite = image;
+        callMessageText.text = message;
+
+        // Ante una nueva llamada, ocultamos la información de la entrada
+        entryInfoImage.gameObject.SetActive(false);
+        entryInfoTitleText.text = "";
+        entryInfoDescriptionText.text = "";
+        entryInfoDangerText.text = "";
+        entryInfoSolutionText.text = "";
     }
 
     public void UpdateEntryInfo(string title, string desc, string danger, string solution, Sprite image)
