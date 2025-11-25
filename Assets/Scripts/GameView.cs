@@ -90,8 +90,11 @@ public class GameView : MonoBehaviour, IGameView
 
     public void ShowFeedback(bool isCorrect)
     {
-        feedbackText.gameObject.SetActive(true); // Nos aseguramos que se vea
+        feedbackText.gameObject.SetActive(true); 
         feedbackCanvas.gameObject.SetActive(true);
+
+        submitAnswerButton.interactable = false;
+        UpdateCallerInfo("", "", null);
 
         if (isCorrect)
         {
