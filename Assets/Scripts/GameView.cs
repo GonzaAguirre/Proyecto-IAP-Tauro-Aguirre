@@ -114,6 +114,13 @@ public class GameView : MonoBehaviour, IGameView
         feedbackText.gameObject.SetActive(false);
     }
 
+    private List<string> unlockedTypes = new List<string>();
+
+    public void SetUnlockedTypes(List<string> types)
+    {
+        unlockedTypes = types;
+    }
+
     public void PopulateEntriesList(List<PestData> plagues)
     {
         Debug.Log($"INTENTANDO CREAR {plagues.Count} BOTONES..."); // <--- Agrega esto
@@ -162,7 +169,21 @@ public class GameView : MonoBehaviour, IGameView
             var button = btnObj.GetComponent<Button>();
             if (button != null)
             {
-                button.onClick.AddListener(() => OnPlagueSelected?.Invoke(plague.id));
+                // LÓGICA DE BLOQUEO
+                bool isUnlocked = unlockedTypes.Contains(plague.type);
+                
+                if (isUnlocked)
+                {
+                    button.interactable = true;
+                    button.onClick.AddListener(() => OnPlagueSelected?.Invoke(plague.id));
+                }
+                else
+                {
+                    button.interactable = false;
+                    // Opcional: Cambiar color o texto para indicar que está bloqueado
+                    tmpComponent.text += " (Bloqueado)";
+                    tmpComponent.color = Color.gray;
+                }
             }
             else
             {
@@ -177,6 +198,8 @@ public class GameView : MonoBehaviour, IGameView
         newCallText.text = $"¡Nueva llamada de {callerName}!";
         newCallCallerImage.sprite = callerImage;
         
+        submitAnswerButton.interactable = false;
+
         // Limpiamos listeners previos para evitar duplicados
         newCallButton.onClick.RemoveAllListeners();
         
@@ -185,6 +208,7 @@ public class GameView : MonoBehaviour, IGameView
             newCallCanvas.gameObject.SetActive(false);
             OnCallAnswered?.Invoke(); 
             PlayCallAudio(audioPath);
+            submitAnswerButton.interactable = true;
         });
     }
 
@@ -192,28 +216,21 @@ public class GameView : MonoBehaviour, IGameView
     {
         if (string.IsNullOrEmpty(audioPath)) return;
 
-        // Limpieza de ruta: Quitamos extensiones y prefijos si vienen del JSON
-        // Ejemplo entrada: "Assets/Audio/milei_audio/milei_call.mp3"
-        // Salida deseada: "Audio/milei_audio/milei_call"
-        
         string resourcePath = audioPath;
         
-        // 1. Quitar extensión
+        // Quitar extensión
         if (System.IO.Path.HasExtension(resourcePath))
         {
             resourcePath = resourcePath.Substring(0, resourcePath.LastIndexOf('.'));
         }
 
-        // 2. Quitar "Assets/Resources/" o "Assets/" si existen, para dejar solo la ruta relativa a Resources
-        // (Esto es por robustez, idealmente el JSON ya debería traer la ruta limpia)
+        // Quitar "Assets/Resources/" o "Assets/" si existen, para dejar solo la ruta relativa
         if (resourcePath.StartsWith("Assets/Resources/"))
         {
             resourcePath = resourcePath.Replace("Assets/Resources/", "");
         }
         else if (resourcePath.StartsWith("Assets/"))
         {
-             // Si el usuario puso "Assets/Audio/...", y la carpeta Audio está dentro de Resources,
-             // entonces la ruta para Resources.Load debe ser "Audio/..."
             resourcePath = resourcePath.Replace("Assets/", "");
         }
 
@@ -226,7 +243,7 @@ public class GameView : MonoBehaviour, IGameView
         }
         else
         {
-            Debug.LogWarning($"[GameView] No se pudo cargar el audio desde Resources: '{resourcePath}'. Asegúrate de que el archivo esté en una carpeta 'Resources' y la ruta sea correcta.");
+            Debug.LogWarning($"[GameView] No se pudo cargar el audio desde Resources: '{resourcePath}'.");
         }
     }
 }

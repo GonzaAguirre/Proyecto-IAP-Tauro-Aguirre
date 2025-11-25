@@ -71,7 +71,7 @@
       "description": "Criatura con espinas en la espalda y ojos rojos brillantes.",
       "danger": "Ataca al ganado y a las mascotas dejándolos sin una gota de sangre.",
       "solution": "Instalar cercas eléctricas y luces potentes en el patio.",
-      "type": "Extraño"
+      "type": "Especial"
     },
     {
       "id": "pest_009",
@@ -80,7 +80,7 @@
       "description": "Luces fosforescentes que flotan a ras del suelo en el campo durante la noche.",
       "danger": "Representan almas en pena. Si la luz es roja, es un alma peligrosa.",
       "solution": "No mirar la luz, morder la vaina de un cuchillo y rezar.",
-      "type": "Especial"
+      "type": "Extraño"
     },
     {
       "id": "pest_010",
@@ -108,6 +108,33 @@
       "danger": "Te hacen tropezar y rompen vidrios por la noche.",
       "solution": "Romper la estatua con un martillo y tirar los restos en una iglesia.",
       "type": "Extraño"
+    },
+    {
+      "id": "pest_013",
+      "name": "Nahuelito",
+      "imageURL": "Imagenes/imagenesPlagas/nahuelito",
+      "description": "Monstruo acuático que habita en el lago Nahuel Huapi.",
+      "danger": "Puede volcar botes y asustar turistas.",
+      "solution": "No navegar solo y llevar cámara con buen zoom.",
+      "type": "Especial"
+    },
+    {
+      "id": "pest_014",
+      "name": "El Familiar",
+      "imageURL": "Imagenes/imagenesPlagas/familiar",
+      "description": "Perro negro enorme con ojos de fuego, pacto con el diablo.",
+      "danger": "Devora peones en los ingenios azucareros.",
+      "solution": "Llevar un rosario y no andar solo por el cañaveral.",
+      "type": "Especial"
+    },
+    {
+      "id": "pest_015",
+      "name": "Yasy Yateré",
+      "imageURL": "Imagenes/imagenesPlagas/yasy",
+      "description": "Hombrecito rubio con bastón de oro que aparece a la siesta.",
+      "danger": "Secuestra niños que no duermen la siesta.",
+      "solution": "Dormir la siesta y no aceptar frutas de desconocidos.",
+      "type": "Extraño"
     }
   ],
 
@@ -115,6 +142,7 @@
 
 
 
+  
   "calls": [
     {
       "id": "call_001",
@@ -145,6 +173,46 @@
       "day": 1,
       "callType": "Consejo",
       "audio": "Audio/francella_audio/francella_call"
+    },
+    {
+      "id": "call_011",
+      "callerName": "Darío B.",
+      "callerImageURL": "Imagenes/ImagenesLlamadas/dario",
+      "message": "¡Raro! ¡Esto es raro! Encontré un bicho en la pared, tiene rayas naranjas en el costado. Mi abuela dice que es peligroso pal corazón. ¡Decime qué es o me da un algo!",
+      "correctPestID": "pest_005",
+      "day": 1,
+      "callType": "Consejo",
+      "audio": "Audio/dario_audio/dario_call"
+    },
+    {
+      "id": "call_013",
+      "callerName": "Tini",
+      "callerImageURL": "Imagenes/ImagenesLlamadas/tini",
+      "message": "Amooor, hola, ¿sí? Tipo... estoy en crisis mal. Fui a la cocina por agua y salió un bicho marrón corriendo a los re pedos. ¡Posta, casi me muero del asco! O sea, se metió abajo de la heladera y no sale. ¡Sáquenlo ya que me da mucha ansiedad!",
+      "correctPestID": "pest_001",
+      "day": 1,
+      "callType": "Consejo",
+      "audio": "Audio/tini_audio/tini_call"
+    },
+    {
+      "id": "call_101",
+      "callerName": "Vecina Chusma",
+      "callerImageURL": "Imagenes/ImagenesLlamadas/vecina",
+      "message": "Ay nene, escuchame. Tengo todo el patio lleno de mosquitos. No se puede estar. ¿Qué hago?",
+      "correctPestID": "pest_002",
+      "day": 1,
+      "callType": "Consejo",
+      "audio": ""
+    },
+    {
+      "id": "call_102",
+      "callerName": "Carnicero Tito",
+      "callerImageURL": "Imagenes/ImagenesLlamadas/tito",
+      "message": "Che pibe, tengo ratones en el depósito. Se me comen el salamín. Mandame algo urgente.",
+      "correctPestID": "pest_003",
+      "day": 1,
+      "callType": "Consejo",
+      "audio": ""
     },
     {
       "id": "call_004",
@@ -187,6 +255,46 @@
       "audio": "Audio/maradona_audio/maradona_call"
     },
     {
+      "id": "call_201",
+      "callerName": "Abuela Norma",
+      "callerImageURL": "Imagenes/ImagenesLlamadas/norma",
+      "message": "Hijito, hay un duende en mi jardín. Me mueve las macetas de lugar. ¡Es un atrevido!",
+      "correctPestID": "pest_012",
+      "day": 2,
+      "callType": "Consejo",
+      "audio": ""
+    },
+    {
+      "id": "call_202",
+      "callerName": "Tío Borracho",
+      "callerImageURL": "Imagenes/ImagenesLlamadas/tio",
+      "message": "¡Hic! Vi un hombrecito rubio en la siesta. Me pidió una manzana. ¿Le doy?",
+      "correctPestID": "pest_015",
+      "day": 2,
+      "callType": "Consejo",
+      "audio": ""
+    },
+    {
+      "id": "call_203",
+      "callerName": "Campesino Juan",
+      "callerImageURL": "Imagenes/ImagenesLlamadas/juan",
+      "message": "Oiga amigo, vi unas luces raras en el campo. Dicen que es la luz mala. ¿Qué hago?",
+      "correctPestID": "pest_009",
+      "day": 2,
+      "callType": "Consejo",
+      "audio": ""
+    },
+    {
+      "id": "call_204",
+      "callerName": "Turista Perdido",
+      "callerImageURL": "Imagenes/ImagenesLlamadas/turista",
+      "message": "Hola, estoy en el bosque y escucho silbidos. Me dijeron que es el Pombero. ¿Es peligroso?",
+      "correctPestID": "pest_006",
+      "day": 2,
+      "callType": "Consejo",
+      "audio": ""
+    },
+    {
       "id": "call_008",
       "callerName": "Ricardo F.",
       "callerImageURL": "Imagenes/ImagenesLlamadas/fort",
@@ -217,24 +325,74 @@
       "audio": "Audio/scaloni_audio/scaloni_call"
     },
     {
-      "id": "call_011",
-      "callerName": "Darío B.",
-      "callerImageURL": "Imagenes/ImagenesLlamadas/dario",
-      "message": "¡Raro! ¡Esto es raro! Encontré un bicho en la pared, tiene rayas naranjas en el costado. Mi abuela dice que es peligroso pal corazón. ¡Decime qué es o me da un algo!",
-      "correctPestID": "pest_005",
-      "day": 1,
+      "id": "call_301",
+      "callerName": "Pescador Viejo",
+      "callerImageURL": "Imagenes/ImagenesLlamadas/pescador",
+      "message": "En el lago vi una joroba gigante. ¡Es el Nahuelito! ¿Tiro la caña o corro?",
+      "correctPestID": "pest_013",
+      "day": 3,
       "callType": "Consejo",
-      "audio": "Audio/dario_audio/dario_call"
+      "audio": ""
     },
     {
-      "id": "call_013",
-      "callerName": "Tini",
-      "callerImageURL": "Imagenes/ImagenesLlamadas/tini",
-      "message": "Amooor, hola, ¿sí? Tipo... estoy en crisis mal. Fui a la cocina por agua y salió un bicho marrón corriendo a los re pedos. ¡Posta, casi me muero del asco! O sea, se metió abajo de la heladera y no sale. ¡Sáquenlo ya que me da mucha ansiedad!",
-      "correctPestID": "pest_001",
-      "day": 1,
+      "id": "call_302",
+      "callerName": "Capataz",
+      "callerImageURL": "Imagenes/ImagenesLlamadas/capataz",
+      "message": "Patrón, el perro negro ese anda suelto. Tiene ojos de fuego. Es el Familiar.",
+      "correctPestID": "pest_014",
+      "day": 3,
       "callType": "Consejo",
-      "audio": "Audio/tini_audio/tini_call"
+      "audio": ""
+    },
+    {
+      "id": "call_303",
+      "callerName": "Vecina Asustada",
+      "callerImageURL": "Imagenes/ImagenesLlamadas/vecina2",
+      "message": "¡Ayuda! Un perro gigante me quiere comer. ¡Es un hombre lobo!",
+      "correctPestID": "pest_010",
+      "day": 3,
+      "callType": "Consejo",
+      "audio": ""
+    },
+    {
+      "id": "call_304",
+      "callerName": "Chico de Campo",
+      "callerImageURL": "Imagenes/ImagenesLlamadas/chico",
+      "message": "Señor, mis cabras están todas muertas y secas. Fue el Chupacabras.",
+      "correctPestID": "pest_008",
+      "day": 3,
+      "callType": "Consejo",
+      "audio": ""
+    },
+    {
+      "id": "call_305",
+      "callerName": "Sereno",
+      "callerImageURL": "Imagenes/ImagenesLlamadas/sereno",
+      "message": "Escucho llantos en el río. Me da piel de gallina. Es la Llorona.",
+      "correctPestID": "pest_011",
+      "day": 3,
+      "callType": "Consejo",
+      "audio": ""
+    },
+    {
+      "id": "call_306",
+      "callerName": "Turista Bariloche",
+      "callerImageURL": "Imagenes/ImagenesLlamadas/turista2",
+      "message": "¡Una serpiente gigante en el agua! ¡Auxilio!",
+      "correctPestID": "pest_013",
+      "day": 3,
+      "callType": "Consejo",
+      "audio": ""
+    },
+    {
+      "id": "call_307",
+      "callerName": "Peón Rural",
+      "callerImageURL": "Imagenes/ImagenesLlamadas/peon",
+      "message": "El perro del patrón me miró feo. Creo que es el diablo.",
+      "correctPestID": "pest_014",
+      "day": 3,
+      "callType": "Consejo",
+      "audio": ""
     }
   ]
 }

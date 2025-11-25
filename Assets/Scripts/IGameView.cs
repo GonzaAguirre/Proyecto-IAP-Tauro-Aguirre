@@ -16,4 +16,8 @@ public interface IGameView
     event System.Action OnSubmitAnswer;
     event System.Action<string> OnPlagueSelected;
     event System.Action OnCallAnswered;
+
+    // Métodos nuevos para lógica de juego
+    void SetUnlockedTypes(List<string> types);
+    Coroutine StartCoroutine(System.Collections.IEnumerator routine);
 }

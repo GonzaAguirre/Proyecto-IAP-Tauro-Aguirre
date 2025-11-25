@@ -45,14 +45,53 @@ public class GamePresenter
           // 1. Pedimos al Manager las llamadas del día actual
           dailyCalls = dataManager.GetCallsForDay(currentDay);
 
+          // MEZCLAR LLAMADAS (Randomize)
+          ShuffleCalls(dailyCalls);
+
           Debug.Log($"🌞 INICIANDO DÍA {currentDay} | Llamadas: {dailyCalls.Count}");
 
-          // 2. Llenar la lista visual de plagas (si quisieras filtrar plagas por día, sería aquí)
+          // 2. Llenar la lista visual de plagas FILTRANDO por día
+          // Día 1: Solo "Normal"
+          // Día 2: "Normal" + "Extraño"
+          // Día 3: Todas ("Normal", "Extraño", "Especial")
+          
+          List<string> unlockedTypes = new List<string>();
+          unlockedTypes.Add("Normal");
+          
+          if (currentDay >= 2) unlockedTypes.Add("Extraño");
+          if (currentDay >= 3) unlockedTypes.Add("Especial");
+
+          // PRIMERO configuramos los tipos desbloqueados en la Vista
+          if (view is GameView gameView)
+          {
+               gameView.SetUnlockedTypes(unlockedTypes);
+          }
+
+          // LUEGO poblamos la lista (ahora la vista ya sabe qué bloquear)
           view.PopulateEntriesList(allPlagues);
 
-          // 3. Resetear índice y cargar primera llamada
+          // 3. Resetear índice y cargar primera llamada con DELAY inicial
           currentCallIndex = 0;
+          
+          // Pequeño delay inicial antes de la primera llamada
+          view.StartCoroutine(WaitAndLoadCall(2.0f)); 
+     }
+
+     private System.Collections.IEnumerator WaitAndLoadCall(float delay)
+     {
+          yield return new WaitForSeconds(delay);
           LoadCallByIndex(currentCallIndex);
+     }
+
+     private void ShuffleCalls(List<CallData> calls)
+     {
+          for (int i = 0; i < calls.Count; i++)
+          {
+               CallData temp = calls[i];
+               int randomIndex = Random.Range(i, calls.Count);
+               calls[i] = calls[randomIndex];
+               calls[randomIndex] = temp;
+          }
      }
 
      private void LoadCallByIndex(int index)
@@ -151,6 +190,9 @@ public class GamePresenter
      private void AdvanceToNextCall()
      {
           currentCallIndex++;
-          LoadCallByIndex(currentCallIndex);
+          // Esperar entre 5 y 10 segundos antes de la siguiente llamada
+          float randomDelay = Random.Range(5.0f, 10.0f);
+          Debug.Log($"⏳ Esperando {randomDelay:F1} segundos para la próxima llamada...");
+          view.StartCoroutine(WaitAndLoadCall(randomDelay));
      }
 }
