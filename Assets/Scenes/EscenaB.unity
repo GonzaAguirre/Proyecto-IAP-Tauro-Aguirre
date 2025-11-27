@@ -564,7 +564,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Espa\xF1ol"
+  m_Text: "Portugu\xE9s\n"
 --- !u!222 &192226283
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -643,7 +643,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Portugu\xE9s"
+  m_Text: "Ingl\xE9s\n"
 --- !u!222 &258543390
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3066,7 +3066,7 @@ GameObject:
   - component: {fileID: 765530917}
   - component: {fileID: 765530918}
   m_Layer: 5
-  m_Name: "Espa\xF1ol"
+  m_Name: "Portugu\xE9s"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3140,7 +3140,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_IsOn: 1
+  m_IsOn: 0
 --- !u!1 &789637381
 GameObject:
   m_ObjectHideFlags: 0
@@ -3841,7 +3841,7 @@ GameObject:
   - component: {fileID: 897412968}
   - component: {fileID: 897412969}
   m_Layer: 5
-  m_Name: Portugues
+  m_Name: "Inlg\xE9s"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4887,7 +4887,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 31, y: 3.576}
+  m_AnchoredPosition: {x: 31, y: 23}
   m_SizeDelta: {x: -23, y: 7.152}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1465655128
@@ -4923,7 +4923,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Tem\xE1tica 1"
+  m_Text: 'Jugadores de futbol
+
+'
 --- !u!222 &1465655129
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5337,7 +5339,7 @@ GameObject:
   - component: {fileID: 1653108520}
   - component: {fileID: 1653108521}
   m_Layer: 5
-  m_Name: Ingles
+  m_Name: "Espa\xF1ol"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5411,7 +5413,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_IsOn: 0
+  m_IsOn: 1
 --- !u!1 &1700559217
 GameObject:
   m_ObjectHideFlags: 0
@@ -6324,9 +6326,18 @@ MonoBehaviour:
   dataManager: {fileID: 557816824}
   gameView: {fileID: 347740310}
   panelDeJuego: {fileID: 136807197}
-  jsonArgentina: {fileID: 4900000, guid: 29e065bbb8f472546bf2c3b67632fc50, type: 3}
-  jsonUrbanas: {fileID: 4900000, guid: 0d8357eed9982364db21491201d67a50, type: 3}
-  jsonEspacio: {fileID: 4900000, guid: deb87480ef4248e4985d52cf74604d24, type: 3}
+  archivosArgentina:
+    "espa\xF1ol": {fileID: 4900000, guid: 29e065bbb8f472546bf2c3b67632fc50, type: 3}
+    ingles: {fileID: 4900000, guid: 624a69fc9dd9a4e4da2e52736bb0fb5d, type: 3}
+    portugues: {fileID: 4900000, guid: e62f6917511fc324887ade7ecae3ce8a, type: 3}
+  archivosUrbanas:
+    "espa\xF1ol": {fileID: 4900000, guid: 29e065bbb8f472546bf2c3b67632fc50, type: 3}
+    ingles: {fileID: 4900000, guid: 624a69fc9dd9a4e4da2e52736bb0fb5d, type: 3}
+    portugues: {fileID: 4900000, guid: e62f6917511fc324887ade7ecae3ce8a, type: 3}
+  archivosEspacio:
+    "espa\xF1ol": {fileID: 4900000, guid: 29e065bbb8f472546bf2c3b67632fc50, type: 3}
+    ingles: {fileID: 4900000, guid: 624a69fc9dd9a4e4da2e52736bb0fb5d, type: 3}
+    portugues: {fileID: 4900000, guid: e62f6917511fc324887ade7ecae3ce8a, type: 3}
 --- !u!4 &1915364692
 Transform:
   m_ObjectHideFlags: 0
@@ -6412,7 +6423,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Ingl\xE9s"
+  m_Text: "Espa\xF1ol"
 --- !u!222 &1915469575
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6491,7 +6502,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 92, y: -9}
+  m_AnchoredPosition: {x: 92, y: -11}
   m_SizeDelta: {x: 100.896, y: 36.385}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1956936637
@@ -6527,7 +6538,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Tematica 2
+  m_Text: Personjes
 --- !u!222 &1956936638
 CanvasRenderer:
   m_ObjectHideFlags: 0
