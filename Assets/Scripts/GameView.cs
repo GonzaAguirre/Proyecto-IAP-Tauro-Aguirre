@@ -2,39 +2,34 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using System.Collections.Generic;
-using System.Collections; // Necesario para IEnumerator
 using System;
 
 public class GameView : MonoBehaviour, IGameView
 {
-    [Header("Calling screen")]
+    [Header("Módulos (Sub-Vistas)")]
+    [SerializeField] private EntriesListView entriesListView;   // <--- Arrastra aquí el objeto con el script EntriesList
+    [SerializeField] private NewCallPopupView popupView;        // <--- Arrastra aquí el objeto con el script Popup
+
+    [Header("Calling Screen (Principal)")]
     [SerializeField] private TextMeshProUGUI callerNameText;
     [SerializeField] private TextMeshProUGUI callMessageText;
     [SerializeField] private Image callerImage;
     [SerializeField] private Button submitAnswerButton;
 
-    [Header("Entries List Config")]
-    [SerializeField] private Transform entriesContainer; // El objeto "Content" del ScrollView
-    [SerializeField] private GameObject entryButtonPrefab; // PREFAB de un botón
-
-    [Header("Entry info screen")]
+    [Header("Entry Info Screen")]
     [SerializeField] private TextMeshProUGUI entryInfoTitleText;
     [SerializeField] private TextMeshProUGUI entryInfoDescriptionText;
     [SerializeField] private TextMeshProUGUI entryInfoDangerText;
     [SerializeField] private TextMeshProUGUI entryInfoSolutionText;
     [SerializeField] private Image entryInfoImage;
-    [SerializeField] private DataManager dataManager; // <--- Arrastra el DataManager aquí en el Inspector  
+
+    [Header("General")]
+    [SerializeField] private DataManager dataManager;
+    [SerializeField] private AudioSource voiceAudioSource; // Audio para la voz del personaje (no el ringtone)
 
     [Header("Feedback")]
     [SerializeField] private Canvas feedbackCanvas;
     [SerializeField] private TextMeshProUGUI feedbackText;
-
-    [Header("New Call PopUp")]
-    [SerializeField] private Image newCallCanvas;
-    [SerializeField] private TextMeshProUGUI newCallText;
-    [SerializeField] private Button newCallButton;
-    [SerializeField] private Image newCallCallerImage;
-    [SerializeField] private AudioSource callAudioSource;
 
     // Eventos de la Interfaz
     public event Action OnSubmitAnswer;
@@ -43,34 +38,80 @@ public class GameView : MonoBehaviour, IGameView
 
     private GamePresenter presenter;
 
-void Start()
+    void Start()
     {
+        // 1. Conectar botón submit
         if (submitAnswerButton != null)
             submitAnswerButton.onClick.AddListener(() => OnSubmitAnswer?.Invoke());
 
-        // --- BORRAR O COMENTAR ESTA LÍNEA ---
-        // presenter = new GamePresenter(this, dataManager); 
-        // -------------------------------------
+        // 2. Conectar eventos de los submódulos
+        if (entriesListView != null)
+        {
+            // Cuando la lista dice "click", nosotros avisamos al presenter
+            entriesListView.OnPlagueClicked += (id) => OnPlagueSelected?.Invoke(id);
+        }
+
+        if (popupView != null)
+        {
+            // Cuando el popup dice "atendido", nosotros hacemos la lógica de atender
+            popupView.OnCallAnswered += HandleCallAnswered;
+        }
 
         entryInfoImage.gameObject.SetActive(false);
-        newCallCanvas.gameObject.SetActive(false);
+        if (popupView != null) popupView.Hide();
     }
 
-    // --- AGREGAR ESTE MÉTODO NUEVO ---
+    // Iniciado por el GameManager
     public void IniciarJuegoManual()
     {
         presenter = new GamePresenter(this, dataManager);
     }
-    // --- Implementación de la Interfaz ---
+
+    // --- Métodos de IGameView (Delegación) ---
+
+    public void PopulateEntriesList(List<PestData> plagues)
+    {
+        // Le pasamos el trabajo al especialista
+        if (entriesListView != null) 
+            entriesListView.PopulateList(plagues);
+    }
+
+    public void SetUnlockedTypes(List<string> types)
+    {
+        if (entriesListView != null) 
+            entriesListView.SetUnlockedTypes(types);
+    }
+
+    public void NewCallPopUp(string callerName, Sprite callerImage, string audioPath)
+    {
+        submitAnswerButton.interactable = false; // Bloqueamos submit hasta que atienda
+
+        // Guardamos el audio path temporalmente o se lo pasamos al popup si hiciera falta
+        // Pero mejor reproducirlo al atender.
+        currentAudioPath = audioPath; 
+
+        if (popupView != null) 
+            popupView.Show(callerName, callerImage);
+    }
+
+    private string currentAudioPath;
+
+    private void HandleCallAnswered()
+    {
+        OnCallAnswered?.Invoke();
+        PlayCallAudio(currentAudioPath);
+        submitAnswerButton.interactable = true;
+    }
+
+    // --- Métodos de UI Estándar ---
 
     public void UpdateCallerInfo(string name, string message, Sprite image)
     {
         callerNameText.text = name;
         callMessageText.text = message;
         callerImage.sprite = image;
-        callMessageText.text = message;
-
-        // Ante una nueva llamada, ocultamos la información de la entrada
+        
+        // Limpiar panel derecho
         entryInfoImage.gameObject.SetActive(false);
         entryInfoTitleText.text = "";
         entryInfoDescriptionText.text = "";
@@ -92,9 +133,9 @@ void Start()
     {
         feedbackText.gameObject.SetActive(true); 
         feedbackCanvas.gameObject.SetActive(true);
-
         submitAnswerButton.interactable = false;
-        UpdateCallerInfo("", "", null);
+        
+        UpdateCallerInfo("", "", null); // Limpiar pantalla
 
         if (isCorrect)
         {
@@ -107,7 +148,6 @@ void Start()
             feedbackText.color = Color.red;
         }
 
-        // Opcional: Ocultar el texto después de 2 segundos
         Invoke("HideFeedback", 2f);
     }
 
@@ -117,136 +157,23 @@ void Start()
         feedbackText.gameObject.SetActive(false);
     }
 
-    private List<string> unlockedTypes = new List<string>();
-
-    public void SetUnlockedTypes(List<string> types)
-    {
-        unlockedTypes = types;
-    }
-
-    public void PopulateEntriesList(List<PestData> plagues)
-    {
-        Debug.Log($"INTENTANDO CREAR {plagues.Count} BOTONES..."); // <--- Agrega esto
-
-        // Limpiar lista
-        foreach (Transform child in entriesContainer) Destroy(child.gameObject);
-
-        if (plagues == null)
-        {
-            Debug.LogError("LA LISTA DE PLAGAS ES NULL");
-            return;
-        }
-
-        if (entryButtonPrefab == null)
-        {
-            Debug.LogError("El prefab 'entryButtonPrefab' no está asignado en el Inspector.");
-            return;
-        }
-
-        Debug.Log($"Generando {plagues.Count} botones...");
-
-        foreach (var plague in plagues)
-        {
-            // Chequeo 1: ¿El objeto datos existe?
-            if (plague == null)
-            {
-                Debug.LogError("¡ALERTA! Hay una 'plague' nula en la lista.");
-                continue;
-            }
-
-            GameObject btnObj = Instantiate(entryButtonPrefab, entriesContainer);
-            btnObj.transform.localScale = Vector3.one;
-
-            // Chequeo 2: ¿Encontró el componente?
-            var tmpComponent = btnObj.GetComponentInChildren<TextMeshProUGUI>();
-
-            if (tmpComponent == null)
-            {
-                Debug.LogError("El Prefab no tiene un componente TextMeshProUGUI.");
-                continue;
-            }
-
-            tmpComponent.text = plague.name;
-
-            // Asignar evento al botón
-            var button = btnObj.GetComponent<Button>();
-            if (button != null)
-            {
-                // LÓGICA DE BLOQUEO
-                bool isUnlocked = unlockedTypes.Contains(plague.type);
-                
-                if (isUnlocked)
-                {
-                    button.interactable = true;
-                    button.onClick.AddListener(() => OnPlagueSelected?.Invoke(plague.id));
-                }
-                else
-                {
-                    button.interactable = false;
-                    // Opcional: Cambiar color o texto para indicar que está bloqueado
-                    tmpComponent.text += " (Bloqueado)";
-                    tmpComponent.color = Color.gray;
-                }
-            }
-            else
-            {
-                Debug.LogError("El Prefab no tiene un componente Button.");
-            }
-        }
-    }
-
-    public void NewCallPopUp(string callerName, Sprite callerImage, string audioPath)
-    {
-        newCallCanvas.gameObject.SetActive(true);
-        newCallText.text = $"¡Nueva llamada de {callerName}!";
-        newCallCallerImage.sprite = callerImage;
-        
-        submitAnswerButton.interactable = false;
-
-        // Limpiamos listeners previos para evitar duplicados
-        newCallButton.onClick.RemoveAllListeners();
-        
-        newCallButton.onClick.AddListener(() => 
-        {
-            newCallCanvas.gameObject.SetActive(false);
-            OnCallAnswered?.Invoke(); 
-            PlayCallAudio(audioPath);
-            submitAnswerButton.interactable = true;
-        });
-    }
-
     private void PlayCallAudio(string audioPath)
     {
         if (string.IsNullOrEmpty(audioPath)) return;
+        if (voiceAudioSource == null) return;
 
+        // Limpieza de ruta
         string resourcePath = audioPath;
-        
-        // Quitar extensión
         if (System.IO.Path.HasExtension(resourcePath))
-        {
             resourcePath = resourcePath.Substring(0, resourcePath.LastIndexOf('.'));
-        }
-
-        // Quitar "Assets/Resources/" o "Assets/" si existen, para dejar solo la ruta relativa
-        if (resourcePath.StartsWith("Assets/Resources/"))
-        {
-            resourcePath = resourcePath.Replace("Assets/Resources/", "");
-        }
-        else if (resourcePath.StartsWith("Assets/"))
-        {
-            resourcePath = resourcePath.Replace("Assets/", "");
-        }
+        
+        resourcePath = resourcePath.Replace("Assets/Resources/", "").Replace("Assets/", "");
 
         AudioClip clip = Resources.Load<AudioClip>(resourcePath);
-
         if (clip != null)
         {
-            callAudioSource.clip = clip;
-            callAudioSource.Play();
-        }
-        else
-        {
-            Debug.LogWarning($"[GameView] No se pudo cargar el audio desde Resources: '{resourcePath}'.");
+            voiceAudioSource.clip = clip;
+            voiceAudioSource.Play();
         }
     }
 }

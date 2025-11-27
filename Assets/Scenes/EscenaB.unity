@@ -1348,25 +1348,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d1867dfcac32414388f0fca9788f910, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameView
+  entriesListView: {fileID: 1215525906}
+  popupView: {fileID: 764832587}
   callerNameText: {fileID: 691406113}
   callMessageText: {fileID: 1177626663}
   callerImage: {fileID: 1643187133}
   submitAnswerButton: {fileID: 2143746235}
-  entriesContainer: {fileID: 568501032}
-  entryButtonPrefab: {fileID: 4836222564533081366, guid: 4a2dff6a06dcfb542a1e12fcf1a5c186, type: 3}
   entryInfoTitleText: {fileID: 834777904}
   entryInfoDescriptionText: {fileID: 1864720439}
   entryInfoDangerText: {fileID: 1850345635}
   entryInfoSolutionText: {fileID: 354967469}
   entryInfoImage: {fileID: 325536998}
   dataManager: {fileID: 557816824}
+  voiceAudioSource: {fileID: 0}
   feedbackCanvas: {fileID: 7106867}
   feedbackText: {fileID: 1789484068}
-  newCallCanvas: {fileID: 764832585}
-  newCallText: {fileID: 1550449985}
-  newCallButton: {fileID: 345454242}
-  newCallCallerImage: {fileID: 730273977}
-  callAudioSource: {fileID: 262311173}
 --- !u!4 &347740311
 Transform:
   m_ObjectHideFlags: 0
@@ -2989,6 +2985,7 @@ GameObject:
   - component: {fileID: 764832584}
   - component: {fileID: 764832586}
   - component: {fileID: 764832585}
+  - component: {fileID: 764832587}
   m_Layer: 5
   m_Name: llamadaEntrante
   m_TagString: Untagged
@@ -3055,6 +3052,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 764832583}
   m_CullTransparentMesh: 1
+--- !u!114 &764832587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 764832583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f52c35d7de1e354c8ef9260421a1c1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NewCallPopupView
+  popupCanvas: {fileID: 764832583}
+  newCallText: {fileID: 1550449985}
+  callerImage: {fileID: 730273977}
+  answerButton: {fileID: 345454242}
+  ringtoneSource: {fileID: 429392358}
+  ringtoneClip: {fileID: 8300000, guid: a38c3e9147430b24f8a609eeb5d771f0, type: 3}
 --- !u!1 &765530916
 GameObject:
   m_ObjectHideFlags: 0
@@ -4553,6 +4568,7 @@ GameObject:
   - component: {fileID: 1215525905}
   - component: {fileID: 1215525904}
   - component: {fileID: 1215525903}
+  - component: {fileID: 1215525906}
   m_Layer: 5
   m_Name: ListaScroll
   m_TagString: Untagged
@@ -4649,6 +4665,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1215525901}
   m_CullTransparentMesh: 1
+--- !u!114 &1215525906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1215525901}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6076f9c84adef346a84e038f83da2d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EntriesListView
+  entriesContainer: {fileID: 568501032}
+  entryButtonPrefab: {fileID: 4836222564533081366, guid: 4a2dff6a06dcfb542a1e12fcf1a5c186, type: 3}
 --- !u!1 &1236358710
 GameObject:
   m_ObjectHideFlags: 0
