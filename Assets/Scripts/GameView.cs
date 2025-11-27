@@ -43,23 +43,23 @@ public class GameView : MonoBehaviour, IGameView
 
     private GamePresenter presenter;
 
-    void Start()
+void Start()
     {
-        // 1. CONECTAR EL BOTÓN (Esto faltaba)
         if (submitAnswerButton != null)
-        {
             submitAnswerButton.onClick.AddListener(() => OnSubmitAnswer?.Invoke());
-        }
-        else
-        {
-            Debug.LogError("⚠️ ¡El botón Submit no está asignado en el Inspector!");
-        }
 
-        // 2. INICIALIZAR PRESENTER
-        presenter = new GamePresenter(this, dataManager);
+        // --- BORRAR O COMENTAR ESTA LÍNEA ---
+        // presenter = new GamePresenter(this, dataManager); 
+        // -------------------------------------
 
         entryInfoImage.gameObject.SetActive(false);
         newCallCanvas.gameObject.SetActive(false);
+    }
+
+    // --- AGREGAR ESTE MÉTODO NUEVO ---
+    public void IniciarJuegoManual()
+    {
+        presenter = new GamePresenter(this, dataManager);
     }
     // --- Implementación de la Interfaz ---
 

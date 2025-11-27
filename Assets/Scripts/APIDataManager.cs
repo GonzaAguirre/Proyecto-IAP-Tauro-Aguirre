@@ -23,14 +23,7 @@ public class DataManager : MonoBehaviour
 
     void Start()
     {
-        if (jsonFile != null)
-        {
-            LoadLocalData();
-        }
-        else
-        {
-            Debug.LogError("¡Falta asignar el archivo JSON en el Inspector!");
-        }
+
     }
 
     public void LoadLocalData()
