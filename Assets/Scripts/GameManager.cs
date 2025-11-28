@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     public ArchivosPorIdioma archivosArgentina;
     public ArchivosPorIdioma archivosUrbanas;
     public ArchivosPorIdioma archivosEspacio;
+    private GamePresenter presenter;
 
     public void IniciarJuego(string tematica, string idioma)
     {
@@ -62,6 +63,6 @@ public class GameManager : MonoBehaviour
 
         if (panelDeJuego != null) panelDeJuego.SetActive(true);
         
-        gameView.IniciarJuegoManual();
+        presenter = new GamePresenter(gameView, dataManager);
     }
 }

@@ -28,19 +28,26 @@ public class GamePresenter
           else dataManager.OnDataReady += StartGame;
      }
 
-     private void StartGame()
-     {
-          Debug.Log("🚀 PRESENTER: Iniciando juego...");
-
-          allPlagues = dataManager.GetAllPests();
-          currentDay = 1; // Aseguramos empezar en el Día 1
-
-          LoadDayData();
-     }
+public void StartGame()
+    {
+          if (dataManager.IsDataLoaded)
+          {
+               Debug.Log("📦 Datos ya estaban listos. Cargando día...");
+               LoadDayData();
+          }
+          else
+          {
+               Debug.Log("⏳ Esperando datos...");
+               dataManager.OnDataReady += LoadDayData;
+          }
+    }
 
      // --- LÓGICA DE CARGA POR DÍA ---
      private void LoadDayData()
      {
+          // Cargar todas las plagas desde el DataManager
+          allPlagues = dataManager.GetAllPests();
+          
           dailyCalls = dataManager.GetCallsForDay(currentDay);
 
           ShuffleCalls(dailyCalls);
