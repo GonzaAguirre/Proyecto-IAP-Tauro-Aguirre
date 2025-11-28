@@ -7,8 +7,8 @@ using System;
 public class GameView : MonoBehaviour, IGameView
 {
     [Header("Módulos (Sub-Vistas)")]
-    [SerializeField] private EntriesListView entriesListView;   // <--- Arrastra aquí el objeto con el script EntriesList
-    [SerializeField] private NewCallPopupView popupView;        // <--- Arrastra aquí el objeto con el script Popup
+    [SerializeField] private EntriesListView entriesListView;   
+    [SerializeField] private NewCallPopupView popupView;        
 
     [Header("Calling Screen (Principal)")]
     [SerializeField] private TextMeshProUGUI callerNameText;
@@ -25,7 +25,7 @@ public class GameView : MonoBehaviour, IGameView
 
     [Header("General")]
     [SerializeField] private DataManager dataManager;
-    [SerializeField] private AudioSource voiceAudioSource; // Audio para la voz del personaje (no el ringtone)
+    [SerializeField] private AudioSource voiceAudioSource; 
 
     [Header("Feedback")]
     [SerializeField] private Canvas feedbackCanvas;
@@ -40,22 +40,14 @@ public class GameView : MonoBehaviour, IGameView
 
     void Start()
     {
-        // 1. Conectar botón submit
         if (submitAnswerButton != null)
             submitAnswerButton.onClick.AddListener(() => OnSubmitAnswer?.Invoke());
 
-        // 2. Conectar eventos de los submódulos
         if (entriesListView != null)
-        {
-            // Cuando la lista dice "click", nosotros avisamos al presenter
             entriesListView.OnPlagueClicked += (id) => OnPlagueSelected?.Invoke(id);
-        }
 
         if (popupView != null)
-        {
-            // Cuando el popup dice "atendido", nosotros hacemos la lógica de atender
             popupView.OnCallAnswered += HandleCallAnswered;
-        }
 
         entryInfoImage.gameObject.SetActive(false);
         if (popupView != null) popupView.Hide();
@@ -71,7 +63,6 @@ public class GameView : MonoBehaviour, IGameView
 
     public void PopulateEntriesList(List<PestData> plagues)
     {
-        // Le pasamos el trabajo al especialista
         if (entriesListView != null) 
             entriesListView.PopulateList(plagues);
     }
@@ -84,10 +75,7 @@ public class GameView : MonoBehaviour, IGameView
 
     public void NewCallPopUp(string callerName, Sprite callerImage, string audioPath)
     {
-        submitAnswerButton.interactable = false; // Bloqueamos submit hasta que atienda
-
-        // Guardamos el audio path temporalmente o se lo pasamos al popup si hiciera falta
-        // Pero mejor reproducirlo al atender.
+        submitAnswerButton.interactable = false; 
         currentAudioPath = audioPath; 
 
         if (popupView != null) 
@@ -111,7 +99,6 @@ public class GameView : MonoBehaviour, IGameView
         callMessageText.text = message;
         callerImage.sprite = image;
         
-        // Limpiar panel derecho
         entryInfoImage.gameObject.SetActive(false);
         entryInfoTitleText.text = "";
         entryInfoDescriptionText.text = "";
@@ -135,7 +122,7 @@ public class GameView : MonoBehaviour, IGameView
         feedbackCanvas.gameObject.SetActive(true);
         submitAnswerButton.interactable = false;
         
-        UpdateCallerInfo("", "", null); // Limpiar pantalla
+        UpdateCallerInfo("", "", null); 
 
         if (isCorrect)
         {
@@ -162,7 +149,6 @@ public class GameView : MonoBehaviour, IGameView
         if (string.IsNullOrEmpty(audioPath)) return;
         if (voiceAudioSource == null) return;
 
-        // Limpieza de ruta
         string resourcePath = audioPath;
         if (System.IO.Path.HasExtension(resourcePath))
             resourcePath = resourcePath.Substring(0, resourcePath.LastIndexOf('.'));

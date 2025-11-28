@@ -8,13 +8,12 @@ public class GamePresenter
 
      // Listas y Estado
      private List<PestData> allPlagues;
-     private List<CallData> dailyCalls; // Las llamadas del día actual
+     private List<CallData> dailyCalls;
      private CallData currentCall;
 
      private string selectedPlagueId;
      private int currentCallIndex = 0;
 
-     // --- NUEVA VARIABLE: Controla el día actual (1, 2 o 3) ---
      private int currentDay = 1;
 
      public GamePresenter(IGameView view, DataManager model)
@@ -36,16 +35,14 @@ public class GamePresenter
           allPlagues = dataManager.GetAllPests();
           currentDay = 1; // Aseguramos empezar en el Día 1
 
-          LoadDayData(); // Función auxiliar para cargar el día
+          LoadDayData();
      }
 
      // --- LÓGICA DE CARGA POR DÍA ---
      private void LoadDayData()
      {
-          // 1. Pedimos al Manager las llamadas del día actual
           dailyCalls = dataManager.GetCallsForDay(currentDay);
 
-          // MEZCLAR LLAMADAS (Randomize)
           ShuffleCalls(dailyCalls);
 
           Debug.Log($"🌞 INICIANDO DÍA {currentDay} | Llamadas: {dailyCalls.Count}");
@@ -61,19 +58,15 @@ public class GamePresenter
           if (currentDay >= 2) unlockedTypes.Add("Extraño");
           if (currentDay >= 3) unlockedTypes.Add("Especial");
 
-          // PRIMERO configuramos los tipos desbloqueados en la Vista
           if (view is GameView gameView)
           {
                gameView.SetUnlockedTypes(unlockedTypes);
           }
 
-          // LUEGO poblamos la lista (ahora la vista ya sabe qué bloquear)
           view.PopulateEntriesList(allPlagues);
 
-          // 3. Resetear índice y cargar primera llamada con DELAY inicial
           currentCallIndex = 0;
           
-          // Pequeño delay inicial antes de la primera llamada
           view.StartCoroutine(WaitAndLoadCall(2.0f)); 
      }
 
@@ -96,21 +89,18 @@ public class GamePresenter
 
      private void LoadCallByIndex(int index)
      {
-          // Seguridad: Si no hay llamadas hoy
           if (dailyCalls == null || dailyCalls.Count == 0)
           {
                view.UpdateCallerInfo($"DÍA {currentDay}", "No hay llamadas programadas para hoy.", null);
                return;
           }
 
-          // --- DETECCIÓN DE FIN DE DÍA (Automática) ---
           if (index >= dailyCalls.Count)
           {
                Debug.Log("🏁 FIN DEL TURNO ACTUAL.");
-               StartNextDay(); // <--- Saltamos al siguiente día
+               StartNextDay();
                return;
           }
-          // --------------------------------------------
 
           currentCall = dailyCalls[index];
           selectedPlagueId = "";
@@ -131,9 +121,8 @@ public class GamePresenter
      // --- LÓGICA PARA AVANZAR AL SIGUIENTE DÍA ---
      private void StartNextDay()
      {
-          currentDay++; // Avanzamos (1 -> 2, 2 -> 3)
+          currentDay++;
 
-          // Chequeo de Final del Juego (Después del día 3)
           if (currentDay > 3)
           {
                Debug.Log("🏆 JUEGO COMPLETADO");
@@ -141,7 +130,6 @@ public class GamePresenter
                return;
           }
 
-          // Si seguimos jugando, cargamos los datos del nuevo día
           LoadDayData();
      }
 
@@ -182,7 +170,6 @@ public class GamePresenter
           else
           {
                view.ShowFeedback(false);
-               // Avanzamos igual (podrías cambiar esto para obligar a reintentar)
                AdvanceToNextCall();
           }
      }
@@ -190,7 +177,6 @@ public class GamePresenter
      private void AdvanceToNextCall()
      {
           currentCallIndex++;
-          // Esperar entre 5 y 10 segundos antes de la siguiente llamada
           float randomDelay = Random.Range(5.0f, 10.0f);
           Debug.Log($"⏳ Esperando {randomDelay:F1} segundos para la próxima llamada...");
           view.StartCoroutine(WaitAndLoadCall(randomDelay));

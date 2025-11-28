@@ -12,7 +12,6 @@ public class EntriesListView : MonoBehaviour
 
     private List<string> unlockedTypes = new List<string>();
     
-    // Evento para avisar al padre cuando tocan un botón
     public event Action<string> OnPlagueClicked;
 
     public void SetUnlockedTypes(List<string> types)
@@ -22,12 +21,10 @@ public class EntriesListView : MonoBehaviour
 
     public void PopulateList(List<PestData> plagues)
     {
-        // 1. Limpiar lista
         foreach (Transform child in entriesContainer) Destroy(child.gameObject);
 
         if (plagues == null) return;
 
-        // 2. Generar botones
         foreach (var plague in plagues)
         {
             if (plague == null) continue;
@@ -41,7 +38,6 @@ public class EntriesListView : MonoBehaviour
             var btn = btnObj.GetComponent<Button>();
             if (btn != null)
             {
-                // Lógica de Bloqueo
                 bool isUnlocked = unlockedTypes.Contains(plague.type);
                 
                 if (isUnlocked)
