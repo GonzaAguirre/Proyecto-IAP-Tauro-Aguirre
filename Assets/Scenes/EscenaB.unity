@@ -2253,12 +2253,12 @@ RectTransform:
   m_Children:
   - {fileID: 807381135}
   - {fileID: 1236358711}
-  m_Father: {fileID: 1921938272}
+  m_Father: {fileID: 700073076}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000011444092, y: 0.000015258789}
-  m_SizeDelta: {x: 554.35, y: 138.5401}
+  m_AnchoredPosition: {x: -2.669301, y: -105}
+  m_SizeDelta: {x: 554.35, y: 182.5251}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &596386011
 MonoBehaviour:
@@ -2786,7 +2786,7 @@ RectTransform:
   - {fileID: 1643187131}
   - {fileID: 691406111}
   - {fileID: 2143746232}
-  - {fileID: 1921938272}
+  - {fileID: 596386010}
   m_Father: {fileID: 1709887505}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -4168,6 +4168,73 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1020275085}
   m_CullTransparentMesh: 1
+--- !u!1 &1073618569
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1073618571}
+  - component: {fileID: 1073618570}
+  m_Layer: 0
+  m_Name: MainMenu
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1073618570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1073618569}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98777571639d4247b393cd7b9be02fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MainMenu
+  dataManager: {fileID: 557816824}
+  gameView: {fileID: 347740310}
+  panelDeJuego: {fileID: 136807197}
+  archivosArgentina:
+    "espa\xF1ol": {fileID: 4900000, guid: 29e065bbb8f472546bf2c3b67632fc50, type: 3}
+    ingles: {fileID: 4900000, guid: 624a69fc9dd9a4e4da2e52736bb0fb5d, type: 3}
+    portugues: {fileID: 4900000, guid: e62f6917511fc324887ade7ecae3ce8a, type: 3}
+  archivosUrbanas:
+    "espa\xF1ol": {fileID: 4900000, guid: 29e065bbb8f472546bf2c3b67632fc50, type: 3}
+    ingles: {fileID: 4900000, guid: 624a69fc9dd9a4e4da2e52736bb0fb5d, type: 3}
+    portugues: {fileID: 4900000, guid: e62f6917511fc324887ade7ecae3ce8a, type: 3}
+  archivosEspacio:
+    "espa\xF1ol": {fileID: 4900000, guid: 29e065bbb8f472546bf2c3b67632fc50, type: 3}
+    ingles: {fileID: 4900000, guid: 624a69fc9dd9a4e4da2e52736bb0fb5d, type: 3}
+    portugues: {fileID: 4900000, guid: e62f6917511fc324887ade7ecae3ce8a, type: 3}
+  panelMenu: {fileID: 2087528262}
+  btnIniciar: {fileID: 940031724}
+  toggleArgentina: {fileID: 287720270}
+  toggleUrbanas: {fileID: 287720270}
+  toggleEspacio: {fileID: 287720270}
+  toggleES: {fileID: 1653108521}
+  toggleEN: {fileID: 897412969}
+  togglePT: {fileID: 765530918}
+--- !u!4 &1073618571
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1073618569}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 495.19003, y: 328.11505, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1097448321
 GameObject:
   m_ObjectHideFlags: 0
@@ -4341,8 +4408,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 25
+  m_fontSizeBase: 25
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -6165,141 +6232,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!1 &1915364690
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1915364692}
-  - component: {fileID: 1915364691}
-  m_Layer: 0
-  m_Name: GameManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1915364691
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1915364690}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e418c7f2bd52084dbef30a63c402d3a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GameManager
-  dataManager: {fileID: 557816824}
-  gameView: {fileID: 347740310}
-  panelDeJuego: {fileID: 136807197}
-  archivosArgentina:
-    "espa\xF1ol": {fileID: 4900000, guid: 29e065bbb8f472546bf2c3b67632fc50, type: 3}
-    ingles: {fileID: 4900000, guid: 624a69fc9dd9a4e4da2e52736bb0fb5d, type: 3}
-    portugues: {fileID: 4900000, guid: e62f6917511fc324887ade7ecae3ce8a, type: 3}
-  archivosUrbanas:
-    "espa\xF1ol": {fileID: 4900000, guid: 29e065bbb8f472546bf2c3b67632fc50, type: 3}
-    ingles: {fileID: 4900000, guid: 624a69fc9dd9a4e4da2e52736bb0fb5d, type: 3}
-    portugues: {fileID: 4900000, guid: e62f6917511fc324887ade7ecae3ce8a, type: 3}
-  archivosEspacio:
-    "espa\xF1ol": {fileID: 4900000, guid: 29e065bbb8f472546bf2c3b67632fc50, type: 3}
-    ingles: {fileID: 4900000, guid: 624a69fc9dd9a4e4da2e52736bb0fb5d, type: 3}
-    portugues: {fileID: 4900000, guid: e62f6917511fc324887ade7ecae3ce8a, type: 3}
---- !u!4 &1915364692
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1915364690}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 271.63702, y: 196.4807, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1921938271
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1921938272}
-  - component: {fileID: 1921938274}
-  - component: {fileID: 1921938273}
-  m_Layer: 5
-  m_Name: Panel
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1921938272
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1921938271}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 596386010}
-  m_Father: {fileID: 700073076}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -2.6693115, y: -117.58493}
-  m_SizeDelta: {x: -37.760986, y: -271.0699}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1921938273
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1921938271}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
-  m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &1921938274
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1921938271}
-  m_CullTransparentMesh: 1
 --- !u!1 &1946610021
 GameObject:
   m_ObjectHideFlags: 0
@@ -6823,7 +6755,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a98777571639d4247b393cd7b9be02fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MainMenu
-  gameManager: {fileID: 1915364691}
+  dataManager: {fileID: 0}
+  gameView: {fileID: 0}
+  panelDeJuego: {fileID: 0}
+  archivosArgentina:
+    "espa\xF1ol": {fileID: 0}
+    ingles: {fileID: 0}
+    portugues: {fileID: 0}
+  archivosUrbanas:
+    "espa\xF1ol": {fileID: 0}
+    ingles: {fileID: 0}
+    portugues: {fileID: 0}
+  archivosEspacio:
+    "espa\xF1ol": {fileID: 0}
+    ingles: {fileID: 0}
+    portugues: {fileID: 0}
   panelMenu: {fileID: 2087528262}
   btnIniciar: {fileID: 940031724}
   toggleArgentina: {fileID: 287720270}
@@ -6868,7 +6814,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 190.765, y: -242.71}
+  m_AnchoredPosition: {x: 190.765, y: -229}
   m_SizeDelta: {x: 167.481, y: 44.962}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2143746233
@@ -6962,4 +6908,4 @@ SceneRoots:
   - {fileID: 1707915848}
   - {fileID: 347740311}
   - {fileID: 557816825}
-  - {fileID: 1915364692}
+  - {fileID: 1073618571}
