@@ -3,9 +3,20 @@ using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
+    [Header("Referencias Clave")]
+    public DataManager dataManager;
+    public GameView gameView;
+    public GameObject panelDeJuego;
+
+    [Header("Bases de Datos (Temáticas + Idiomas)")]
+    public ArchivosPorIdioma archivosArgentina;
+    public ArchivosPorIdioma archivosUrbanas;
+    public ArchivosPorIdioma archivosEspacio;
+    private GamePresenter presenter;
+    
     [Header("Referencias")]
-    public GameManager gameManager; // Arrastraremos el GameManager aquí
-    public GameObject panelMenu;    // El panel visual para apagarlo al jugar
+    [SerializeField] private GameManager gameManager;
+    public GameObject panelMenu;
     public Button btnIniciar;
 
     [Header("Toggles Temática")]
@@ -20,14 +31,13 @@ public class MainMenu : MonoBehaviour
 
     void Start()
     {
-        // Escuchamos el clic del botón
         btnIniciar.onClick.AddListener(IniciarConSeleccion);
     }
 
     void IniciarConSeleccion()
     {
         // 1. Detectar Temática
-        string tematicaElegida = "Argentina"; // Default
+        string tematicaElegida = "Argentina";
         if (toggleUrbanas.isOn) tematicaElegida = "Urbana";
         if (toggleEspacio.isOn) tematicaElegida = "Espacio";
 
@@ -36,9 +46,12 @@ public class MainMenu : MonoBehaviour
         if (toggleEN.isOn) idiomaElegido = "EN";
         if (togglePT.isOn) idiomaElegido = "PT";
 
+        // 3. Iniciar GameManager
+        gameManager = new GameManager(dataManager, gameView, panelDeJuego, archivosArgentina, archivosUrbanas, archivosEspacio);
+        
         Debug.Log($"Iniciando: {tematicaElegida} en {idiomaElegido}");
 
-        // 3. Avisar al GameManager y cerrar menú
+        // 4. Avisar al GameManager y cerrar menú
         gameManager.IniciarJuego(tematicaElegida, idiomaElegido);
         panelMenu.SetActive(false);
     }

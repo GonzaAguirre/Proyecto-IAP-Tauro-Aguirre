@@ -8,19 +8,30 @@ public class ArchivosPorIdioma
     public TextAsset portugues;
 }
 
-public class GameManager : MonoBehaviour
+public class GameManager
 {
     [Header("Referencias Clave")]
-    public DataManager dataManager;
-    public GameView gameView;
-    public GameObject panelDeJuego;
+    private DataManager dataManager;
+    private GameView gameView;
+    private GameObject panelDeJuego;
 
     [Header("Bases de Datos (Temáticas + Idiomas)")]
-    public ArchivosPorIdioma archivosArgentina;
-    public ArchivosPorIdioma archivosUrbanas;
-    public ArchivosPorIdioma archivosEspacio;
+    private ArchivosPorIdioma archivosArgentina;
+    private ArchivosPorIdioma archivosUrbanas;
+    private ArchivosPorIdioma archivosEspacio;
+    
     private GamePresenter presenter;
 
+    public GameManager(DataManager dm, GameView gv, GameObject panel, ArchivosPorIdioma argentina, ArchivosPorIdioma urbanas, ArchivosPorIdioma espacio)
+    {
+        dataManager = dm;
+        gameView = gv;
+        panelDeJuego = panel;
+        archivosArgentina = argentina;
+        archivosUrbanas = urbanas;
+        archivosEspacio = espacio;
+    }
+    
     public void IniciarJuego(string tematica, string idioma)
     {
         // 1. Primero elegimos el PAQUETE de temática correcto
@@ -63,5 +74,7 @@ public class GameManager : MonoBehaviour
         if (panelDeJuego != null) panelDeJuego.SetActive(true);
         
         presenter = new GamePresenter(gameView, dataManager);
+
+        presenter.StartGame();
     }
 }

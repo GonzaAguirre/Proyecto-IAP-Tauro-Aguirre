@@ -5,16 +5,16 @@ config:
 
 classDiagram
 %% --- DATA STRUCTURES ---
-class PestData {
-<<Serializable>>
-+string id
-+string name
-+string imageURL
-+string description
-+string danger
-+string solution
-+string type
-}
+    class PestData {
+        <<Serializable>>
+        +string id
+        +string name
+        +string imageURL
+        +string description
+        +string danger
+        +string solution
+        +string type
+    }
 
     class CallData {
         <<Serializable>>
@@ -54,7 +54,7 @@ class PestData {
         -int currentCallIndex
         -int currentDay
         +GamePresenter(IGameView view, DataManager model)
-        -StartGame()
+        +StartGame()
         -LoadDayData()
         -LoadCallByIndex(int index)
         -StartNextDay()
@@ -62,7 +62,7 @@ class PestData {
         -HandleSubmit()
         -AdvanceToNextCall()
         -ShuffleCalls(List~CallData~ calls)
-        -WaitAndLoadCall(float delay) IEnumerator
+        -WaitAndLoadCall(float delay)
     }
 
     class DataManager {
@@ -76,18 +76,18 @@ class PestData {
         +Initialize()
         -Start()
         +LoadLocalData()
-        +GetAllPests() List~PestData~
-        +GetFirstCall() CallData
-        +GetPestByID(string id) PestData
-        +GetCallsForDay(int day) List~CallData~
-        +GetCallByID(string id) CallData
-        +RequestImage(string url, Action~Sprite~ callback)
+        +GetAllPests() 
+        +GetFirstCall() 
+        +GetPestByID(string id) 
+        +GetCallsForDay(int day)
+        +GetCallByID(string id) 
+        +RequestImage()
     }
 
     class DataService {
         <<Helper>>
-        +FetchJsonFromURL(string url, Action~string~ onSuccess, Action~string~ onFailure) IEnumerator
-        +DownloadImage(string url, Action~Sprite~ onSuccess) IEnumerator
+        +FetchJsonFromURL()
+        +DownloadImage()
     }
 
     class GameManager {
@@ -98,19 +98,20 @@ class PestData {
         +ArchivosPorIdioma archivosArgentina
         +ArchivosPorIdioma archivosUrbanas
         +ArchivosPorIdioma archivosEspacio
+        -GamePresenter presenter
         +IniciarJuego(string tematica, string idioma)
     }
 
     %% --- VIEW / UI ---
     class IGameView {
         <<Interface>>
-        +UpdateCallerInfo(string name, string message, Sprite image)
-        +UpdateEntryInfo(string title, string desc, string danger, string solution, Sprite image)
-        +NewCallPopUp(string callerName, Sprite callerImage, string audioPath)
-        +PopulateEntriesList(List~PestData~ plagues)
-        +ShowFeedback(bool isCorrect)
-        +SetUnlockedTypes(List~string~ types)
-        +StartCoroutine(IEnumerator routine) Coroutine
+        +UpdateCallerInfo()
+        +UpdateEntryInfo()
+        +NewCallPopUp()
+        +PopulateEntriesList()
+        +ShowFeedback()
+        +SetUnlockedTypes()
+        +StartCoroutine()
         +event Action OnSubmitAnswer
         +event Action~string~ OnPlagueSelected
         +event Action OnCallAnswered
@@ -120,42 +121,21 @@ class PestData {
         <<MonoBehaviour>>
         -EntriesListView entriesListView
         -NewCallPopupView popupView
-        -TextMeshProUGUI callerNameText
-        -TextMeshProUGUI callMessageText
-        -Image callerImage
-        -Button submitAnswerButton
-        -TextMeshProUGUI entryInfoTitleText
-        -TextMeshProUGUI entryInfoDescriptionText
-        -TextMeshProUGUI entryInfoDangerText
-        -TextMeshProUGUI entryInfoSolutionText
-        -Image entryInfoImage
-        -DataManager dataManager
-        -AudioSource voiceAudioSource
-        -Canvas feedbackCanvas
-        -TextMeshProUGUI feedbackText
         -GamePresenter presenter
-        -string currentAudioPath
-        +event Action OnSubmitAnswer
-        +event Action~string~ OnPlagueSelected
-        +event Action OnCallAnswered
         -Start()
-        +IniciarJuegoManual()
-        +PopulateEntriesList(List~PestData~ plagues)
-        +SetUnlockedTypes(List~string~ types)
-        +NewCallPopUp(string callerName, Sprite callerImage, string audioPath)
+        +PopulateEntriesList()
+        +SetUnlockedTypes()
+        +NewCallPopUp()
         -HandleCallAnswered()
-        +UpdateCallerInfo(string name, string message, Sprite image)
-        +UpdateEntryInfo(string title, string desc, string danger, string solution, Sprite image)
-        +ShowFeedback(bool isCorrect)
+        +UpdateCallerInfo()
+        +UpdateEntryInfo()
+        +ShowFeedback()
         -HideFeedback()
-        -PlayCallAudio(string audioPath)
+        -PlayCallAudio()
     }
 
     class EntriesListView {
         <<MonoBehaviour>>
-        -Transform entriesContainer
-        -GameObject entryButtonPrefab
-        -List~string~ unlockedTypes
         +event Action~string~ OnPlagueClicked
         +SetUnlockedTypes(List~string~ types)
         +PopulateList(List~PestData~ plagues)
@@ -163,14 +143,8 @@ class PestData {
 
     class NewCallPopupView {
         <<MonoBehaviour>>
-        -GameObject popupCanvas
-        -TextMeshProUGUI newCallText
-        -Image callerImage
-        -Button answerButton
-        -AudioSource ringtoneSource
-        -AudioClip ringtoneClip
         +event Action OnCallAnswered
-        +Show(string callerName, Sprite image)
+        +Show(callerName, image)
         -AnswerCall()
         +Hide()
     }
@@ -203,6 +177,7 @@ class PestData {
     MainMenu --> GameManager : Calls IniciarJuego
     GameManager --> DataManager : Configures & Loads
     GameManager --> GameView : Initializes
+    GameManager --> GamePresenter : Creates & Owns
     GameManager ..> ArchivosPorIdioma : Uses
 
     GamePresenter --> IGameView : Controls via Interface
@@ -213,8 +188,7 @@ class PestData {
     DataManager --> DataService : Uses for Downloads
     DataManager ..> GameDataCollection : Deserializes
 
-    GameView --> GamePresenter : Owns & Creates
-    GameView --> DataManager : Passes to Presenter
+    GameView --> GamePresenter : Has Field (Unused)
     GameView *-- EntriesListView : Manages
     GameView *-- NewCallPopupView : Manages
 
