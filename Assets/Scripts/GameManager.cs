@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[System.Serializable] // <--- Esto hace que aparezca la "cajita" en el Inspector
+[System.Serializable] 
 public class ArchivosPorIdioma
 {
     public TextAsset español;
@@ -16,7 +16,6 @@ public class GameManager : MonoBehaviour
     public GameObject panelDeJuego;
 
     [Header("Bases de Datos (Temáticas + Idiomas)")]
-    // En lugar de un archivo suelto, ahora pedimos el paquete de 3 idiomas
     public ArchivosPorIdioma archivosArgentina;
     public ArchivosPorIdioma archivosUrbanas;
     public ArchivosPorIdioma archivosEspacio;
