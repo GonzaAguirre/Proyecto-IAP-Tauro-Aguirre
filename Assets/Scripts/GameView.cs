@@ -24,7 +24,6 @@ public class GameView : MonoBehaviour, IGameView
     [SerializeField] private Image entryInfoImage;
 
     [Header("General")]
-    [SerializeField] private DataManager dataManager;
     [SerializeField] private AudioSource voiceAudioSource; 
 
     [Header("Feedback")]
@@ -53,11 +52,6 @@ public class GameView : MonoBehaviour, IGameView
         if (popupView != null) popupView.Hide();
     }
 
-    // Iniciado por el GameManager
-    public void IniciarJuegoManual()
-    {
-        presenter = new GamePresenter(this, dataManager);
-    }
 
     // --- Métodos de IGameView (Delegación) ---
 
