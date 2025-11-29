@@ -1,17 +1,25 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+[System.Serializable] 
+public class ArchivosPorIdioma
+{
+    public TextAsset español;
+    public TextAsset ingles;
+    public TextAsset portugues;
+}
+
 public class MainMenu : MonoBehaviour
 {
     [Header("Referencias Clave")]
-    public DataManager dataManager;
-    public GameView gameView;
-    public GameObject panelDeJuego;
+    [SerializeField] private DataManager dataManager;
+    [SerializeField] private GameView gameView;
+    [SerializeField] private GameObject panelDeJuego;
 
     [Header("Bases de Datos (Temáticas + Idiomas)")]
-    public ArchivosPorIdioma archivosArgentina;
-    public ArchivosPorIdioma archivosUrbanas;
-    public ArchivosPorIdioma archivosEspacio;
+    [SerializeField] private ArchivosPorIdioma archivosArgentina;
+    [SerializeField] private ArchivosPorIdioma archivosUrbanas;
+    [SerializeField] private ArchivosPorIdioma archivosEspacio;
     private GamePresenter presenter;
     
     [Header("Referencias")]

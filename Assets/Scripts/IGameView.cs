@@ -19,5 +19,11 @@ public interface IGameView
 
     // Métodos nuevos para lógica de juego
     void SetUnlockedTypes(List<string> types);
+    void EnableSubmitButton(bool enabled);
+    void ShowDayComplete(int day, int correctAnswers, int totalAnswers);
+    void ShowGameComplete();
+    void UpdateDayInfo(int day);
+    void UpdateCallCounter(int current, int total);
     Coroutine StartCoroutine(System.Collections.IEnumerator routine);
+   
 }

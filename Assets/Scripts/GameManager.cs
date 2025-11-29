@@ -1,21 +1,11 @@
 using UnityEngine;
 
-[System.Serializable] 
-public class ArchivosPorIdioma
-{
-    public TextAsset español;
-    public TextAsset ingles;
-    public TextAsset portugues;
-}
-
 public class GameManager
 {
-    [Header("Referencias Clave")]
     private DataManager dataManager;
     private GameView gameView;
     private GameObject panelDeJuego;
 
-    [Header("Bases de Datos (Temáticas + Idiomas)")]
     private ArchivosPorIdioma archivosArgentina;
     private ArchivosPorIdioma archivosUrbanas;
     private ArchivosPorIdioma archivosEspacio;

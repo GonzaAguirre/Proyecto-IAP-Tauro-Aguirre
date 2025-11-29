@@ -24,7 +24,14 @@ public class GameView : MonoBehaviour, IGameView
     [SerializeField] private Image entryInfoImage;
 
     [Header("General")]
-    [SerializeField] private AudioSource voiceAudioSource; 
+    [SerializeField] private AudioSource voiceAudioSource;
+    
+    [Header("Clock")]
+    [SerializeField] private TextMeshProUGUI clockText;
+    
+    [Header("Game Info")]
+    [SerializeField] private TextMeshProUGUI dayText;
+    [SerializeField] private TextMeshProUGUI callCounterText; 
 
     [Header("Feedback")]
     [SerializeField] private Canvas feedbackCanvas;
@@ -50,6 +57,9 @@ public class GameView : MonoBehaviour, IGameView
 
         entryInfoImage.gameObject.SetActive(false);
         if (popupView != null) popupView.Hide();
+        
+        // Iniciar actualización del reloj cada segundo
+        InvokeRepeating("UpdateClock", 0f, 1f);
     }
 
 
@@ -154,6 +164,72 @@ public class GameView : MonoBehaviour, IGameView
         {
             voiceAudioSource.clip = clip;
             voiceAudioSource.Play();
+        }
+    }
+
+    // --- Métodos nuevos para lógica de juego ---
+
+    public void EnableSubmitButton(bool enabled)
+    {
+        if (submitAnswerButton != null)
+            submitAnswerButton.interactable = enabled;
+    }
+
+    public void ShowDayComplete(int day, int correctAnswers, int totalAnswers)
+    {
+        Debug.Log($"Día {day} Completado! Respuestas correctas: {correctAnswers}/{totalAnswers}");
+        
+        // TODO: Implementar UI de resumen del día
+        // Por ahora solo mostramos en consola
+        feedbackText.gameObject.SetActive(true);
+        feedbackCanvas.gameObject.SetActive(true);
+        feedbackText.text = $"DÍA {day} COMPLETADO\n{correctAnswers}/{totalAnswers} CORRECTAS";
+        feedbackText.color = Color.cyan;
+        
+        Invoke("HideFeedback", 3f);
+    }
+
+    public void ShowGameComplete()
+    {
+        Debug.Log("¡Juego Completado!");
+        
+        // TODO: Implementar pantalla de victoria
+        feedbackText.gameObject.SetActive(true);
+        feedbackCanvas.gameObject.SetActive(true);
+        feedbackText.text = "¡JUEGO COMPLETADO!\n¡FELICITACIONES!";
+        feedbackText.color = Color.yellow;
+    }
+
+    // --- Reloj Digital ---
+
+    private void UpdateClock()
+    {
+        if (clockText != null)
+        {
+            // Obtener hora actual del sistema
+            System.DateTime now = System.DateTime.Now;
+            
+            // Formatear como HH:MM:SS (24 horas)
+            clockText.text = now.ToString("HH:mm:ss");
+            // Alternativa 12 horas con AM/PM: clockText.text = now.ToString("hh:mm:ss tt");
+        }
+    }
+    
+    // --- Información del Juego ---
+    
+    public void UpdateDayInfo(int day)
+    {
+        if (dayText != null)
+        {
+            dayText.text = $"DÍA {day}";
+        }
+    }
+    
+    public void UpdateCallCounter(int current, int total)
+    {
+        if (callCounterText != null)
+        {
+            callCounterText.text = $"LLAMADA {current}/{total}";
         }
     }
 }
