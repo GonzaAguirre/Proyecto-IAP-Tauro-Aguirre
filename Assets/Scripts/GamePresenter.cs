@@ -184,9 +184,12 @@ public class GamePresenter
         // Pedir imagen (si es URL o local, el DataManager lo resuelve)
         _model.RequestImage(_currentCall.callerImageURL, (sprite) => 
         {
-            // Mandar datos a la vista
+            // 1. PRIMERO actualizamos los datos (mientras sigue oculto)
             _view.NewCallPopUp(_currentCall.callerName, sprite, _currentCall.audio);
             _view.UpdateCallerInfo(_currentCall.callerName, _currentCall.message, sprite);
+            
+            // 2. LUEGO mostramos el juego (ya actualizado)
+            _view.HideWaitingScreen();
             
             // Diferenciar entre llamadas de Consejo y Especiales
             if (_currentCall.callType == "Consejo")
@@ -243,13 +246,28 @@ public class GamePresenter
 
     private System.Collections.IEnumerator WaitAndNextCall()
     {
-        yield return new WaitForSeconds(3f); // Esperar feedback
+        // Esperar 2 segundos (tiempo que dura el feedback en pantalla)
+        yield return new WaitForSeconds(2f);
+        
+        // Mostrar pantalla de espera mientras cargamos la siguiente
+        _view.ShowWaitingScreen();
+        
+        // Esperar tiempo fijo de 3 segundos
+        yield return new WaitForSeconds(3f);
+        
         ProcessNextCall();
     }
 
     private System.Collections.IEnumerator AutoCloseSpecialCall()
     {
         yield return new WaitForSeconds(10f); // 10 segundos para leer el mensaje
+        
+        // Mostrar pantalla de espera al terminar la llamada especial
+        _view.ShowWaitingScreen();
+        
+        // Esperar tiempo fijo de 3 segundos también aquí
+        yield return new WaitForSeconds(3f);
+        
         ProcessNextCall();
     }
 

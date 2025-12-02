@@ -24,6 +24,7 @@ public class GameView : MonoBehaviour, IGameView
     [SerializeField] private Image entryInfoImage;
 
     [Header("General")]
+    [SerializeField] private GameObject gamePanel; // Panel principal del juego
     [SerializeField] private AudioSource voiceAudioSource;
     
     [Header("Clock")]
@@ -36,6 +37,9 @@ public class GameView : MonoBehaviour, IGameView
     [Header("Feedback")]
     [SerializeField] private Canvas feedbackCanvas;
     [SerializeField] private TextMeshProUGUI feedbackText;
+
+    [Header("Waiting Screen")]
+    [SerializeField] private GameObject waitingPanel; // Panel "Espera Llamada"
 
     // Eventos de la Interfaz
     public event Action OnSubmitAnswer;
@@ -57,6 +61,7 @@ public class GameView : MonoBehaviour, IGameView
 
         entryInfoImage.gameObject.SetActive(false);
         if (popupView != null) popupView.Hide();
+        if (waitingPanel != null) waitingPanel.SetActive(false); // Ocultar pantalla de espera
         
         // Iniciar actualización del reloj cada segundo
         InvokeRepeating("UpdateClock", 0f, 1f);
@@ -248,5 +253,23 @@ public class GameView : MonoBehaviour, IGameView
         {
             callCounterText.text = $"LLAMADA {current}/{total}";
         }
+    }
+
+    public void ShowWaitingScreen()
+    {
+        if (waitingPanel != null) waitingPanel.SetActive(true);
+        if (gamePanel != null) gamePanel.SetActive(false); // Ocultar el juego
+        
+        // Limpiar la pantalla por seguridad
+        if (popupView != null) popupView.Hide();
+        if (entryInfoImage != null) entryInfoImage.gameObject.SetActive(false);
+        if (feedbackCanvas != null) feedbackCanvas.gameObject.SetActive(false);
+        if (feedbackText != null) feedbackText.gameObject.SetActive(false);
+    }
+
+    public void HideWaitingScreen()
+    {
+        if (waitingPanel != null) waitingPanel.SetActive(false);
+        if (gamePanel != null) gamePanel.SetActive(true); // Mostrar el juego
     }
 }
