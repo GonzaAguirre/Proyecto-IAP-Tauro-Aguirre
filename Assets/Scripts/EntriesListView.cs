@@ -51,7 +51,7 @@ public class EntriesListView : MonoBehaviour
                     btn.interactable = false;
                     if (tmp != null)
                     {
-                        tmp.text += " [BLOQUEADO]";
+                        tmp.text += LocalizationManager.GetLockedText();
                         tmp.color = Color.gray;
                     }
                 }

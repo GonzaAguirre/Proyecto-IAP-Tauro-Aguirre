@@ -26,6 +26,7 @@ public interface IGameView
     void ShowGameComplete(int totalCorrectAnswers, int totalAnswers);
     void UpdateDayInfo(int day);
     void UpdateCallCounter(int current, int total);
+    void UpdateLocalization(); // Actualizar textos estáticos según idioma
     Coroutine StartCoroutine(System.Collections.IEnumerator routine);
    
 }

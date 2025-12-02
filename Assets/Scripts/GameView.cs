@@ -15,6 +15,7 @@ public class GameView : MonoBehaviour, IGameView
     [SerializeField] private TextMeshProUGUI callMessageText;
     [SerializeField] private Image callerImage;
     [SerializeField] private Button submitAnswerButton;
+    [SerializeField] private TextMeshProUGUI submitButtonText; // Referencia al texto del botón
 
     [Header("Entry Info Screen")]
     [SerializeField] private TextMeshProUGUI entryInfoTitleText;
@@ -169,6 +170,9 @@ public class GameView : MonoBehaviour, IGameView
 
     private void PlayCallAudio(string audioPath)
     {
+        // Solo reproducir audio si estamos en Español
+        if (LocalizationManager.CurrentLanguage != "ES") return;
+
         if (string.IsNullOrEmpty(audioPath)) return;
         if (voiceAudioSource == null) return;
 
@@ -227,16 +231,16 @@ public class GameView : MonoBehaviour, IGameView
         
         // Actualizar los textos del panel de estadísticas
         if (totalCallsText != null)
-            totalCallsText.text = $"Llamadas totales del juego: {totalAnswers}";
+            totalCallsText.text = LocalizationManager.GetTotalCallsText(totalAnswers);
         
         if (correctAnswersText != null)
-            correctAnswersText.text = $"Sugerencias correctas: {totalCorrectAnswers}";
+            correctAnswersText.text = LocalizationManager.GetCorrectAnswersText(totalCorrectAnswers);
         
         if (wrongAnswersText != null)
-            wrongAnswersText.text = $"Sugerencias incorrectas: {wrongAnswers}";
+            wrongAnswersText.text = LocalizationManager.GetWrongAnswersText(wrongAnswers);
         
         if (scoreText != null)
-            scoreText.text = $"Puntuación: {percentage:F0}%";
+            scoreText.text = LocalizationManager.GetScoreText(percentage);
     }
 
     // --- Reloj Digital ---
@@ -260,7 +264,7 @@ public class GameView : MonoBehaviour, IGameView
     {
         if (dayText != null)
         {
-            dayText.text = $"DÍA {day}";
+            dayText.text = LocalizationManager.GetDayText(day);
         }
     }
     
@@ -268,7 +272,7 @@ public class GameView : MonoBehaviour, IGameView
     {
         if (callCounterText != null)
         {
-            callCounterText.text = $"LLAMADA {current}/{total}";
+            callCounterText.text = LocalizationManager.GetCallText(current, total);
         }
     }
 
@@ -288,5 +292,13 @@ public class GameView : MonoBehaviour, IGameView
     {
         if (waitingPanel != null) waitingPanel.SetActive(false);
         if (gamePanel != null) gamePanel.SetActive(true); // Mostrar el juego
+    }
+
+    public void UpdateLocalization()
+    {
+        if (submitButtonText != null)
+        {
+            submitButtonText.text = LocalizationManager.GetSubmitButtonText();
+        }
     }
 }
