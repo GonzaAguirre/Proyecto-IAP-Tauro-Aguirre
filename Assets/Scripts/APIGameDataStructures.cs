@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 
-// [Serializable] es OBLIGATORIO para que Unity pueda leer esto desde un JSON
 [Serializable]
 public class PestData
 {
@@ -24,11 +23,9 @@ public class CallData
     public string correctPestID;    
     public int day;                 
     public string callType;         // "Consejo", "Confirmacion", "Extra"
-    public string audio;            // Ruta al archivo de audio
+    public string audio;            
 }
 
-// Esta clase "Root" es necesaria porque el JsonUtility de Unity
-// no puede leer listas sueltas, necesita un objeto padre.
 [Serializable]
 public class GameDataCollection
 {

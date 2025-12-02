@@ -24,14 +24,11 @@ public class GameManager
 
     public void IniciarJuego(string tematica, string idioma)
     {
-        // Detectar si es modo Toons (Urbana)
         IsToonsMode = (tematica == "Urbana");
 
-        // Setear idioma global
         LocalizationManager.CurrentLanguage = idioma;
 
-        // 1. Primero elegimos el PAQUETE de temática correcto
-        ArchivosPorIdioma paqueteSeleccionado = archivosArgentina; // Default
+        ArchivosPorIdioma paqueteSeleccionado = archivosArgentina;
 
         switch (tematica)
         {
@@ -39,8 +36,7 @@ public class GameManager
             case "Argentina": paqueteSeleccionado = archivosArgentina; break;
         }
 
-        // 2. Dentro del paquete, elegimos el ARCHIVO de idioma correcto
-        TextAsset jsonFinal = paqueteSeleccionado.español; // Default
+        TextAsset jsonFinal = paqueteSeleccionado.español;
 
         switch (idioma)
         {
@@ -58,7 +54,6 @@ public class GameManager
                 break;
         }
 
-        // Verificación de seguridad
         if (jsonFinal == null)
         {
             Debug.LogError($"❌ ¡Falta el archivo JSON para {tematica} en {idioma}! Usando español por defecto.");
@@ -69,12 +64,10 @@ public class GameManager
             Debug.Log($"✅ Archivo JSON cargado: {jsonFinal.name} para {tematica} en {idioma}");
         }
 
-        // 3. Cargar y Arrancar - Pasamos el JSON directamente sin sobrescribir la referencia
         dataManager.LoadLocalData(jsonFinal);
 
         if (panelDeJuego != null) panelDeJuego.SetActive(true);
         
-        // Actualizar textos localizados estáticos (como botones)
         gameView.UpdateLocalization();
 
         presenter = new GamePresenter(gameView, dataManager);

@@ -20,13 +20,13 @@ public interface IGameView
     // Métodos nuevos para lógica de juego
     void SetUnlockedTypes(List<string> types);
     void EnableSubmitButton(bool enabled);
-    void ShowWaitingScreen(); // Mostrar pantalla de espera
-    void HideWaitingScreen(); // Ocultar pantalla de espera
+    void ShowWaitingScreen(); 
+    void HideWaitingScreen(); 
     void ShowDayComplete(int day, int correctAnswers, int totalAnswers);
     void ShowGameComplete(int totalCorrectAnswers, int totalAnswers);
     void UpdateDayInfo(int day);
     void UpdateCallCounter(int current, int total);
-    void UpdateLocalization(); // Actualizar textos estáticos según idioma
+    void UpdateLocalization(); 
     Coroutine StartCoroutine(System.Collections.IEnumerator routine);
    
 }

@@ -15,7 +15,7 @@ public class GameView : MonoBehaviour, IGameView
     [SerializeField] private TextMeshProUGUI callMessageText;
     [SerializeField] private Image callerImage;
     [SerializeField] private Button submitAnswerButton;
-    [SerializeField] private TextMeshProUGUI submitButtonText; // Referencia al texto del botón
+    [SerializeField] private TextMeshProUGUI submitButtonText;
 
     [Header("Entry Info Screen")]
     [SerializeField] private TextMeshProUGUI entryInfoTitleText;
@@ -25,7 +25,7 @@ public class GameView : MonoBehaviour, IGameView
     [SerializeField] private Image entryInfoImage;
 
     [Header("General")]
-    [SerializeField] private GameObject gamePanel; // Panel principal del juego
+    [SerializeField] private GameObject gamePanel;
     [SerializeField] private AudioSource voiceAudioSource;
     
     [Header("Clock")]
@@ -40,16 +40,15 @@ public class GameView : MonoBehaviour, IGameView
     [SerializeField] private TextMeshProUGUI feedbackText;
 
     [Header("Waiting Screen")]
-    [SerializeField] private GameObject waitingPanel; // Panel "Espera Llamada"
+    [SerializeField] private GameObject waitingPanel;
 
     [Header("Estadísticas Panel")]
-    [SerializeField] private GameObject estadisticasPanel; // Panel de estadísticas finales
-    [SerializeField] private TextMeshProUGUI totalCallsText; // "Llamadas totales del juego: N"
-    [SerializeField] private TextMeshProUGUI correctAnswersText; // "Sugerencias correctas: N"
-    [SerializeField] private TextMeshProUGUI wrongAnswersText; // "Sugerencias malas: N"
-    [SerializeField] private TextMeshProUGUI scoreText; // "Puntuación: N%"
+    [SerializeField] private GameObject estadisticasPanel;
+    [SerializeField] private TextMeshProUGUI totalCallsText;
+    [SerializeField] private TextMeshProUGUI correctAnswersText;
+    [SerializeField] private TextMeshProUGUI wrongAnswersText;
+    [SerializeField] private TextMeshProUGUI scoreText;
 
-    // Eventos de la Interfaz
     public event Action OnSubmitAnswer;
     public event Action<string> OnPlagueSelected;
     public event Action OnCallAnswered;
@@ -69,10 +68,9 @@ public class GameView : MonoBehaviour, IGameView
 
         entryInfoImage.gameObject.SetActive(false);
         if (popupView != null) popupView.Hide();
-        if (waitingPanel != null) waitingPanel.SetActive(false); // Ocultar pantalla de espera
-        if (estadisticasPanel != null) estadisticasPanel.SetActive(false); // Ocultar panel de estadísticas
+        if (waitingPanel != null) waitingPanel.SetActive(false);
+        if (estadisticasPanel != null) estadisticasPanel.SetActive(false);
         
-        // Iniciar actualización del reloj cada segundo
         InvokeRepeating("UpdateClock", 0f, 1f);
     }
 
@@ -93,7 +91,6 @@ public class GameView : MonoBehaviour, IGameView
 
     public void NewCallPopUp(string callerName, Sprite callerImage, string audioPath)
     {
-        // Detener cualquier audio anterior
         StopCallAudio();
         
         submitAnswerButton.interactable = false; 
@@ -139,7 +136,6 @@ public class GameView : MonoBehaviour, IGameView
 
     public void ShowFeedback(bool isCorrect)
     {
-        // Detener el audio de la llamada
         StopCallAudio();
         
         feedbackText.gameObject.SetActive(true); 
@@ -170,13 +166,11 @@ public class GameView : MonoBehaviour, IGameView
 
     private void PlayCallAudio(string audioPath)
     {
-        // Solo reproducir audio si estamos en Español Y NO estamos en modo Toons
         if (LocalizationManager.CurrentLanguage != "ES" || GameManager.IsToonsMode) return;
 
         if (string.IsNullOrEmpty(audioPath)) return;
         if (voiceAudioSource == null) return;
 
-        // Detener cualquier audio anterior
         StopCallAudio();
 
         string resourcePath = audioPath;
@@ -212,24 +206,18 @@ public class GameView : MonoBehaviour, IGameView
     public void ShowDayComplete(int day, int correctAnswers, int totalAnswers)
     {
         Debug.Log($"Día {day} Completado! Respuestas correctas: {correctAnswers}/{totalAnswers}");
-        
-        // No mostramos feedback aquí - se mostrará todo en el resumen final
-        // El resumen completo se mostrará en ShowGameComplete() al finalizar el día 3
     }
 
     public void ShowGameComplete(int totalCorrectAnswers, int totalAnswers)
     {
         Debug.Log("¡Juego Completado!");
         
-        // Calcular estadísticas
         int wrongAnswers = totalAnswers - totalCorrectAnswers;
         float percentage = totalAnswers > 0 ? ((float)totalCorrectAnswers / totalAnswers) * 100f : 0f;
         
-        // Ocultar el juego y mostrar el panel de estadísticas
         if (gamePanel != null) gamePanel.SetActive(false);
         if (estadisticasPanel != null) estadisticasPanel.SetActive(true);
         
-        // Actualizar los textos del panel de estadísticas
         if (totalCallsText != null)
             totalCallsText.text = LocalizationManager.GetTotalCallsText(totalAnswers);
         
@@ -249,12 +237,8 @@ public class GameView : MonoBehaviour, IGameView
     {
         if (clockText != null)
         {
-            // Obtener hora actual del sistema
             System.DateTime now = System.DateTime.Now;
-            
-            // Formatear como HH:MM:SS (24 horas)
             clockText.text = now.ToString("HH:mm:ss");
-            // Alternativa 12 horas con AM/PM: clockText.text = now.ToString("hh:mm:ss tt");
         }
     }
     
@@ -279,9 +263,8 @@ public class GameView : MonoBehaviour, IGameView
     public void ShowWaitingScreen()
     {
         if (waitingPanel != null) waitingPanel.SetActive(true);
-        if (gamePanel != null) gamePanel.SetActive(false); // Ocultar el juego
+        if (gamePanel != null) gamePanel.SetActive(false);
         
-        // Limpiar la pantalla por seguridad
         if (popupView != null) popupView.Hide();
         if (entryInfoImage != null) entryInfoImage.gameObject.SetActive(false);
         if (feedbackCanvas != null) feedbackCanvas.gameObject.SetActive(false);
@@ -291,7 +274,7 @@ public class GameView : MonoBehaviour, IGameView
     public void HideWaitingScreen()
     {
         if (waitingPanel != null) waitingPanel.SetActive(false);
-        if (gamePanel != null) gamePanel.SetActive(true); // Mostrar el juego
+        if (gamePanel != null) gamePanel.SetActive(true);
     }
 
     public void UpdateLocalization()

@@ -8,7 +8,6 @@ public class DataManager : MonoBehaviour
     [Header("Archivo JSON Local")]
     public TextAsset jsonFile;
 
-    // Inicializamos las listas aquí para evitar nulos por defecto
     private List<PestData> allPests = new List<PestData>();
     private List<CallData> allCalls = new List<CallData>();
     private DataService dataService = new DataService();
@@ -32,7 +31,6 @@ public class DataManager : MonoBehaviour
 
         try
         {
-            // Usar el JSON custom si se provee, sino usar el del inspector
             TextAsset activeJsonFile = customJsonFile != null ? customJsonFile : jsonFile;
             
             if (activeJsonFile == null)
@@ -50,13 +48,12 @@ public class DataManager : MonoBehaviour
             }
 
             Debug.Log("Contenido del JSON:");
-            Debug.Log(jsonText); // Imprime el contenido del JSON para depuración
+            Debug.Log(jsonText); 
 
             GameDataCollection data = JsonUtility.FromJson<GameDataCollection>(jsonText);
 
             if (data != null)
             {
-                // --- Validación adicional ---
                 allPests = data.pests ?? new List<PestData>();
                 allCalls = data.calls ?? new List<CallData>();
 
@@ -65,7 +62,6 @@ public class DataManager : MonoBehaviour
                 Debug.Log($"✅ ÉXITO LOCAL: Cargadas {allPests.Count} plagas y {allCalls.Count} llamadas.");
                 Debug.Log($"Temática: {data.themeName}");
 
-                // Depuración antes de invocar el evento
                 Debug.Log("Invocando OnDataReady...");
                 OnDataReady?.Invoke();
             }
@@ -82,7 +78,6 @@ public class DataManager : MonoBehaviour
 
     public List<PestData> GetAllPests() => allPests;
 
-    // Agregamos seguridad aquí también por si la lista está vacía
     public CallData GetFirstCall() => allCalls.Count > 0 ? allCalls[0] : null;
 
     public PestData GetPestByID(string id)
@@ -102,17 +97,12 @@ public class DataManager : MonoBehaviour
 
     public void RequestImage(string url, System.Action<Sprite> callback)
     {
-        // VERIFICACIÓN INTELIGENTE:
-        // Si empieza con "http", descargamos de internet.
-        // Si no, asumimos que es un archivo local en la carpeta Resources.
-
         if (url.StartsWith("http") || url.StartsWith("https"))
         {
             StartCoroutine(dataService.DownloadImage(url, callback));
         }
         else
         {
-            // Carga instantánea desde la carpeta Resources
             Sprite localSprite = Resources.Load<Sprite>(url);
 
             if (localSprite != null)
@@ -122,7 +112,6 @@ public class DataManager : MonoBehaviour
             else
             {
                 Debug.LogError($"❌ No se encontró la imagen en Resources: {url}");
-                // Opcional: Devolver null o una imagen por defecto
                 callback?.Invoke(null);
             }
         }

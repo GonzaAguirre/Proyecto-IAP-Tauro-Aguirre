@@ -42,21 +42,16 @@ public class MainMenu : MonoBehaviour
 
     void IniciarConSeleccion()
     {
-        // 1. Detectar Temática
         string tematicaElegida = "Argentina";
         if (toggleUrbanas.isOn) tematicaElegida = "Urbana";
 
-        // 2. Detectar Idioma (Por ahora solo pasamos el dato)
         string idiomaElegido = "ES";
         if (toggleEN.isOn) idiomaElegido = "EN";
         if (togglePT.isOn) idiomaElegido = "PT";
 
-        // 3. Iniciar GameManager
         gameManager = new GameManager(dataManager, gameView, panelDeJuego, archivosArgentina, archivosUrbanas);
         
         Debug.Log($"Iniciando: {tematicaElegida} en {idiomaElegido}");
-
-        // 4. Avisar al GameManager y cerrar menú
         gameManager.IniciarJuego(tematicaElegida, idiomaElegido);
         panelMenu.SetActive(false);
     }
