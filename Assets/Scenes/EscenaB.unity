@@ -979,8 +979,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 9.4122, y: 353.23242}
-  m_SizeDelta: {x: 521.3549, y: 200.6962}
+  m_AnchoredPosition: {x: 0.000034332, y: 389.59}
+  m_SizeDelta: {x: 594.2798, y: 228.77}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &345454240
 GameObject:
@@ -2921,8 +2921,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 1.2001953, y: 517.4893}
-  m_SizeDelta: {x: 2.4006, y: -975.5723}
+  m_AnchoredPosition: {x: 1.2001953, y: 554.1808}
+  m_SizeDelta: {x: 2.4006, y: -1048.9553}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &705803371
 MonoBehaviour:
@@ -3739,7 +3739,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
