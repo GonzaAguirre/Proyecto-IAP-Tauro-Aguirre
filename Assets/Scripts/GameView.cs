@@ -41,6 +41,13 @@ public class GameView : MonoBehaviour, IGameView
     [Header("Waiting Screen")]
     [SerializeField] private GameObject waitingPanel; // Panel "Espera Llamada"
 
+    [Header("Estadísticas Panel")]
+    [SerializeField] private GameObject estadisticasPanel; // Panel de estadísticas finales
+    [SerializeField] private TextMeshProUGUI totalCallsText; // "Llamadas totales del juego: N"
+    [SerializeField] private TextMeshProUGUI correctAnswersText; // "Sugerencias correctas: N"
+    [SerializeField] private TextMeshProUGUI wrongAnswersText; // "Sugerencias malas: N"
+    [SerializeField] private TextMeshProUGUI scoreText; // "Puntuación: N%"
+
     // Eventos de la Interfaz
     public event Action OnSubmitAnswer;
     public event Action<string> OnPlagueSelected;
@@ -62,6 +69,7 @@ public class GameView : MonoBehaviour, IGameView
         entryInfoImage.gameObject.SetActive(false);
         if (popupView != null) popupView.Hide();
         if (waitingPanel != null) waitingPanel.SetActive(false); // Ocultar pantalla de espera
+        if (estadisticasPanel != null) estadisticasPanel.SetActive(false); // Ocultar panel de estadísticas
         
         // Iniciar actualización del reloj cada segundo
         InvokeRepeating("UpdateClock", 0f, 1f);
@@ -209,17 +217,26 @@ public class GameView : MonoBehaviour, IGameView
     {
         Debug.Log("¡Juego Completado!");
         
-        // Calcular porcentaje de aciertos
+        // Calcular estadísticas
+        int wrongAnswers = totalAnswers - totalCorrectAnswers;
         float percentage = totalAnswers > 0 ? ((float)totalCorrectAnswers / totalAnswers) * 100f : 0f;
         
-        // Mostrar pantalla de resumen final con todas las estadísticas
-        if (feedbackText != null && feedbackCanvas != null)
-        {
-            feedbackText.gameObject.SetActive(true);
-            feedbackCanvas.gameObject.SetActive(true);
-            feedbackText.text = $"¡JUEGO COMPLETADO!\n\nRESUMEN FINAL:\n{totalCorrectAnswers}/{totalAnswers} CORRECTAS\n{percentage:F1}% de Aciertos\n\n¡FELICITACIONES!";
-            feedbackText.color = Color.yellow;
-        }
+        // Ocultar el juego y mostrar el panel de estadísticas
+        if (gamePanel != null) gamePanel.SetActive(false);
+        if (estadisticasPanel != null) estadisticasPanel.SetActive(true);
+        
+        // Actualizar los textos del panel de estadísticas
+        if (totalCallsText != null)
+            totalCallsText.text = $"Llamadas totales del juego: {totalAnswers}";
+        
+        if (correctAnswersText != null)
+            correctAnswersText.text = $"Sugerencias correctas: {totalCorrectAnswers}";
+        
+        if (wrongAnswersText != null)
+            wrongAnswersText.text = $"Sugerencias incorrectas: {wrongAnswers}";
+        
+        if (scoreText != null)
+            scoreText.text = $"Puntuación: {percentage:F0}%";
     }
 
     // --- Reloj Digital ---
