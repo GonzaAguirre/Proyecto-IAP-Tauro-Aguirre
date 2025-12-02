@@ -156,7 +156,7 @@
       "correctPestID": "pest_009",
       "day": 2,
       "callType": "Consejo",
-      "audio": "Audio/mirtha_audio/mirtha_call"
+      "audio": "Audio/mirta_audio/mirta_call"
     },
     {
       "id": "call_003",
@@ -451,7 +451,7 @@
 {
       "id": "call_extra_weird_01",
       "callerName": "???",
-      "callerImageURL": "Imagenes/ImagenesLlamadas/static",
+      "callerImageURL": "Imagenes/ImagenesLlamadas/turbio",
       "message": "... No mires por la ventana... la luz roja no es un auto... ya saben que estás atendiendo...",
       "correctPestID": "",
       "day": 3,
