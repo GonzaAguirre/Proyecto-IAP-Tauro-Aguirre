@@ -1,6 +1,5 @@
 # Configuración general
 * text=auto eol=lf
-
 # Tratar estos archivos de Unity como texto y forzar finales LF
 *.cs text
 *.js text
@@ -11,12 +10,10 @@
 *.md text
 *.shader text
 *.compute text
-
 # Tratar estos como texto, pero dejar que Git decida el final de línea
 *.bat text
 *.cmd text
 *.sh text
-
 # Forzar que los archivos de proyecto y assets usen LF
 *.meta text
 *.unity text
@@ -25,7 +22,6 @@
 *.mat text
 *.preset text
 *.inputactions text
-
 # Marcar archivos binarios (para que Git no intente "arreglar" sus finales de línea)
 *.png binary
 *.jpg binary
@@ -45,7 +41,7 @@
 *.3ds binary
 *.dae binary
 *.dll binary
-*.exe binary
+*.exe filter=lfs diff=lfs merge=lfs -text
 *.so binary
 *.bundle binary
 *.a binary
@@ -59,10 +55,10 @@
 *.bin binary
 *.assetbundle binary
 *.unitypackage binary
-*.mp3 binary
+*.mp3 filter=lfs diff=lfs merge=lfs -text
 *.ogg binary
-*.wav binary
-*.mp4 binary
+*.wav filter=lfs diff=lfs merge=lfs -text
+*.mp4 filter=lfs diff=lfs merge=lfs -text
 *.mov binary
 *.avi binary
 *.webm binary
