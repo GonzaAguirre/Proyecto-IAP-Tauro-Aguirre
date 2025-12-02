@@ -1,0 +1,203 @@
+---
+config:
+  layout: elk
+---
+
+classDiagram
+%% --- DATA STRUCTURES ---
+    class PestData {
+        <<Serializable>>
+        +string id
+        +string name
+        +string imageURL
+        +string description
+        +string danger
+        +string solution
+        +string type
+    }
+
+    class CallData {
+        <<Serializable>>
+        +string id
+        +string callerName
+        +string callerImageURL
+        +string message
+        +string correctPestID
+        +int day
+        +string callType
+        +string audio
+    }
+
+    class GameDataCollection {
+        <<Serializable>>
+        +string themeName
+        +List~PestData~ pests
+        +List~CallData~ calls
+    }
+
+    class ArchivosPorIdioma {
+        <<Serializable>>
+        +TextAsset español
+        +TextAsset ingles
+        +TextAsset portugues
+    }
+
+    %% --- CORE LOGIC ---
+    class GamePresenter {
+        <<Logic>>
+        -IGameView _view
+        -DataManager _model
+        -int _currentDay
+        -Queue~CallData~ _todaysCalls
+        -CallData _currentCall
+        -bool _isWaitingForAnswer
+        -string _selectedPlagueID
+        +GamePresenter(IGameView view, DataManager model)
+        +StartGame()
+        -SetupDay(int day)
+        -GenerateDailyCalls(int day, int count)
+        -ProcessNextCall()
+        -HandlePlagueSelected(string plagueID)
+        -HandleSubmitAnswer()
+        -EndDay()
+    }
+
+    class DataManager {
+        <<MonoBehaviour>>
+        +TextAsset jsonFile
+        -List~PestData~ allPests
+        -List~CallData~ allCalls
+        -DataService dataService
+        +bool IsDataLoaded
+        +event Action OnDataReady
+        +Initialize()
+        +LoadLocalData(TextAsset customJsonFile)
+        +GetAllPests() 
+        +GetFirstCall() 
+        +GetPestByID(string id) 
+        +GetCallsForDay(int day)
+        +GetCallByID(string id) 
+        +RequestImage(string url, Action~Sprite~ callback)
+    }
+
+    class DataService {
+        <<Helper>>
+        +FetchJsonFromURL(string url, Action~string~ onSuccess, Action~string~ onFailure)
+        +DownloadImage(string url, Action~Sprite~ onSuccess)
+    }
+
+    class GameManager {
+        <<Plain Class>>
+        -DataManager dataManager
+        -GameView gameView
+        -GameObject panelDeJuego
+        -ArchivosPorIdioma archivosArgentina
+        -ArchivosPorIdioma archivosUrbanas
+        -ArchivosPorIdioma archivosEspacio
+        -GamePresenter presenter
+        +GameManager(DataManager dm, GameView gv, GameObject panel, ...)
+        +IniciarJuego(string tematica, string idioma)
+    }
+
+    %% --- VIEW / UI ---
+    class IGameView {
+        <<Interface>>
+        +UpdateCallerInfo(string name, string message, Sprite image)
+        +UpdateEntryInfo(string title, string desc, string danger, string solution, Sprite image)
+        +NewCallPopUp(string callerName, Sprite callerImage, string audioPath)
+        +PopulateEntriesList(List~PestData~ plagues)
+        +ShowFeedback(bool isCorrect)
+        +SetUnlockedTypes(List~string~ types)
+        +EnableSubmitButton(bool enabled)
+        +ShowWaitingScreen()
+        +HideWaitingScreen()
+        +ShowDayComplete(int day, int correct, int total)
+        +ShowGameComplete(int totalCorrect, int total)
+        +UpdateDayInfo(int day)
+        +UpdateCallCounter(int current, int total)
+        +StartCoroutine(IEnumerator routine)
+        +event Action OnSubmitAnswer
+        +event Action~string~ OnPlagueSelected
+        +event Action OnCallAnswered
+    }
+
+    class GameView {
+        <<MonoBehaviour>>
+        -EntriesListView entriesListView
+        -NewCallPopupView popupView
+        -GamePresenter presenter
+        -Start()
+        +PopulateEntriesList(List~PestData~ plagues)
+        +SetUnlockedTypes(List~string~ types)
+        +NewCallPopUp(string callerName, Sprite callerImage, string audioPath)
+        -HandleCallAnswered()
+        +UpdateCallerInfo(string name, string message, Sprite image)
+        +UpdateEntryInfo(string title, string desc, string danger, string solution, Sprite image)
+        +ShowFeedback(bool isCorrect)
+        -PlayCallAudio(string audioPath)
+        +EnableSubmitButton(bool enabled)
+        +ShowDayComplete(int day, int correct, int total)
+        +ShowGameComplete(int totalCorrect, int total)
+    }
+
+    class EntriesListView {
+        <<MonoBehaviour>>
+        -List~string~ unlockedTypes
+        +event Action~string~ OnPlagueClicked
+        +SetUnlockedTypes(List~string~ types)
+        +PopulateList(List~PestData~ plagues)
+    }
+
+    class NewCallPopupView {
+        <<MonoBehaviour>>
+        +event Action OnCallAnswered
+        +Show(string callerName, Sprite image)
+        -AnswerCall()
+        +Hide()
+    }
+
+    class MainMenu {
+        <<MonoBehaviour>>
+        -DataManager dataManager
+        -GameView gameView
+        -GameObject panelDeJuego
+        -ArchivosPorIdioma archivosArgentina
+        -ArchivosPorIdioma archivosUrbanas
+        -ArchivosPorIdioma archivosEspacio
+        -GameManager gameManager
+        -Start()
+        -IniciarConSeleccion()
+    }
+
+    %% --- RELATIONSHIPS ---
+
+    %% Inheritance / Implementation
+    GameView ..|> IGameView : Implements
+
+    %% Composition / Aggregation
+    GameDataCollection *-- PestData : Contains List
+    GameDataCollection *-- CallData : Contains List
+
+    %% Dependencies & Associations
+    MainMenu --> GameManager : Creates & Initializes
+    MainMenu --> DataManager : References
+    MainMenu --> GameView : References
+    
+    GameManager --> DataManager : Passes to Presenter
+    GameManager --> GameView : Passes to Presenter
+    GameManager --> GamePresenter : Creates & Owns
+    GameManager ..> ArchivosPorIdioma : Uses
+
+    GamePresenter --> IGameView : Controls via Interface
+    GamePresenter --> DataManager : Fetches Data
+    GamePresenter ..> PestData : Uses
+    GamePresenter ..> CallData : Uses
+
+    DataManager --> DataService : Uses for Downloads
+    DataManager ..> GameDataCollection : Deserializes
+
+    GameView --> GamePresenter : Has Field (Unused/Legacy)
+    GameView *-- EntriesListView : Manages
+    GameView *-- NewCallPopupView : Manages
+
+    EntriesListView ..> PestData : Displays
