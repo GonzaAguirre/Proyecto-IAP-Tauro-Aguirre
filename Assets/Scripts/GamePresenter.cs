@@ -185,31 +185,45 @@ public class GamePresenter
             _view.UpdateCallCounter(_currentCallNumber, _totalCallsInDay);
         }
         
-        // Pedir imagen (si es URL o local, el DataManager lo resuelve)
-        _model.RequestImage(_currentCall.callerImageURL, (sprite) => 
+        // Verificar modo Toons para imágenes
+        if (GameManager.IsToonsMode)
         {
-            // 1. PRIMERO actualizamos los datos (mientras sigue oculto)
-            _view.NewCallPopUp(_currentCall.callerName, sprite, _currentCall.audio);
-            _view.UpdateCallerInfo(_currentCall.callerName, _currentCall.message, sprite);
-            
-            // 2. LUEGO mostramos el juego (ya actualizado)
-            _view.HideWaitingScreen();
-            
-            // Diferenciar entre llamadas de Consejo y Especiales
-            if (_currentCall.callType == "Consejo")
+            // Modo Toons: No cargar imagen, usar null o default
+            SetupCallUI(null);
+        }
+        else
+        {
+            // Pedir imagen (si es URL o local, el DataManager lo resuelve)
+            _model.RequestImage(_currentCall.callerImageURL, (sprite) => 
             {
-                // Llamada normal - esperar respuesta del jugador
-                _isWaitingForAnswer = true;
-                _view.EnableSubmitButton(true);
-            }
-            else
-            {
-                // Llamada especial (Extra o Confirmación) - auto-cerrar
-                _isWaitingForAnswer = false;
-                _view.EnableSubmitButton(false);
-                _view.StartCoroutine(AutoCloseSpecialCall());
-            }
-        });
+                SetupCallUI(sprite);
+            });
+        }
+    }
+
+    private void SetupCallUI(Sprite sprite)
+    {
+        // 1. PRIMERO actualizamos los datos (mientras sigue oculto)
+        _view.NewCallPopUp(_currentCall.callerName, sprite, _currentCall.audio);
+        _view.UpdateCallerInfo(_currentCall.callerName, _currentCall.message, sprite);
+        
+        // 2. LUEGO mostramos el juego (ya actualizado)
+        _view.HideWaitingScreen();
+        
+        // Diferenciar entre llamadas de Consejo y Especiales
+        if (_currentCall.callType == "Consejo")
+        {
+            // Llamada normal - esperar respuesta del jugador
+            _isWaitingForAnswer = true;
+            _view.EnableSubmitButton(true);
+        }
+        else
+        {
+            // Llamada especial (Extra o Confirmación) - auto-cerrar
+            _isWaitingForAnswer = false;
+            _view.EnableSubmitButton(false);
+            _view.StartCoroutine(AutoCloseSpecialCall());
+        }
     }
 
     // El usuario seleccionó una plaga en la lista
@@ -220,10 +234,17 @@ public class GamePresenter
         var pest = _model.GetPestByID(plagueID);
         
         // Cargar imagen de la plaga
-        _model.RequestImage(pest.imageURL, (sprite) =>
+        if (GameManager.IsToonsMode)
         {
-            _view.UpdateEntryInfo(pest.name, pest.description, pest.danger, pest.solution, sprite);
-        });
+            _view.UpdateEntryInfo(pest.name, pest.description, pest.danger, pest.solution, null);
+        }
+        else
+        {
+            _model.RequestImage(pest.imageURL, (sprite) =>
+            {
+                _view.UpdateEntryInfo(pest.name, pest.description, pest.danger, pest.solution, sprite);
+            });
+        }
     }
 
     // El usuario presionó "Submit Answer"

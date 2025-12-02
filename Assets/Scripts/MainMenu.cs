@@ -19,7 +19,6 @@ public class MainMenu : MonoBehaviour
     [Header("Bases de Datos (Temáticas + Idiomas)")]
     [SerializeField] private ArchivosPorIdioma archivosArgentina;
     [SerializeField] private ArchivosPorIdioma archivosUrbanas;
-    [SerializeField] private ArchivosPorIdioma archivosEspacio;
     private GamePresenter presenter;
     
     [Header("Referencias")]
@@ -30,7 +29,6 @@ public class MainMenu : MonoBehaviour
     [Header("Toggles Temática")]
     public Toggle toggleArgentina;
     public Toggle toggleUrbanas;
-    public Toggle toggleEspacio;
 
     [Header("Toggles Idioma")]
     public Toggle toggleES;
@@ -47,7 +45,6 @@ public class MainMenu : MonoBehaviour
         // 1. Detectar Temática
         string tematicaElegida = "Argentina";
         if (toggleUrbanas.isOn) tematicaElegida = "Urbana";
-        if (toggleEspacio.isOn) tematicaElegida = "Espacio";
 
         // 2. Detectar Idioma (Por ahora solo pasamos el dato)
         string idiomaElegido = "ES";
@@ -55,7 +52,7 @@ public class MainMenu : MonoBehaviour
         if (togglePT.isOn) idiomaElegido = "PT";
 
         // 3. Iniciar GameManager
-        gameManager = new GameManager(dataManager, gameView, panelDeJuego, archivosArgentina, archivosUrbanas, archivosEspacio);
+        gameManager = new GameManager(dataManager, gameView, panelDeJuego, archivosArgentina, archivosUrbanas);
         
         Debug.Log($"Iniciando: {tematicaElegida} en {idiomaElegido}");
 

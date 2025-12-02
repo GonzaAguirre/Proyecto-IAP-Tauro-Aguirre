@@ -1,0 +1,462 @@
+{
+  "themeName": "Argentine Legends & Pests",
+  "pests": [
+    {
+      "id": "pest_001",
+      "name": "Kitchen Cockroach",
+      "imageURL": "Imagenes/imagenesPlagas/cucaracha",
+      "description": "The classic urban invader. Brown, fast, and hides in damp places.",
+      "danger": "Contaminates food and is disgusting. If it flies, it causes general panic.",
+      "solution": "Aerosol insecticide and a grandma's slipper.",
+      "type": "Normal"
+    },
+    {
+      "id": "pest_002",
+      "name": "Delta Mosquito",
+      "imageURL": "Imagenes/imagenesPlagas/mosquito",
+      "description": "Flying insect that emits an unbearable buzz when trying to sleep.",
+      "danger": "Transmits Dengue and ruins the BBQ.",
+      "solution": "Coils, repellent, and emptying water containers.",
+      "type": "Normal"
+    },
+    {
+      "id": "pest_003",
+      "name": "Suburban Mouse",
+      "imageURL": "Imagenes/imagenesPlagas/raton",
+      "description": "Small grey rodent. Leaves circular droppings and gnaws on power cables.",
+      "danger": "Can transmit Hantavirus and eat your savings.",
+      "solution": "Glue traps or adopting a stray cat.",
+      "type": "Normal"
+    },
+    {
+      "id": "pest_004",
+      "name": "Pruning Ant",
+      "imageURL": "Imagenes/imagenesPlagas/hormiga",
+      "description": "Black ants walking in single file carrying leaves.",
+      "danger": "They leave the rose bush bare in one night.",
+      "solution": "Broken rice or granular bait near the anthill.",
+      "type": "Normal"
+    },
+    {
+      "id": "pest_005",
+      "name": "Kissing Bug (Vinchuca)",
+      "imageURL": "Imagenes/imagenesPlagas/vinchuca",
+      "description": "Large bug with yellow or orange stripes on the side.",
+      "danger": "Transmits Chagas disease. Very dangerous.",
+      "solution": "Do not squash (spreads the parasite). Capture in a jar and call professional fumigation.",
+      "type": "Normal"
+    },
+    {
+      "id": "pest_006",
+      "name": "The Pombero",
+      "imageURL": "Imagenes/imagenesPlagas/pombero",
+      "description": "Goblin from the littoral, short and hairy. Announces himself with a sharp whistle.",
+      "danger": "Kidnaps children at siesta time and impregnates single women. Touches people with cold hands.",
+      "solution": "Leave offerings of tobacco, honey, and cane liquor outside the house to befriend him.",
+      "type": "Extraño"
+    },
+    {
+      "id": "pest_007",
+      "name": "Mate Goblin",
+      "imageURL": "Imagenes/imagenesPlagas/duende",
+      "description": "Small invisible being that lives in the cupboards.",
+      "danger": "Washes the mate instantly, hides the bombilla (straw), and spills the sugar.",
+      "solution": "Leave an open packet of cookies as a distraction.",
+      "type": "Extraño"
+    },
+    {
+      "id": "pest_008",
+      "name": "The Chupacabras",
+      "imageURL": "Imagenes/imagenesPlagas/chupacabras",
+      "description": "Creature with spines on its back and glowing red eyes.",
+      "danger": "Attacks livestock and pets leaving them without a drop of blood.",
+      "solution": "Install electric fences and powerful lights in the yard.",
+      "type": "Especial"
+    },
+    {
+      "id": "pest_009",
+      "name": "Bad Light (Luz Mala)",
+      "imageURL": "Imagenes/imagenesPlagas/luzmala",
+      "description": "Phosphorescent lights floating low to the ground in the fields at night.",
+      "danger": "They represent lost souls. If the light is red, it is a dangerous soul.",
+      "solution": "Do not look at the light, bite a knife sheath, and pray.",
+      "type": "Extraño"
+    },
+    {
+      "id": "pest_010",
+      "name": "The Lobizón (Werewolf)",
+      "imageURL": "Imagenes/imagenesPlagas/lobizon",
+      "description": "Seventh male son who transforms into a giant black dog during the full moon.",
+      "danger": "Attacks fiercely if crossed on your path. Howls at the moon.",
+      "solution": "Only stopped by a blessed bullet, but better to stay locked up until dawn.",
+      "type": "Especial"
+    },
+    {
+      "id": "pest_011",
+      "name": "La Llorona (The Weeping Woman)",
+      "imageURL": "Imagenes/imagenesPlagas/llorona",
+      "description": "Specter of a woman dressed in white wandering riverbanks crying for her lost children.",
+      "danger": "Her cry paralyzes with terror. If you look her in the eyes, she can steal your soul or take you into the water.",
+      "solution": "Never look at her. Pray and run in the opposite direction of the river. Wear underwear inside out.",
+      "type": "Especial"
+    },
+    {
+      "id": "pest_012",
+      "name": "Garden Gnome",
+      "imageURL": "Imagenes/imagenesPlagas/enano",
+      "description": "Small ceramic statues that come to life at night. They are mischievous and vengeful if mistreated.",
+      "danger": "They can break things, hide keys, or attack ankles in groups. Very annoying.",
+      "solution": "Smash them with a hammer before nightfall or gift them to someone you dislike.",
+      "type": "Extraño"
+    },
+    {
+      "id": "pest_013",
+      "name": "The Nahuelito",
+      "imageURL": "Imagenes/imagenesPlagas/nahuelito",
+      "description": "Prehistoric creature inhabiting Lake Nahuel Huapi. Similar to a plesiosaur, with a long neck and humps.",
+      "danger": "Can capsize boats and drag swimmers to the bottom of the lake. Causes sudden giant waves.",
+      "solution": "Do not sail on foggy days. If you see it, make no noise and move slowly towards the shore.",
+      "type": "Especial"
+    },
+    {
+      "id": "pest_014",
+      "name": "The Familiar",
+      "imageURL": "Imagenes/imagenesPlagas/familiar",
+      "description": "Huge black dog with eyes of fire, a manifestation of the devil. Protects sugar mills in exchange for souls.",
+      "danger": "Feeds on solitary workers. Its bark is an omen of death. Immune to bullets.",
+      "solution": "Carry a blessed rosary and a dagger with a cross on the hilt. Do not walk alone in the cane fields at night.",
+      "type": "Especial"
+    },
+    {
+      "id": "pest_015",
+      "name": "The Yasy Yateré",
+      "imageURL": "Imagenes/imagenesPlagas/yasy",
+      "description": "Beautiful blonde goblin that appears at siesta time. Carries a golden staff and attracts children.",
+      "danger": "Kidnaps children to play, feeds them honey and fruit, but then abandons them far away or drives them crazy.",
+      "solution": "Do not sleep siesta outside. If he appears, steal his golden staff so he loses his powers.",
+      "type": "Extraño"
+    }
+  ],
+  "calls": [
+    {
+      "id": "call_001",
+      "callerName": "Leo M.",
+      "callerImageURL": "Imagenes/ImagenesLlamadas/messi",
+      "message": "Hi, how's it going? Leo speaking. Look, I'm here in the yard with the kids and I hear a weird whistling... Anto says she saw something short and hairy near the grill. What do you think it is?",
+      "correctPestID": "pest_006",
+      "day": 2,
+      "callType": "Consejo",
+      "audio": "Audio/messi_audio/messi_call"
+    },
+    {
+      "id": "call_002",
+      "callerName": "Mirtha L.",
+      "callerImageURL": "Imagenes/ImagenesLlamadas/mirtha",
+      "message": "Good evening. It's me, Chiqui. I'm at my estate and I see some lights floating way out there, near the fence. They aren't flashlights, darling, they float. It gives me terrible fright, dammit shit.",
+      "correctPestID": "pest_009",
+      "day": 2,
+      "callType": "Consejo",
+      "audio": "Audio/mirta_audio/mirta_call"
+    },
+    {
+      "id": "call_003",
+      "callerName": "Guillermo F.",
+      "callerImageURL": "Imagenes/ImagenesLlamadas/francella",
+      "message": "Beautiful morning, isn't it! Well, not so much. I went to see my rose bushes and they are bare. Not a single leaf left. I saw a black path on the ground that moves. Can you help me?",
+      "correctPestID": "pest_004",
+      "day": 1,
+      "callType": "Consejo",
+      "audio": "Audio/francella_audio/francella_call"
+    },
+    {
+      "id": "call_011",
+      "callerName": "Darío B.",
+      "callerImageURL": "Imagenes/ImagenesLlamadas/dario",
+      "message": "Weird! This is weird! I found a bug on the wall, it has orange stripes on the side. My grandma says it's dangerous for the heart. Tell me what it is or I'll have an attack!",
+      "correctPestID": "pest_005",
+      "day": 1,
+      "callType": "Consejo",
+      "audio": "Audio/dario_audio/dario_call"
+    },
+    {
+      "id": "call_013",
+      "callerName": "Tini",
+      "callerImageURL": "Imagenes/ImagenesLlamadas/tini",
+      "message": "Baaabe, hello, yeah? Like... I'm in a total crisis. I went to the kitchen for water and a brown bug ran out super fast. Like, literally, I almost died of disgust! I mean, it went under the fridge and won't come out. Get it out now, it gives me so much anxiety!",
+      "correctPestID": "pest_001",
+      "day": 1,
+      "callType": "Consejo",
+      "audio": "Audio/tini_audio/tini_call"
+    },
+    {
+      "id": "call_101",
+      "callerName": "Nosy Neighbor",
+      "callerImageURL": "Imagenes/ImagenesLlamadas/vecina",
+      "message": "Oh honey, listen to me. My whole patio is full of mosquitoes. It's unbearable. What do I do?",
+      "correctPestID": "pest_002",
+      "day": 1,
+      "callType": "Consejo",
+      "audio": "Audio/chusma_audio/chusma_call"
+    },
+    {
+      "id": "call_102",
+      "callerName": "Butcher Tito",
+      "callerImageURL": "Imagenes/ImagenesLlamadas/tito",
+      "message": "Hey kid, I got something in the warehouse. Don't know what it is but they're furry. They're eating my salami. Send me something urgent.",
+      "correctPestID": "pest_003",
+      "day": 1,
+      "callType": "Consejo",
+      "audio": "Audio/tito_audio/tito_call"
+    },
+    {
+      "id": "call_004",
+      "callerName": "Javier M.",
+      "callerImageURL": "Imagenes/ImagenesLlamadas/milei",
+      "message": "I mean, let's say... I have a stock problem. Leaves from my writings are disappearing. I find little pieces of paper and small black balls. It's an attack on private property!",
+      "correctPestID": "pest_003",
+      "day": 1,
+      "callType": "Consejo",
+      "audio": "Audio/milei_audio/milei_call"
+    },
+    {
+      "id": "call_005",
+      "callerName": "Susana G.",
+      "callerImageURL": "Imagenes/ImagenesLlamadas/susana",
+      "message": "Hello my love! Listen, there's a huge dog in the garden. But huge! And it walks on two legs, I swear. I thought it was a dinosaur... Alive? I don't know, it's howling.",
+      "correctPestID": "pest_010",
+      "day": 3,
+      "callType": "Consejo",
+      "audio": "Audio/susana_audio/susana_call"
+    },
+    {
+      "id": "call_006",
+      "callerName": "Moria C.",
+      "callerImageURL": "Imagenes/ImagenesLlamadas/moria",
+      "message": "Hello loves. I have a discount poltergeist in the kitchen. I pour a mate and two seconds later it's washed out. The set shuts up, but the sugar disappears! I am such a 'vistim'.",
+      "correctPestID": "pest_007",
+      "day": 2,
+      "callType": "Consejo",
+      "audio": "Audio/moria_audio/moria_call"
+    },
+    {
+      "id": "call_007",
+      "callerName": "Diego (Spirit)",
+      "callerImageURL": "Imagenes/ImagenesLlamadas/maradona",
+      "message": "Eeeeehhhh... hello master. Look, they won't let me sleep siesta. There's a buzzing... zzzzz... that's driving me crazy. They bit my whole ankle. Do something, champ.",
+      "correctPestID": "pest_002",
+      "day": 1,
+      "callType": "Consejo",
+      "audio": "Audio/maradona_audio/maradona_call"
+    },
+    {
+      "id": "call_201",
+      "callerName": "Grandma Norma",
+      "callerImageURL": "Imagenes/ImagenesLlamadas/norma",
+      "message": "Sonny, there is someone in my garden. They move my pots around and I hear mocking giggles. What a cheeky one!",
+      "correctPestID": "pest_012",
+      "day": 2,
+      "callType": "Consejo",
+      "audio": "Audio/norma_audio/norma_call"
+    },
+    {
+      "id": "call_202",
+      "callerName": "Drunk Uncle",
+      "callerImageURL": "Imagenes/ImagenesLlamadas/tio",
+      "message": "Hic! I saw a little blonde man during siesta. He asked me for an apple and had a golden staff. Should I give it to him?",
+      "correctPestID": "pest_015",
+      "day": 2,
+      "callType": "Consejo",
+      "audio": "Audio/borracho_audio/borracho_call"
+    },
+    {
+      "id": "call_203",
+      "callerName": "Farmer Juan",
+      "callerImageURL": "Imagenes/ImagenesLlamadas/juan",
+      "message": "Hey friend, I saw some weird lights in the field. They float over the bones of dead cows. They say they bring misfortune. What do I do?",
+      "correctPestID": "pest_009",
+      "day": 2,
+      "callType": "Consejo",
+      "audio": "Audio/campesino_audio/campesino_call"
+    },
+    {
+      "id": "call_204",
+      "callerName": "Lost Tourist",
+      "callerImageURL": "Imagenes/ImagenesLlamadas/turista",
+      "message": "Hi, I'm in the forest and I hear whistling. I feel like someone is touching my shoulder but no one is there. I'm scared.",
+      "correctPestID": "pest_006",
+      "day": 2,
+      "callType": "Consejo",
+      "audio": "Audio/turista_audio/turista_call"
+    },
+    {
+      "id": "call_008",
+      "callerName": "Ricardo F.",
+      "callerImageURL": "Imagenes/ImagenesLlamadas/fort",
+      "message": "Stop it guys! Mom! You cut all the liiight... Oh no, wait. I see red eyes in the yard and my cats are scared. Miaaami! Do something with that spiny thing!",
+      "correctPestID": "pest_008",
+      "day": 3,
+      "callType": "Consejo",
+      "audio": "Audio/fort_audio/fort_call"
+    },
+    {
+      "id": "call_009",
+      "callerName": "Pity A.",
+      "callerImageURL": "Imagenes/ImagenesLlamadas/pity",
+      "message": "Dude, that garden gnome... is looking at me funny. Yesterday he was looking north and today he looks south. I didn't touch him. He moves on his own, I swear I didn't take anything weird.",
+      "correctPestID": "pest_012",
+      "day": 2,
+      "callType": "Consejo",
+      "audio": "Audio/pity_audio/pity_call"
+    },
+    {
+      "id": "call_010",
+      "callerName": "The Scaloneta",
+      "callerImageURL": "Imagenes/ImagenesLlamadas/scaloni",
+      "message": "We are concentrating near the river and a woman crying can be heard. She won't let the players rest. She screams 'my chiiildren'. Is this a jinx?",
+      "correctPestID": "pest_011",
+      "day": 3,
+      "callType": "Consejo",
+      "audio": "Audio/scaloni_audio/scaloni_call"
+    },
+    {
+      "id": "call_301",
+      "callerName": "Old Fisherman",
+      "callerImageURL": "Imagenes/ImagenesLlamadas/pescador",
+      "message": "In the lake, I saw a giant shadow underwater. It looked like a snake but with humps. It almost capsized my boat! Do I cast the line or run?",
+      "correctPestID": "pest_013",
+      "day": 3,
+      "callType": "Consejo",
+      "audio": "Audio/pescador_audio/pescador_call"
+    },
+    {
+      "id": "call_302",
+      "callerName": "Foreman",
+      "callerImageURL": "Imagenes/ImagenesLlamadas/capataz",
+      "message": "Boss, that black dog is loose again. But it's not a normal dog, it has eyes of fire and drags chains. The workers don't want to go out.",
+      "correctPestID": "pest_014",
+      "day": 3,
+      "callType": "Consejo",
+      "audio": "Audio/capataz_audio/capataz_call"
+    },
+    {
+      "id": "call_303",
+      "callerName": "Scared Neighbor",
+      "callerImageURL": "Imagenes/ImagenesLlamadas/vecina2",
+      "message": "Help! There is a hairy beast in my patio. It walks on four legs but looks like a man.",
+      "correctPestID": "pest_010",
+      "day": 3,
+      "callType": "Consejo",
+      "audio": "Audio/asustada_audio/asustada_call"
+    },
+    {
+      "id": "call_304",
+      "callerName": "Farm Boy",
+      "callerImageURL": "Imagenes/ImagenesLlamadas/chico",
+      "message": "Sir, I found my goats dead. They are all dry, as if their blood was sucked out. They have two little holes in the neck.",
+      "correctPestID": "pest_008",
+      "day": 3,
+      "callType": "Consejo",
+      "audio": "Audio/chico_audio/chico_call"
+    },
+    {
+      "id": "call_305",
+      "callerName": "Night Watchman",
+      "callerImageURL": "Imagenes/ImagenesLlamadas/sereno",
+      "message": "I'm on guard at the river and a terrible wail is heard. A woman dressed in white looking for something... or someone. It freezes my blood.",
+      "correctPestID": "pest_011",
+      "day": 3,
+      "callType": "Consejo",
+      "audio": "Audio/sereno_audio/sereno_call"
+    },
+    {
+      "id": "call_306",
+      "callerName": "Tourist in Bariloche",
+      "callerImageURL": "Imagenes/ImagenesLlamadas/turista2",
+      "message": "I was taking photos of the lake and saw something come out of the water! It was huge, with a long neck. It's not a log, it was moving!",
+      "correctPestID": "pest_013",
+      "day": 3,
+      "callType": "Consejo",
+      "audio": "Audio/turista2_audio/turista2_call"
+    },
+    {
+      "id": "call_307",
+      "callerName": "Rural Worker",
+      "callerImageURL": "Imagenes/ImagenesLlamadas/peon",
+      "message": "The boss's dog looked at me ugly and I got goosebumps. They say if you look into its eyes you die. I'm not going back to the shed.",
+      "correctPestID": "pest_014",
+      "day": 3,
+      "callType": "Consejo",
+      "audio": "Audio/peon_audio/peon_call"
+    },
+    {
+      "id": "call_conf_01",
+      "callerName": "Guillermo F.",
+      "callerImageURL": "Imagenes/ImagenesLlamadas/francella",
+      "message": "A phenomenon! The rice worked great. Now yes, now all the ants are there still. Thanks, you saved my rose bush.",
+      "correctPestID": "",
+      "day": 2,
+      "callType": "Confirmacion",
+      "audio": "Audio/francella_audio/francella_solved"
+    },
+    {
+      "id": "call_conf_02",
+      "callerName": "Tini",
+      "callerImageURL": "Imagenes/ImagenesLlamadas/tini",
+      "message": "I mean, the bug died, yeah. But the smell of poison won't come out of my clothes. Like... I had to throw everything away. Oh, what stress! Anyway thanks, I guess.",
+      "correctPestID": "",
+      "day": 2,
+      "callType": "Confirmacion",
+      "audio": "Audio/tini_audio/tini_solved"
+    },
+    {
+      "id": "call_conf_03",
+      "callerName": "Leo M.",
+      "callerImageURL": "Imagenes/ImagenesLlamadas/messi",
+      "message": "Che master, thanks for the tip. We left the tobacco outside and this morning the Pombero was gone. You're a phenomenon. Greetings to the family and I'll call you next time.",
+      "correctPestID": "",
+      "day": 3,
+      "callType": "Confirmacion",
+      "audio": "Audio/messi_audio/messi_solved"
+    },
+    {
+      "id": "call_extra_01",
+      "callerName": "Nosy Neighbor",
+      "callerImageURL": "Imagenes/ImagenesLlamadas/vecina",
+      "message": "No son, no no no no, that wasn't it!",
+      "correctPestID": "",
+      "day": 2,
+      "callType": "Extra",
+      "audio": "Audio/chusma_audio/chusma_not solved"
+    },
+    {
+      "id": "call_extra_02",
+      "callerName": "Scared Neighbor",
+      "callerImageURL": "Imagenes/ImagenesLlamadas/vecina2",
+      "message": "Close everything! They say there is a full moon tonight and the Gomez's seventh son is acting weird. Just in case, I'm not going out.",
+      "correctPestID": "",
+      "day": 3,
+      "callType": "Extra",
+      "audio": "Audio/asustada_audio/asustada_not solved"
+    },
+    {
+      "id": "call_conf_neg_01",
+      "callerName": "Javier M.",
+      "callerImageURL": "Imagenes/ImagenesLlamadas/milei",
+      "message": "This is a total disaster! You told me traps and now the rodent escaped and is eating my papers. It's an attack on intellectual property! A sham! The solution is worse than the disease.",
+      "correctPestID": "",
+      "day": 2,
+      "callType": "Confirmacion",
+      "audio": "Audio/milei_audio/milei_not solved"
+    },
+    {
+      "id": "call_extra_weird_01",
+      "callerName": "???",
+      "callerImageURL": "Imagenes/ImagenesLlamadas/turbio",
+      "message": "... Don't look out the window... the red light is not a car... they already know you are answering...",
+      "correctPestID": "",
+      "day": 3,
+      "callType": "Extra",
+      "audio": "Audio/turbio_audio/turbio"
+    }
+  ]
+}

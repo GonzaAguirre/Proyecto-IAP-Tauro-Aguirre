@@ -1,0 +1,462 @@
+{
+  "themeName": "Leyendas y Plagas Argentinas",
+  "pests": [
+    {
+      "id": "pest_001",
+      "name": "Cucaracha de Cocina",
+      "imageURL": "Imagenes/imagenesPlagas/cucaracha",
+      "description": "El clásico invasor urbano. Marrón, rápida y se esconde en lugares húmedos.",
+      "danger": "Contamina la comida y da asco. Si vuela, causa pánico general.",
+      "solution": "Insecticida en aerosol y la chancleta de una abuela.",
+      "type": "Normal"
+    },
+    {
+      "id": "pest_002",
+      "name": "Mosquito del Delta",
+      "imageURL": "Imagenes/imagenesPlagas/mosquito",
+      "description": "Insecto volador que emite un zumbido insoportable al intentar dormir.",
+      "danger": "Transmite Dengue y te arruina el asado.",
+      "solution": "Espirales, repelente y vaciar los tachos con agua.",
+      "type": "Normal"
+    },
+    {
+      "id": "pest_003",
+      "name": "Ratón de Conurbano",
+      "imageURL": "Imagenes/imagenesPlagas/raton",
+      "description": "Pequeño roedor gris. Deja excrementos circulares y roe cables de luz.",
+      "danger": "Puede transmitir Hantavirus y comerse tus ahorros.",
+      "solution": "Trampas de pegamento o adoptar un gato callejero.",
+      "type": "Normal"
+    },
+    {
+      "id": "pest_004",
+      "name": "Hormiga Podadora",
+      "imageURL": "Imagenes/imagenesPlagas/hormiga",
+      "description": "Hormigas negras que caminan en fila india llevándose hojas.",
+      "danger": "Te dejan el rosal pelado en una noche.",
+      "solution": "Arroz partido o cebo granulado cerca del hormiguero.",
+      "type": "Normal"
+    },
+    {
+      "id": "pest_005",
+      "name": "Vinchuca",
+      "imageURL": "Imagenes/imagenesPlagas/vinchuca",
+      "description": "Chinche grande con franjas amarillas o naranjas en el costado.",
+      "danger": "Transmite el Mal de Chagas. Muy peligroso.",
+      "solution": "No aplastar (esparce el parásito). Capturar en frasco y llamar a fumigación profesional.",
+      "type": "Normal"
+    },
+    {
+      "id": "pest_006",
+      "name": "El Pombero",
+      "imageURL": "Imagenes/imagenesPlagas/pombero",
+      "description": "Duende del litoral, petiso y peludo. Se anuncia con un silbido agudo.",
+      "danger": "Secuestra niños a la hora de la siesta y embaraza mujeres solteras. Toca a la gente con sus manos frías.",
+      "solution": "Dejarle ofrendas de tabaco, miel y caña fuera de la casa para hacerse amigo.",
+      "type": "Extraño"
+    },
+    {
+      "id": "pest_007",
+      "name": "Duende del Mate",
+      "imageURL": "Imagenes/imagenesPlagas/duende",
+      "description": "Pequeño ser invisible que habita en las alacenas.",
+      "danger": "Te lava el mate instantáneamente, esconde la bombilla y vuelca el azúcar.",
+      "solution": "Dejar un paquete de galletitas abierto como distracción.",
+      "type": "Extraño"
+    },
+    {
+      "id": "pest_008",
+      "name": "El Chupacabras",
+      "imageURL": "Imagenes/imagenesPlagas/chupacabras",
+      "description": "Criatura con espinas en la espalda y ojos rojos brillantes.",
+      "danger": "Ataca al ganado y a las mascotas dejándolos sin una gota de sangre.",
+      "solution": "Instalar cercas eléctricas y luces potentes en el patio.",
+      "type": "Especial"
+    },
+    {
+      "id": "pest_009",
+      "name": "Luz Mala",
+      "imageURL": "Imagenes/imagenesPlagas/luzmala",
+      "description": "Luces fosforescentes que flotan a ras del suelo en el campo durante la noche.",
+      "danger": "Representan almas en pena. Si la luz es roja, es un alma peligrosa.",
+      "solution": "No mirar la luz, morder la vaina de un cuchillo y rezar.",
+      "type": "Extraño"
+    },
+    {
+      "id": "pest_010",
+      "name": "El Lobizón",
+      "imageURL": "Imagenes/imagenesPlagas/lobizon",
+      "description": "Séptimo hijo varón que se transforma en perro negro gigante en luna llena.",
+      "danger": "Ataca ferozmente si se cruza en tu camino. Aúlla a la luna.",
+      "solution": "Solo se detiene con una bala bendecida, pero mejor quedarse encerrado hasta que amanezca.",
+      "type": "Especial"
+    },
+    {
+      "id": "pest_011",
+      "name": "La Llorona",
+      "imageURL": "Imagenes/imagenesPlagas/llorona",
+      "description": "Espectro de una mujer vestida de blanco que vaga por las orillas de los ríos llorando por sus hijos perdidos.",
+      "danger": "Su llanto paraliza de terror. Si la miras a los ojos, puede robarte el alma o llevarte con ella al agua.",
+      "solution": "No mirarla nunca. Rezar y correr en dirección contraria al río. Usar ropa interior al revés.",
+      "type": "Especial"
+    },
+    {
+      "id": "pest_012",
+      "name": "El Enano de Jardín",
+      "imageURL": "Imagenes/imagenesPlagas/enano",
+      "description": "Pequeñas estatuas de cerámica que cobran vida por la noche. Son traviesos y vengativos si se los maltrata.",
+      "danger": "Pueden romper cosas, esconder llaves o atacar en grupo a los tobillos. Son muy molestos.",
+      "solution": "Romperlos con un martillo antes de que anochezca o regalarlos a alguien que te caiga mal.",
+      "type": "Extraño"
+    },
+    {
+      "id": "pest_013",
+      "name": "El Nahuelito",
+      "imageURL": "Imagenes/imagenesPlagas/nahuelito",
+      "description": "Criatura prehistórica que habita en el lago Nahuel Huapi. Similar a un plesiosaurio, con cuello largo y jorobas.",
+      "danger": "Puede volcar botes y arrastrar nadadores al fondo del lago. Provoca olas gigantes repentinas.",
+      "solution": "No navegar en días de niebla. Si lo ves, no hagas ruido y alejate despacio hacia la orilla.",
+      "type": "Especial"
+    },
+    {
+      "id": "pest_014",
+      "name": "El Familiar",
+      "imageURL": "Imagenes/imagenesPlagas/familiar",
+      "description": "Perro negro enorme con ojos de fuego, manifestación del diablo. Protege los ingenios azucareros a cambio de almas.",
+      "danger": "Se alimenta de peones solitarios. Su ladrido es un presagio de muerte. Es inmune a las balas.",
+      "solution": "Llevar un rosario bendecido y un facón con cruz en la empuñadura. No andar solo de noche por el cañaveral.",
+      "type": "Especial"
+    },
+    {
+      "id": "pest_015",
+      "name": "El Yasy Yateré",
+      "imageURL": "Imagenes/imagenesPlagas/yasy",
+      "description": "Duende rubio y hermoso que aparece a la hora de la siesta. Lleva un bastón de oro y atrae a los niños.",
+      "danger": "Secuestra niños para jugar, los alimenta con miel y frutas, pero luego los abandona lejos o los vuelve locos.",
+      "solution": "No dormir la siesta afuera. Si aparece, quitarle el bastón de oro para que pierda sus poderes.",
+      "type": "Extraño"
+    }
+  ],
+  "calls": [
+    {
+      "id": "call_001",
+      "callerName": "Leo M.",
+      "callerImageURL": "Imagenes/ImagenesLlamadas/messi",
+      "message": "Hola, ¿qué tal? Habla Leo. Mirá, estoy acá en el patio con los nenes y escucho un silbido raro... Anto dice que vio algo petiso y peludo cerca de la parrilla. ¿Qué te parece que sea?",
+      "correctPestID": "pest_006",
+      "day": 2,
+      "callType": "Consejo",
+      "audio": "Audio/messi_audio/messi_call"
+    },
+    {
+      "id": "call_002",
+      "callerName": "Mirtha L.",
+      "callerImageURL": "Imagenes/ImagenesLlamadas/mirtha",
+      "message": "Buenas noches. Soy yo, la Chiqui. Estoy en mi estancia y veo unas luces flotando allá a lo lejos, cerca del alambrado. No son linternas, querido, flotan. Me da un miedo terrible, carajo mierda.",
+      "correctPestID": "pest_009",
+      "day": 2,
+      "callType": "Consejo",
+      "audio": "Audio/mirta_audio/mirta_call"
+    },
+    {
+      "id": "call_003",
+      "callerName": "Guillermo F.",
+      "callerImageURL": "Imagenes/ImagenesLlamadas/francella",
+      "message": "¡Hermosa mañana, verdad! Bueno, no tanto. Fui a ver mis rosales y están pelados. No quedó ni una hoja. Vi un camino negro en el piso que se mueve. ¿Me podés ayudar?",
+      "correctPestID": "pest_004",
+      "day": 1,
+      "callType": "Consejo",
+      "audio": "Audio/francella_audio/francella_call"
+    },
+    {
+      "id": "call_011",
+      "callerName": "Darío B.",
+      "callerImageURL": "Imagenes/ImagenesLlamadas/dario",
+      "message": "¡Raro! ¡Esto es raro! Encontré un bicho en la pared, tiene rayas naranjas en el costado. Mi abuela dice que es peligroso pal corazón. ¡Decime qué es o me da un algo!",
+      "correctPestID": "pest_005",
+      "day": 1,
+      "callType": "Consejo",
+      "audio": "Audio/dario_audio/dario_call"
+    },
+    {
+      "id": "call_013",
+      "callerName": "Tini",
+      "callerImageURL": "Imagenes/ImagenesLlamadas/tini",
+      "message": "Amooor, hola, ¿sí? Tipo... estoy en crisis mal. Fui a la cocina por agua y salió un bicho marrón corriendo a los re pedos. ¡Posta, casi me muero del asco! O sea, se metió abajo de la heladera y no sale. ¡Sáquenlo ya que me da mucha ansiedad!",
+      "correctPestID": "pest_001",
+      "day": 1,
+      "callType": "Consejo",
+      "audio": "Audio/tini_audio/tini_call"
+    },
+    {
+      "id": "call_101",
+      "callerName": "Vecina Chusma",
+      "callerImageURL": "Imagenes/ImagenesLlamadas/vecina",
+      "message": "Ay nene, escuchame. Tengo todo el patio lleno de mosquitos. No se puede estar. ¿Qué hago?",
+      "correctPestID": "pest_002",
+      "day": 1,
+      "callType": "Consejo",
+      "audio": "Audio/chusma_audio/chusma_call"
+    },
+    {
+      "id": "call_102",
+      "callerName": "Carnicero Tito",
+      "callerImageURL": "Imagenes/ImagenesLlamadas/tito",
+      "message": "Che pibe, tengo algo en el depósito. No se que sea pero son peludos. Se me comen el salamín. Mandame algo urgente.",
+      "correctPestID": "pest_003",
+      "day": 1,
+      "callType": "Consejo",
+      "audio": "Audio/tito_audio/tito_call"
+    },
+    {
+      "id": "call_004",
+      "callerName": "Javier M.",
+      "callerImageURL": "Imagenes/ImagenesLlamadas/milei",
+      "message": "Osea, digamos... tengo un problema de stock. Me desaparecen las hojas de mis escritos. Encuentro pedacitos de papel y unas bolitas negras chiquitas. ¡Es un ataque a la propiedad privada!",
+      "correctPestID": "pest_003",
+      "day": 1,
+      "callType": "Consejo",
+      "audio": "Audio/milei_audio/milei_call"
+    },
+    {
+      "id": "call_005",
+      "callerName": "Susana G.",
+      "callerImageURL": "Imagenes/ImagenesLlamadas/susana",
+      "message": "¡Hola mi amor! Escuchame, hay un perro enorme en el jardín. ¡Pero enorme! Y camina en dos patas, te juro. Pensé que era un dinosaurio... ¿Vivo? No sé, está aullando.",
+      "correctPestID": "pest_010",
+      "day": 3,
+      "callType": "Consejo",
+      "audio": "Audio/susana_audio/susana_call"
+    },
+    {
+      "id": "call_006",
+      "callerName": "Moria C.",
+      "callerImageURL": "Imagenes/ImagenesLlamadas/moria",
+      "message": "Hello amores. Tengo un poltergeist de outlet en la cocina. Me cebo un mate y a los dos segundos está lavado. ¡El decorado se calla, pero el azúcar desaparece! Estoy muy 'vistima'.",
+      "correctPestID": "pest_007",
+      "day": 2,
+      "callType": "Consejo",
+      "audio": "Audio/moria_audio/moria_call"
+    },
+    {
+      "id": "call_007",
+      "callerName": "Diego (Spirit)",
+      "callerImageURL": "Imagenes/ImagenesLlamadas/maradona",
+      "message": "Eeeeehhhh... hola maestro. Mirá, no me dejan dormir la siesta. Hay un zumbido... zzzzz... que me está volviendo loco. Me picaron todo el tobillo. Hacé algo, fiera.",
+      "correctPestID": "pest_002",
+      "day": 1,
+      "callType": "Consejo",
+      "audio": "Audio/maradona_audio/maradona_call"
+    },
+    {
+      "id": "call_201",
+      "callerName": "Abuela Norma",
+      "callerImageURL": "Imagenes/ImagenesLlamadas/norma",
+      "message": "Hijito, hay alguien en mi jardín. Me mueve las macetas de lugar y escucho risitas burlonas. ¡Es un atrevido!",
+      "correctPestID": "pest_012",
+      "day": 2,
+      "callType": "Consejo",
+      "audio": "Audio/norma_audio/norma_call"
+    },
+    {
+      "id": "call_202",
+      "callerName": "Tío Borracho",
+      "callerImageURL": "Imagenes/ImagenesLlamadas/tio",
+      "message": "¡Hic! Vi un hombrecito rubio en la siesta. Me pidió una manzana y tenía un bastón de oro. ¿Le doy?",
+      "correctPestID": "pest_015",
+      "day": 2,
+      "callType": "Consejo",
+      "audio": "Audio/borracho_audio/borracho_call"
+    },
+    {
+      "id": "call_203",
+      "callerName": "Campesino Juan",
+      "callerImageURL": "Imagenes/ImagenesLlamadas/juan",
+      "message": "Oiga amigo, vi unas luces raras en el campo. Flotan sobre los huesos de las vacas muertas. Dicen que traen desgracia. ¿Qué hago?",
+      "correctPestID": "pest_009",
+      "day": 2,
+      "callType": "Consejo",
+      "audio": "Audio/campesino_audio/campesino_call"
+    },
+    {
+      "id": "call_204",
+      "callerName": "Turista Perdido",
+      "callerImageURL": "Imagenes/ImagenesLlamadas/turista",
+      "message": "Hola, estoy en el bosque y escucho silbidos. Siento que alguien me toca el hombro pero no hay nadie. Tengo miedo.",
+      "correctPestID": "pest_006",
+      "day": 2,
+      "callType": "Consejo",
+      "audio": "Audio/turista_audio/turista_call"
+    },
+    {
+      "id": "call_008",
+      "callerName": "Ricardo F.",
+      "callerImageURL": "Imagenes/ImagenesLlamadas/fort",
+      "message": "¡Basta chicos! ¡Mamá! Cortaste toda la looz... Ah no, pará. Veo unos ojos rojos en el patio y mis gatos están asustados. ¡Maiameee! ¡Hagan algo con esa cosa con espinas!",
+      "correctPestID": "pest_008",
+      "day": 3,
+      "callType": "Consejo",
+      "audio": "Audio/fort_audio/fort_call"
+    },
+    {
+      "id": "call_009",
+      "callerName": "Pity A.",
+      "callerImageURL": "Imagenes/ImagenesLlamadas/pity",
+      "message": "Loco, el gnomo ese del jardín... me mira mal. Ayer estaba mirando pal norte y hoy mira pal sur. Yo no lo toqué. Se mueve solo, te juro que no consumí nada raro.",
+      "correctPestID": "pest_012",
+      "day": 2,
+      "callType": "Consejo",
+      "audio": "Audio/pity_audio/pity_call"
+    },
+    {
+      "id": "call_010",
+      "callerName": "La Scaloneta",
+      "callerImageURL": "Imagenes/ImagenesLlamadas/scaloni",
+      "message": "Estamos concentrando cerca del río y se escucha una mujer llorando. No deja descansar a los jugadores. Grita 'mis hiiijooos'. ¿Es mufa esto?",
+      "correctPestID": "pest_011",
+      "day": 3,
+      "callType": "Consejo",
+      "audio": "Audio/scaloni_audio/scaloni_call"
+    },
+    {
+      "id": "call_301",
+      "callerName": "Pescador Viejo",
+      "callerImageURL": "Imagenes/ImagenesLlamadas/pescador",
+      "message": "En el lago vi una sombra gigante bajo el agua. Parecía una serpiente pero con jorobas. ¡Casi me da vuelta el bote! ¿Tiro la caña o corro?",
+      "correctPestID": "pest_013",
+      "day": 3,
+      "callType": "Consejo",
+      "audio": "Audio/pescador_audio/pescador_call"
+    },
+    {
+      "id": "call_302",
+      "callerName": "Capataz",
+      "callerImageURL": "Imagenes/ImagenesLlamadas/capataz",
+      "message": "Patrón, el perro negro ese anda suelto otra vez. Pero no es un perro normal, tiene ojos de fuego y arrastra cadenas. Los peones no quieren salir.",
+      "correctPestID": "pest_014",
+      "day": 3,
+      "callType": "Consejo",
+      "audio": "Audio/capataz_audio/capataz_call"
+    },
+    {
+      "id": "call_303",
+      "callerName": "Vecina Asustada",
+      "callerImageURL": "Imagenes/ImagenesLlamadas/vecina2",
+      "message": "¡Ayuda! Hay una bestia peluda en mi patio. Camina en cuatro patas pero parece un hombre.",
+      "correctPestID": "pest_010",
+      "day": 3,
+      "callType": "Consejo",
+      "audio": "Audio/asustada_audio/asustada_call"
+    },
+    {
+      "id": "call_304",
+      "callerName": "Chico de Campo",
+      "callerImageURL": "Imagenes/ImagenesLlamadas/chico",
+      "message": "Señor, encontré a mis cabras muertas. Están todas secas, como si les hubieran chupado la sangre. Tienen dos agujeritos en el cuello.",
+      "correctPestID": "pest_008",
+      "day": 3,
+      "callType": "Consejo",
+      "audio": "Audio/chico_audio/chico_call"
+    },
+    {
+      "id": "call_305",
+      "callerName": "Sereno",
+      "callerImageURL": "Imagenes/ImagenesLlamadas/sereno",
+      "message": "Estoy de guardia en el río y se escucha un lamento terrible. Una mujer vestida de blanco que busca algo... o a alguien. Me hiela la sangre.",
+      "correctPestID": "pest_011",
+      "day": 3,
+      "callType": "Consejo",
+      "audio": "Audio/sereno_audio/sereno_call"
+    },
+    {
+      "id": "call_306",
+      "callerName": "Turista Bariloche",
+      "callerImageURL": "Imagenes/ImagenesLlamadas/turista2",
+      "message": "¡Estaba sacando fotos al lago y vi algo salir del agua! Era enorme, de cuello largo. ¡No es un tronco, se movía!",
+      "correctPestID": "pest_013",
+      "day": 3,
+      "callType": "Consejo",
+      "audio": "Audio/turista2_audio/turista2_call"
+    },
+    {
+      "id": "call_307",
+      "callerName": "Peón Rural",
+      "callerImageURL": "Imagenes/ImagenesLlamadas/peon",
+      "message": "El perro del patrón me miró feo y se me puso la piel de gallina. Dicen que si le mirás los ojos te morís. Yo no vuelvo al galpón.",
+      "correctPestID": "pest_014",
+      "day": 3,
+      "callType": "Consejo",
+      "audio": "Audio/peon_audio/peon_call"
+    },
+    {
+      "id": "call_conf_01",
+      "callerName": "Guillermo F.",
+      "callerImageURL": "Imagenes/ImagenesLlamadas/francella",
+      "message": "¡Un fenómeno! El arroz funcionó barbaro. Ahora sí, ahora estan todas las hormigas ahí quietitas.Gracias, me salvaste el rosal.",
+      "correctPestID": "",
+      "day": 2,
+      "callType": "Confirmacion",
+      "audio": "Audio/francella_audio/francella_solved"
+    },
+    {
+      "id": "call_conf_02",
+      "callerName": "Tini",
+      "callerImageURL": "Imagenes/ImagenesLlamadas/tini",
+      "message": "O sea, el bicho se murió, sí. Pero el olor a veneno no sale de mi ropa. Tipo... tuve que tirar todo. ¡Ay qué estrés! Igual gracias, supongo.",
+      "correctPestID": "",
+      "day": 2,
+      "callType": "Confirmacion",
+      "audio": "Audio/tini_audio/tini_solved"
+    },
+    {
+      "id": "call_conf_03",
+      "callerName": "Leo M.",
+      "callerImageURL": "Imagenes/ImagenesLlamadas/messi",
+      "message": "Che maestro, gracias por el dato. Dejamos el tabaco afuera y esta mañana el pombero ya no estaba. Un fenomeno. Saludos a la familia y la proxima te llamo.",
+      "correctPestID": "",
+      "day": 3,
+      "callType": "Confirmacion",
+      "audio": "Audio/messi_audio/messi_solved"
+    },
+    {
+      "id": "call_extra_01",
+      "callerName": "Vecina Chusma",
+      "callerImageURL": "Imagenes/ImagenesLlamadas/vecina",
+      "message": "No hijo, no no no no, ¡asi no era la cosa!",
+      "correctPestID": "",
+      "day": 2,
+      "callType": "Extra",
+      "audio": "Audio/chusma_audio/chusma_not solved"
+    },
+    {
+      "id": "call_extra_02",
+      "callerName": "Vecina Asustada",
+      "callerImageURL": "Imagenes/ImagenesLlamadas/vecina2",
+      "message": "¡Cierren todo! Dicen que esta noche hay luna llena y el séptimo hijo varón de los Gomez anda raro. Yo por las dudas no salgo.",
+      "correctPestID": "",
+      "day": 3,
+      "callType": "Extra",
+      "audio": "Audio/asustada_audio/asustada_not solved"
+    },
+{
+      "id": "call_conf_neg_01",
+      "callerName": "Javier M.",
+      "callerImageURL": "Imagenes/ImagenesLlamadas/milei",
+      "message": "¡Esto es un desastre total! Me dijiste trampas y ahora el roedor se escapo y se esta comiendo mis papers. ¡Es un ataque a la propiedad intelectual! ¡Una farsa! La solucion es peor que la enfermedad.",
+      "correctPestID": "",
+      "day": 2,
+      "callType": "Confirmacion",
+      "audio": "Audio/milei_audio/milei_not solved"
+    },
+{
+      "id": "call_extra_weird_01",
+      "callerName": "???",
+      "callerImageURL": "Imagenes/ImagenesLlamadas/turbio",
+      "message": "... No mires por la ventana... la luz roja no es un auto... ya saben que estás atendiendo...",
+      "correctPestID": "",
+      "day": 3,
+      "callType": "Extra",
+      "audio": "Audio/turbio_audio/turbio"
+    }
+  ]
+}
