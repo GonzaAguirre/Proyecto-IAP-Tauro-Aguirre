@@ -83,7 +83,8 @@ public class GamePresenter
         // 5. Actualizar información del día en la UI
         _view.UpdateDayInfo(day);
         _currentCallNumber = 0;
-        _totalCallsInDay = _todaysCalls.Count;
+        // Contar solo las llamadas de Consejo para el contador de UI
+        _totalCallsInDay = _todaysCalls.Count(c => c.callType == "Consejo");
 
         // 6. Iniciar la primera llamada
         ProcessNextCall();
@@ -96,7 +97,6 @@ public class GamePresenter
         // Obtener las llamadas del día desde el DataManager
         var calls = _model.GetCallsForDay(day);
         
-        // Validar que las llamadas correspondan a plagas desbloqueadas
         // Obtener los tipos desbloqueados para este día
         List<string> unlockedTypes = new List<string>();
         switch (day)
@@ -115,31 +115,53 @@ public class GamePresenter
                 break;
         }
         
-        // Filtrar llamadas que correspondan a plagas desbloqueadas
-        var validCalls = calls.Where(call => 
+        // Separar llamadas por tipo
+        var consejosCalls = calls.Where(call => 
         {
+            if (call.callType != "Consejo") return false;
             var pest = _model.GetPestByID(call.correctPestID);
             return pest != null && unlockedTypes.Contains(pest.type);
         }).ToList();
         
-        // Safety check: Si no hay suficientes llamadas válidas
-        if (validCalls.Count < count)
-        {
-            Debug.LogWarning($"No hay suficientes llamadas válidas para el día {day}. Se esperaban {count}, pero solo hay {validCalls.Count} disponibles.");
-            count = validCalls.Count;
-        }
-
-        // Mezclar aleatoriamente para variedad (opcional)
+        var extraCalls = calls.Where(c => c.callType == "Extra").ToList();
+        var confirmacionCalls = calls.Where(c => c.callType == "Confirmacion").ToList();
+        
+        // Mezclar aleatoriamente cada tipo
         var random = new System.Random();
-        validCalls = validCalls.OrderBy(x => random.Next()).ToList();
-
-        // Encolar las llamadas
-        foreach(var call in validCalls.Take(count))
+        consejosCalls = consejosCalls.OrderBy(x => random.Next()).ToList();
+        extraCalls = extraCalls.OrderBy(x => random.Next()).ToList();
+        confirmacionCalls = confirmacionCalls.OrderBy(x => random.Next()).ToList();
+        
+        // Tomar las llamadas de Consejo necesarias
+        var selectedConsejos = consejosCalls.Take(count).ToList();
+        
+        // Intercalar llamadas especiales de forma controlada
+        int consejoIndex = 0;
+        int extraIndex = 0;
+        int confirmacionIndex = 0;
+        
+        foreach (var consejo in selectedConsejos)
         {
-            _todaysCalls.Enqueue(call);
+            // Agregar llamada de Consejo
+            _todaysCalls.Enqueue(consejo);
+            consejoIndex++;
+            
+            // Cada 2-3 llamadas de Consejo, agregar una Extra (si hay disponibles)
+            if (consejoIndex % 3 == 0 && extraIndex < extraCalls.Count)
+            {
+                _todaysCalls.Enqueue(extraCalls[extraIndex]);
+                extraIndex++;
+            }
         }
         
-        Debug.Log($"Día {day}: {_todaysCalls.Count} llamadas encoladas.");
+        // Agregar Confirmaciones al final del día (si hay disponibles)
+        while (confirmacionIndex < confirmacionCalls.Count && confirmacionIndex < 2)
+        {
+            _todaysCalls.Enqueue(confirmacionCalls[confirmacionIndex]);
+            confirmacionIndex++;
+        }
+        
+        Debug.Log($"Día {day}: {_todaysCalls.Count} llamadas encoladas ({selectedConsejos.Count} Consejo, {extraIndex} Extra, {confirmacionIndex} Confirmación).");
     }
 
     private void ProcessNextCall()
@@ -151,36 +173,34 @@ public class GamePresenter
         }
 
         _currentCall = _todaysCalls.Dequeue();
-        _currentCallNumber++;
         
-        // Actualizar contador de llamadas en la UI
-        _view.UpdateCallCounter(_currentCallNumber, _totalCallsInDay);
+        // Solo incrementar contador para llamadas de Consejo
+        if (_currentCall.callType == "Consejo")
+        {
+            _currentCallNumber++;
+            _view.UpdateCallCounter(_currentCallNumber, _totalCallsInDay);
+        }
         
         // Pedir imagen (si es URL o local, el DataManager lo resuelve)
         _model.RequestImage(_currentCall.callerImageURL, (sprite) => 
         {
-            // Lógica de Tipos de Llamada según el enunciado
-            bool requiresAction = (_currentCall.callType == "Consejo"); // Solo consejos requieren respuesta
-            
             // Mandar datos a la vista
             _view.NewCallPopUp(_currentCall.callerName, sprite, _currentCall.audio);
             _view.UpdateCallerInfo(_currentCall.callerName, _currentCall.message, sprite);
             
-            // Configurar la vista según el tipo de llamada
-            if (requiresAction)
+            // Diferenciar entre llamadas de Consejo y Especiales
+            if (_currentCall.callType == "Consejo")
             {
-                // Llamada de Consejo: Esperar respuesta del jugador
+                // Llamada normal - esperar respuesta del jugador
                 _isWaitingForAnswer = true;
                 _view.EnableSubmitButton(true);
             }
             else
             {
-                // Llamadas de Confirmación o Extra: Se cierran automáticamente
+                // Llamada especial (Extra o Confirmación) - auto-cerrar
                 _isWaitingForAnswer = false;
                 _view.EnableSubmitButton(false);
-                
-                // Cerrar automáticamente después de unos segundos
-                _view.StartCoroutine(WaitAndNextCall());
+                _view.StartCoroutine(AutoCloseSpecialCall());
             }
         });
     }
@@ -202,9 +222,7 @@ public class GamePresenter
     // El usuario presionó "Submit Answer"
     private void HandleSubmitAnswer()
     {
-        // Solo permitir submit para llamadas de tipo "Consejo"
         if (!_isWaitingForAnswer || _currentCall == null) return;
-        if (_currentCall.callType != "Consejo") return;
 
         // Verificar si es correcta
         bool isCorrect = (_selectedPlagueID == _currentCall.correctPestID);
@@ -226,6 +244,12 @@ public class GamePresenter
     private System.Collections.IEnumerator WaitAndNextCall()
     {
         yield return new WaitForSeconds(3f); // Esperar feedback
+        ProcessNextCall();
+    }
+
+    private System.Collections.IEnumerator AutoCloseSpecialCall()
+    {
+        yield return new WaitForSeconds(10f); // 10 segundos para leer el mensaje
         ProcessNextCall();
     }
 

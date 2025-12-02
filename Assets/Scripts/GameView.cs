@@ -79,6 +79,9 @@ public class GameView : MonoBehaviour, IGameView
 
     public void NewCallPopUp(string callerName, Sprite callerImage, string audioPath)
     {
+        // Detener cualquier audio anterior
+        StopCallAudio();
+        
         submitAnswerButton.interactable = false; 
         currentAudioPath = audioPath; 
 
@@ -122,6 +125,9 @@ public class GameView : MonoBehaviour, IGameView
 
     public void ShowFeedback(bool isCorrect)
     {
+        // Detener el audio de la llamada
+        StopCallAudio();
+        
         feedbackText.gameObject.SetActive(true); 
         feedbackCanvas.gameObject.SetActive(true);
         submitAnswerButton.interactable = false;
@@ -153,6 +159,9 @@ public class GameView : MonoBehaviour, IGameView
         if (string.IsNullOrEmpty(audioPath)) return;
         if (voiceAudioSource == null) return;
 
+        // Detener cualquier audio anterior
+        StopCallAudio();
+
         string resourcePath = audioPath;
         if (System.IO.Path.HasExtension(resourcePath))
             resourcePath = resourcePath.Substring(0, resourcePath.LastIndexOf('.'));
@@ -164,6 +173,14 @@ public class GameView : MonoBehaviour, IGameView
         {
             voiceAudioSource.clip = clip;
             voiceAudioSource.Play();
+        }
+    }
+
+    private void StopCallAudio()
+    {
+        if (voiceAudioSource != null && voiceAudioSource.isPlaying)
+        {
+            voiceAudioSource.Stop();
         }
     }
 
