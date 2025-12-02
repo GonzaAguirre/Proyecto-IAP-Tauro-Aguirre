@@ -196,7 +196,7 @@
       "correctPestID": "pest_002",
       "day": 1,
       "callType": "Consejo",
-      "audio": ""
+      "audio": "Audio/chusma_audio/chusma_call"
     },
     {
       "id": "call_102",
@@ -206,7 +206,7 @@
       "correctPestID": "pest_003",
       "day": 1,
       "callType": "Consejo",
-      "audio": ""
+      "audio": "Audio/tito_audio/tito_call"
     },
     {
       "id": "call_004",
@@ -256,7 +256,7 @@
       "correctPestID": "pest_012",
       "day": 2,
       "callType": "Consejo",
-      "audio": ""
+      "audio": "Audio/norma_audio/norma_call"
     },
     {
       "id": "call_202",
@@ -266,7 +266,7 @@
       "correctPestID": "pest_015",
       "day": 2,
       "callType": "Consejo",
-      "audio": ""
+      "audio": "Audio/borracho_audio/borracho_call"
     },
     {
       "id": "call_203",
@@ -276,7 +276,7 @@
       "correctPestID": "pest_009",
       "day": 2,
       "callType": "Consejo",
-      "audio": ""
+      "audio": "Audio/campesino_audio/campesino_call"
     },
     {
       "id": "call_204",
@@ -286,7 +286,7 @@
       "correctPestID": "pest_006",
       "day": 2,
       "callType": "Consejo",
-      "audio": ""
+      "audio": "Audio/turista_audio/turista_call"
     },
     {
       "id": "call_008",
@@ -326,7 +326,7 @@
       "correctPestID": "pest_013",
       "day": 3,
       "callType": "Consejo",
-      "audio": ""
+      "audio": "Audio/pescador_audio/pescador_call"
     },
     {
       "id": "call_302",
@@ -336,7 +336,7 @@
       "correctPestID": "pest_014",
       "day": 3,
       "callType": "Consejo",
-      "audio": ""
+      "audio": "Audio/capataz_audio/capataz_call"
     },
     {
       "id": "call_303",
@@ -346,7 +346,7 @@
       "correctPestID": "pest_010",
       "day": 3,
       "callType": "Consejo",
-      "audio": ""
+      "audio": "Audio/asustada_audio/asustada_call"
     },
     {
       "id": "call_304",
@@ -356,7 +356,7 @@
       "correctPestID": "pest_008",
       "day": 3,
       "callType": "Consejo",
-      "audio": ""
+      "audio": "Audio/chico_audio/chico_call"
     },
     {
       "id": "call_305",
@@ -366,7 +366,7 @@
       "correctPestID": "pest_011",
       "day": 3,
       "callType": "Consejo",
-      "audio": ""
+      "audio": "Audio/sereno_audio/sereno_call"
     },
     {
       "id": "call_306",
@@ -376,7 +376,7 @@
       "correctPestID": "pest_013",
       "day": 3,
       "callType": "Consejo",
-      "audio": ""
+      "audio": "Audio/turista2_audio/turista2_call"
     },
     {
       "id": "call_307",
@@ -386,17 +386,17 @@
       "correctPestID": "pest_014",
       "day": 3,
       "callType": "Consejo",
-      "audio": ""
+      "audio": "Audio/peon_audio/peon_call"
     },
     {
       "id": "call_conf_01",
       "callerName": "Guillermo F.",
       "callerImageURL": "Imagenes/ImagenesLlamadas/francella",
-      "message": "¡Hermosa mañana, verdad! Ahora sí. Puse el arroz donde me dijiste y las hormigas desaparecieron. ¡Un espectáculo! Gracias pibe.",
+      "message": "¡Un fenómeno! El arroz funcionó barbaro. Ahora sí, ahora estan todas las hormigas ahí quietitas.Gracias, me salvaste el rosal.",
       "correctPestID": "",
       "day": 2,
       "callType": "Confirmacion",
-      "audio": ""
+      "audio": "Audio/francella_audio/francella_solved"
     },
     {
       "id": "call_conf_02",
@@ -406,27 +406,27 @@
       "correctPestID": "",
       "day": 2,
       "callType": "Confirmacion",
-      "audio": ""
+      "audio": "Audio/tini_audio/tini_solved"
     },
     {
       "id": "call_conf_03",
       "callerName": "Leo M.",
       "callerImageURL": "Imagenes/ImagenesLlamadas/messi",
-      "message": "Hola maestro. Che, impecable el consejo. Le dejé tabaco y miel como dijiste y el bicho no jodió más. Los nenes duermen tranquilos. Un abrazo grande.",
+      "message": "Che maestro, gracias por el dato. Dejamos el tabaco afuera y esta mañana el pombero ya no estaba. Un fenomeno. Saludos a la familia y la proxima te llamo.",
       "correctPestID": "",
       "day": 3,
       "callType": "Confirmacion",
-      "audio": ""
+      "audio": "Audio/messi_audio/messi_solved"
     },
     {
       "id": "call_extra_01",
       "callerName": "Vecina Chusma",
       "callerImageURL": "Imagenes/ImagenesLlamadas/vecina",
-      "message": "Nene, ¿vos escuchaste esos ruidos anoche? Como cadenas arrastrándose... Y no era el perro del vecino. Acá pasa algo raro, te lo digo yo.",
+      "message": "No hijo, no no no no, ¡asi no era la cosa!",
       "correctPestID": "",
       "day": 2,
       "callType": "Extra",
-      "audio": ""
+      "audio": "Audio/chusma_audio/chusma_not solved"
     },
     {
       "id": "call_extra_02",
@@ -436,27 +436,27 @@
       "correctPestID": "",
       "day": 3,
       "callType": "Extra",
-      "audio": ""
+      "audio": "Audio/asustada_audio/asustada_not solved"
     },
 {
       "id": "call_conf_neg_01",
       "callerName": "Javier M.",
       "callerImageURL": "Imagenes/ImagenesLlamadas/milei",
-      "message": "Osea, digamos... la trampa de pegamento es una falacia. El roedor se llevó el queso y me dejó una nota. ¡Es una estafa a la libertad del consumidor! Exijo una reparación.",
+      "message": "¡Esto es un desastre total! Me dijiste trampas y ahora el roedor se escapo y se esta comiendo mis papers. ¡Es un ataque a la propiedad intelectual! ¡Una farsa! La solucion es peor que la enfermedad.",
       "correctPestID": "",
       "day": 2,
       "callType": "Confirmacion",
-      "audio": ""
+      "audio": "Audio/milei_audio/milei_not solved"
     },
 {
       "id": "call_extra_weird_01",
       "callerName": "???",
       "callerImageURL": "Imagenes/ImagenesLlamadas/static",
-      "message": "...(ruido de estática)... No mires por la ventana... la luz roja no es un auto... ...(susurros)... ya saben que estás atendiendo...",
+      "message": "... No mires por la ventana... la luz roja no es un auto... ya saben que estás atendiendo...",
       "correctPestID": "",
       "day": 3,
       "callType": "Extra",
-      "audio": ""
+      "audio": "Audio/turbio_audio/turbio"
     }
   ]
 }
