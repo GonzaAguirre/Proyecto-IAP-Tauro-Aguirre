@@ -1,0 +1,115 @@
+---
+config:
+  layout: elk
+---
+
+classDiagram
+    %% --- MODEL (Datos) ---
+    class PestData {
+        +string id
+        +string name
+        +string type
+    }
+
+    class CallData {
+        +string id
+        +string message
+        +string correctPestID
+        +int day
+    }
+
+    class DataManager {
+        <<Model>>
+        +bool IsDataLoaded
+        +Initialize()
+        +GetAllPests() 
+        +GetCallsForDay(int day)
+        +GetPestByID(string id) 
+    }
+
+    class DataService {
+        <<Helper>>
+        +FetchJsonFromURL()
+        +DownloadImage()
+    }
+
+    %% --- VIEW (Interfaz) ---
+    class IGameView {
+        <<Interface>>
+        +UpdateCallerInfo()
+        +UpdateEntryInfo()
+        +NewCallPopUp()
+        +ShowFeedback(bool isCorrect)
+        +event Action OnSubmitAnswer
+        +event Action~string~ OnPlagueSelected
+    }
+
+    class GameView {
+        <<View>>
+        +PopulateEntriesList()
+        +NewCallPopUp()
+        +UpdateCallerInfo()
+        +ShowFeedback()
+        +ShowGameComplete()
+    }
+
+    class EntriesListView {
+        <<Sub-View>>
+        +PopulateList()
+        +event Action~string~ OnPlagueClicked
+    }
+
+    class NewCallPopupView {
+        <<Sub-View>>
+        +Show()
+        +event Action OnCallAnswered
+    }
+
+    class LocalizationManager {
+        <<Static Helper>>
+        +string CurrentLanguage
+        +GetText()
+    }
+
+    %% --- PRESENTER (Lógica) ---
+    class GamePresenter {
+        <<Presenter>>
+        +StartGame()
+        -SetupDay()
+        -ProcessNextCall()
+        -HandleSubmitAnswer()
+    }
+
+    %% --- CONFIGURATOR (Inicio) ---
+    class GameManager {
+        <<Composition Root>>
+        +IniciarJuego(tematica, idioma)
+    }
+
+    class MainMenu {
+        <<Entry Point>>
+        +IniciarConSeleccion()
+    }
+
+    %% --- RELACIONES ---
+
+    %% Inicio del Juego
+    MainMenu --> GameManager : Crea e Inicia
+    GameManager --> GamePresenter : Crea
+    GameManager --> DataManager : Configura
+    GameManager --> GameView : Configura
+
+    %% MVP Core
+    GamePresenter --> IGameView : Controla
+    GamePresenter --> DataManager : Pide Datos
+    GameView ..|> IGameView : Implementa
+
+    %% Dependencias de Vista
+    GameView *-- EntriesListView : Contiene
+    GameView *-- NewCallPopupView : Contiene
+    GameView ..> LocalizationManager : Usa Textos
+
+    %% Dependencias de Datos
+    DataManager --> DataService : Usa
+    DataManager ..> PestData : Provee
+    DataManager ..> CallData : Provee
