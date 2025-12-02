@@ -141,12 +141,12 @@ public class GameView : MonoBehaviour, IGameView
 
         if (isCorrect)
         {
-            feedbackText.text = "¡CORRECTO!\nENVIANDO EQUIPO...";
+            feedbackText.text = "✅";
             feedbackText.color = Color.green;
         }
         else
         {
-            feedbackText.text = "¡INCORRECTO!\nINTENTA DE NUEVO.";
+            feedbackText.text = "❌";
             feedbackText.color = Color.red;
         }
 

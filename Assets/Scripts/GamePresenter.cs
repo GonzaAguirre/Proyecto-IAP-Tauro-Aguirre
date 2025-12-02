@@ -237,7 +237,8 @@ public class GamePresenter
             _correctAnswers++;
         }
         
-        _view.ShowFeedback(isCorrect);
+        // Mostrar directamente la pantalla de espera (sin feedback)
+        _view.ShowWaitingScreen();
         _isWaitingForAnswer = false;
 
         // Esperar unos segundos y pasar a la siguiente
@@ -246,13 +247,7 @@ public class GamePresenter
 
     private System.Collections.IEnumerator WaitAndNextCall()
     {
-        // Esperar 2 segundos (tiempo que dura el feedback en pantalla)
-        yield return new WaitForSeconds(2f);
-        
-        // Mostrar pantalla de espera mientras cargamos la siguiente
-        _view.ShowWaitingScreen();
-        
-        // Esperar tiempo fijo de 3 segundos
+        // Esperar tiempo fijo de 3 segundos en la pantalla de espera
         yield return new WaitForSeconds(3f);
         
         ProcessNextCall();
