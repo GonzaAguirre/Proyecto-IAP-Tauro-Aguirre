@@ -259,7 +259,7 @@ public class GamePresenter
 
     private System.Collections.IEnumerator AutoCloseSpecialCall()
     {
-        yield return new WaitForSeconds(10f); // 10 segundos para leer el mensaje
+        yield return new WaitForSeconds(14f); // 14 segundos para leer el mensaje
         
         // Mostrar pantalla de espera al terminar la llamada especial
         _view.ShowWaitingScreen();
