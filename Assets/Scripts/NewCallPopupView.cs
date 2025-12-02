@@ -29,6 +29,7 @@ public class NewCallPopupView : MonoBehaviour
         {
             ringtoneSource.clip = ringtoneClip;
             ringtoneSource.loop = true;
+            ringtoneSource.volume = 0.5f;
             ringtoneSource.Play();
         }
 
