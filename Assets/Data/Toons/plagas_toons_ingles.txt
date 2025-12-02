@@ -1,0 +1,372 @@
+{
+  "themeName": "Argentine Animated Classics",
+  "pests": [
+    {
+      "id": "toon_001",
+      "name": "Pucho",
+      "imageURL": "Imagenes/Toons/pucho",
+      "description": "Lanky henchman with a cap and an eternal cigarette in his mouth. Speaks with a slur.",
+      "danger": "Fills the house with smoke and ash. Might steal your wallet 'for the boss'.",
+      "solution": "Tell him 'Shut up, Pucho!' with an authoritative voice or take away his tango music.",
+      "type": "Normal"
+    },
+    {
+      "id": "toon_002",
+      "name": "Clemente",
+      "imageURL": "Imagenes/Toons/clemente",
+      "description": "Strange handless being, striped and with a duck bill. Stands on his hind legs.",
+      "danger": "Eats all the olives in the cupboard and throws confetti everywhere.",
+      "solution": "Throw him a bone or shout 'Mulatona!' so he chases after her.",
+      "type": "Normal"
+    },
+    {
+      "id": "toon_003",
+      "name": "Gaturro",
+      "imageURL": "Imagenes/Toons/gaturro",
+      "description": "Yellow cat with big cheeks. Thinks he is funny but repeats old jokes.",
+      "danger": "Scratches furniture and causes extreme 'cringe' to the inhabitants.",
+      "solution": "Report him for plagiarism or show him a drawing of Garfield.",
+      "type": "Normal"
+    },
+    {
+      "id": "toon_004",
+      "name": "Manuelita the Turtle",
+      "imageURL": "Imagenes/Toons/manuelita",
+      "description": "Turtle that traveled from Pehuajó. Walks very slowly and carries suitcases.",
+      "danger": "Blocks hallways. If she gets wrinkled, you have to iron her, which wastes electricity.",
+      "solution": "Give her a ticket to Paris so she can go find her male turtle friend.",
+      "type": "Normal"
+    },
+    {
+      "id": "toon_005",
+      "name": "Oaky",
+      "imageURL": "Imagenes/Toons/oaky",
+      "description": "Millionaire baby in diapers with two pistols. Screams and shoots into the air.",
+      "danger": "Breaks glass, lamps, and demands 'Lomblú, lomblú!'. Very spoiled.",
+      "solution": "Offer him his baby bottle or call his dad, Gold Silver.",
+      "type": "Normal"
+    },
+    {
+      "id": "toon_006",
+      "name": "Witch Cachavacha",
+      "imageURL": "Imagenes/Toons/cachavacha",
+      "description": "Big-nosed witch with a flying broom and a shrill laugh. Lives in a hovel.",
+      "danger": "Turns children into crickets and fills the house with bad luck spells.",
+      "solution": "Splash her with a bucket of water or break her broom.",
+      "type": "Extraño"
+    },
+    {
+      "id": "toon_007",
+      "name": "Larguirucho",
+      "imageURL": "Imagenes/Toons/larguirucho",
+      "description": "Tall, absent-minded, good-hearted character, but very clumsy. Says 'Speak louder, I can't hear you'.",
+      "danger": "Tries to fix things and breaks them even more. Causes involuntary chaos.",
+      "solution": "Explain things slowly and give him an 'alfajor' to keep him quiet.",
+      "type": "Extraño"
+    },
+    {
+      "id": "toon_008",
+      "name": "The Old Man with the Cane",
+      "imageURL": "Imagenes/Toons/viejo",
+      "description": "Pixelated old man from 'Alejo y Valentina'. Appears out of nowhere saying nonsense.",
+      "danger": "Confuses you with phrases like 'You are crazy, you know' and blocks the TV.",
+      "solution": "Ignore him or say 'Okay, bye' until he disappears.",
+      "type": "Extraño"
+    },
+    {
+      "id": "toon_009",
+      "name": "Petete",
+      "imageURL": "Imagenes/Toons/petete",
+      "description": "Penguin with a pacifier and an encyclopedia. Knows everything.",
+      "danger": "Won't stop giving fun facts and moral lessons. Bores guests to sleep.",
+      "solution": "Take away his 'Big Book' or put the pacifier in his mouth.",
+      "type": "Extraño"
+    },
+    {
+      "id": "toon_010",
+      "name": "Professor Neurus",
+      "imageURL": "Imagenes/Toons/neurus",
+      "description": "Mad scientist, short and wearing glasses. Always planning to take over Trulalá.",
+      "danger": "Installs weird machines in the basement to conquer the world. Yells at his henchmen.",
+      "solution": "Sabotage his machines or call Hijitus to stop him.",
+      "type": "Especial"
+    },
+    {
+      "id": "toon_011",
+      "name": "Dibu",
+      "imageURL": "Imagenes/Toons/dibu",
+      "description": "Red-headed boy who is a cartoon living in the real world.",
+      "danger": "Performs physically impossible pranks, walks through walls, and stains everything with ink.",
+      "solution": "Use a giant eraser or turn off the lights so he can't be seen.",
+      "type": "Especial"
+    },
+    {
+      "id": "toon_012",
+      "name": "Mercano the Martian",
+      "imageURL": "Imagenes/Toons/mercano",
+      "description": "Big-headed green alien. Lives in sadness due to the Argentine economy.",
+      "danger": "Depresses the inhabitants of the house and brings unstable alien technology.",
+      "solution": "Give him a 'mate' and explain that inflation will go down someday.",
+      "type": "Especial"
+    },
+    {
+      "id": "toon_013",
+      "name": "Super Hijitus",
+      "imageURL": "Imagenes/Toons/hijitus",
+      "description": "Superhero with a hat and a propeller. Flies at high speed.",
+      "danger": "Breaks the ceiling when flying in and out. Generates strong air currents.",
+      "solution": "Hide his magic hat so he turns back into a normal boy.",
+      "type": "Especial"
+    },
+    {
+      "id": "toon_014",
+      "name": "The Werewolf of the West",
+      "imageURL": "Imagenes/Toons/lobizon",
+      "description": "Gaucho comic book character who transforms. Howls with a country accent.",
+      "danger": "Eats the chickens and scares the dog. Leaves fur all over the yard.",
+      "solution": "Throw an old shoe at him or invite him to a barbecue (if it's not a full moon).",
+      "type": "Especial"
+    },
+    {
+      "id": "toon_015",
+      "name": "CyberSix",
+      "imageURL": "Imagenes/Toons/cybersix",
+      "description": "Mysterious woman dressed in black leather, a genetic creation.",
+      "danger": "Jumps on rooftops at night making noise and attracts monsters created by Von Reichter.",
+      "solution": "Leave milk for her panther or don't go out on the balcony at night.",
+      "type": "Extraño"
+    }
+  ],
+  "calls": [
+    {
+      "id": "call_t_001",
+      "callerName": "Mafalda",
+      "callerImageURL": "Imagenes/Calls/mafalda",
+      "message": "Hello. Look, this is the last straw. There is a baby in my living room with two revolvers breaking everything. And he says he's rich! Is this savage capitalism?",
+      "correctPestID": "toon_005",
+      "day": 1,
+      "callType": "Consejo",
+      "audio": ""
+    },
+    {
+      "id": "call_t_002",
+      "callerName": "Manolito",
+      "callerImageURL": "Imagenes/Calls/manolito",
+      "message": "Hey! Someone is stealing coins from the cash register. It's a skinny guy, with a cap and a bad cough. He leaves ash on the products.",
+      "correctPestID": "toon_001",
+      "day": 1,
+      "callType": "Consejo",
+      "audio": ""
+    },
+    {
+      "id": "call_t_003",
+      "callerName": "Susanita",
+      "callerImageURL": "Imagenes/Calls/susanita",
+      "message": "Ew, gross, gross. There is a handless bug in the kitchen. It ate all the imported olives I bought for my wedding! Do something!",
+      "correctPestID": "toon_002",
+      "day": 1,
+      "callType": "Consejo",
+      "audio": ""
+    },
+    {
+      "id": "call_t_004",
+      "callerName": "Mr. Fulgencio",
+      "callerImageURL": "Imagenes/Calls/fulgencio",
+      "message": "Sir, I can't leave my house. There is a giant turtle in the hallway. I say excuse me and she walks slower. Says she's going to Paris.",
+      "correctPestID": "toon_004",
+      "day": 1,
+      "callType": "Consejo",
+      "audio": ""
+    },
+    {
+      "id": "call_t_005",
+      "callerName": "Nik (The Copycat)",
+      "callerImageURL": "Imagenes/Calls/nik",
+      "message": "Hello, yes. There is a cat in my studio. Looks a lot like one of mine, but this one is yellow and has big cheeks. He is scratching my originals.",
+      "correctPestID": "toon_003",
+      "day": 1,
+      "callType": "Consejo",
+      "audio": ""
+    },
+    {
+      "id": "call_t_101",
+      "callerName": "Mafalda's Neighbor",
+      "callerImageURL": "Imagenes/Calls/vecina",
+      "message": "Excuse me, I hear shots and screams about 'shots, mess and big trouble' in the apartment next door.",
+      "correctPestID": "toon_005",
+      "day": 1,
+      "callType": "Consejo",
+      "audio": ""
+    },
+    {
+      "id": "call_t_102",
+      "callerName": "Grocer Don Mateo",
+      "callerImageURL": "Imagenes/Calls/mateo",
+      "message": "My warehouse is full of smoke. There is a skinny guy smoking back there who won't leave.",
+      "correctPestID": "toon_001",
+      "day": 1,
+      "callType": "Consejo",
+      "audio": ""
+    },
+    {
+      "id": "call_t_006",
+      "callerName": "Alejo",
+      "callerImageURL": "Imagenes/Calls/alejo",
+      "message": "Hello, you know. Hey, there is an old man in my house. He appears and disappears. Tells me I'm crazy. You are crazy, you know? Get him out.",
+      "correctPestID": "toon_008",
+      "day": 2,
+      "callType": "Consejo",
+      "audio": ""
+    },
+    {
+      "id": "call_t_007",
+      "callerName": "Valentina",
+      "callerImageURL": "Imagenes/Calls/valentina",
+      "message": "Hi, how are you girls? Look, there is a big-nosed lady flying on a broom through the living room. She laughs very ugly and my dog turned into a cricket.",
+      "correctPestID": "toon_006",
+      "day": 2,
+      "callType": "Consejo",
+      "audio": ""
+    },
+    {
+      "id": "call_t_008",
+      "callerName": "Commissioner",
+      "callerImageURL": "Imagenes/Calls/comisario",
+      "message": "Contempt of authority! There is a tall, lanky subject trying to 'fix' the patrol car but he is breaking it all. Speak louder, I can't hear him!",
+      "correctPestID": "toon_007",
+      "day": 2,
+      "callType": "Consejo",
+      "audio": ""
+    },
+    {
+      "id": "call_t_201",
+      "callerName": "Bored Kid",
+      "callerImageURL": "Imagenes/Calls/chico",
+      "message": "Help... there is a penguin that won't stop talking... he is explaining photosynthesis to me... I'm sleepy... make him shut up!",
+      "correctPestID": "toon_009",
+      "day": 2,
+      "callType": "Consejo",
+      "audio": ""
+    },
+    {
+      "id": "call_t_202",
+      "callerName": "Grandma",
+      "callerImageURL": "Imagenes/Calls/abuela",
+      "message": "Son, there is a woman dressed in black jumping on my roof. Looks like a big cat. I'm scared.",
+      "correctPestID": "toon_015",
+      "day": 2,
+      "callType": "Consejo",
+      "audio": ""
+    },
+    {
+      "id": "call_t_009",
+      "callerName": "Dibu's Dad",
+      "callerImageURL": "Imagenes/Calls/pepe",
+      "message": "I can't take it anymore! My son brought a friend... but he is flat. I mean, he is a drawing. He painted my walls and walks through doors. He is uncontrollable!",
+      "correctPestID": "toon_011",
+      "day": 3,
+      "callType": "Consejo",
+      "audio": ""
+    },
+    {
+      "id": "call_t_010",
+      "callerName": "Hijitus (Civilian)",
+      "callerImageURL": "Imagenes/Calls/hijitus_normal",
+      "message": "Hey, little friends. There is a short, angry man installing a lab in my shed. Says he's going to conquer Trulalá. Intringulis!",
+      "correctPestID": "toon_010",
+      "day": 3,
+      "callType": "Consejo",
+      "audio": ""
+    },
+    {
+      "id": "call_t_011",
+      "callerName": "The President",
+      "callerImageURL": "Imagenes/Calls/presidente",
+      "message": "We have an alien invasion. It's a green Martian with a big head. He is crying in Plaza de Mayo about the dollar price. Remove him.",
+      "correctPestID": "toon_012",
+      "day": 3,
+      "callType": "Consejo",
+      "audio": ""
+    },
+    {
+      "id": "call_t_301",
+      "callerName": "Gaucho",
+      "callerImageURL": "Imagenes/Calls/gaucho",
+      "message": "Holy cow! The werewolf appeared, but he talks funny, like in a comic book. He chased my sheep away.",
+      "correctPestID": "toon_014",
+      "day": 3,
+      "callType": "Consejo",
+      "audio": ""
+    },
+    {
+      "id": "call_t_302",
+      "callerName": "Annoying Neighbor",
+      "callerImageURL": "Imagenes/Calls/vecino",
+      "message": "My roof broke! A whirlwind flew by screaming 'fufuuu and chiquicha'. I want to file a complaint!",
+      "correctPestID": "toon_013",
+      "day": 3,
+      "callType": "Consejo",
+      "audio": ""
+    },
+    {
+      "id": "call_conf_t1",
+      "callerName": "Mafalda",
+      "callerImageURL": "Imagenes/Calls/mafalda",
+      "message": "Thank you. I gave the baby his bottle and he fell asleep. Finally some peace to think about humanity.",
+      "correctPestID": "",
+      "day": 2,
+      "callType": "Confirmacion",
+      "audio": ""
+    },
+    {
+      "id": "call_conf_t2",
+      "callerName": "Manolito",
+      "callerImageURL": "Imagenes/Calls/manolito",
+      "message": "You brute! I yelled at that skinny guy and he ran away. But he left my floor all dirty. Deducting it from his salary!",
+      "correctPestID": "",
+      "day": 2,
+      "callType": "Confirmacion",
+      "audio": ""
+    },
+    {
+      "id": "call_conf_t3",
+      "callerName": "Alejo",
+      "callerImageURL": "Imagenes/Calls/alejo",
+      "message": "Hey, you know, the old man left. Now I can watch my show in peace. You are a genius, you know.",
+      "correctPestID": "",
+      "day": 3,
+      "callType": "Confirmacion",
+      "audio": ""
+    },
+    {
+      "id": "call_conf_neg_t1",
+      "callerName": "Susanita",
+      "callerImageURL": "Imagenes/Calls/susanita",
+      "message": "Oh no, horrible! I threw the bone at the striped bug and he bit my finger. Now I have to go to the manicurist urgently! Terrible service.",
+      "correctPestID": "",
+      "day": 2,
+      "callType": "Confirmacion",
+      "audio": ""
+    },
+    {
+      "id": "call_extra_t1",
+      "callerName": "Carlitos (The Producer)",
+      "callerImageURL": "Imagenes/Calls/carlitos",
+      "message": "Cut, cut! Who let these cartoons into the studio? My scripts got mixed up. What a disaster!",
+      "correctPestID": "",
+      "day": 2,
+      "callType": "Extra",
+      "audio": ""
+    },
+    {
+      "id": "call_extra_t2",
+      "callerName": "???",
+      "callerImageURL": "Imagenes/Calls/static",
+      "message": "...(Weird background music)... They told me that in the Upside Down Kingdom... the bird swims and the fish flies... Are you there?...",
+      "correctPestID": "",
+      "day": 3,
+      "callType": "Extra",
+      "audio": ""
+    }
+  ]
+}

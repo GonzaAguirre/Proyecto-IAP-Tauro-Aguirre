@@ -1,0 +1,372 @@
+{
+  "themeName": "Clássicos Animados Argentinos",
+  "pests": [
+    {
+      "id": "toon_001",
+      "name": "Pucho",
+      "imageURL": "Imagenes/Toons/pucho",
+      "description": "Capanga magricela com boné e um cigarro eterno na boca. Fala arrastado.",
+      "danger": "Enche a casa de fumaça e cinzas. Pode roubar sua carteira 'pro chefe'.",
+      "solution": "Dizer 'Cale a boca, Pucho!' com voz de autoridade ou tirar o tango dele.",
+      "type": "Normal"
+    },
+    {
+      "id": "toon_002",
+      "name": "Clemente",
+      "imageURL": "Imagenes/Toons/clemente",
+      "description": "Estranho ser sem mãos, listrado e com bico de pato. Fica em pé sobre as patas traseiras.",
+      "danger": "Come todas as azeitonas do armário e joga papel picado por todo lado.",
+      "solution": "Jogar um osso ou gritar 'Mulatona!' para ele ir atrás dela.",
+      "type": "Normal"
+    },
+    {
+      "id": "toon_003",
+      "name": "Gaturro",
+      "imageURL": "Imagenes/Toons/gaturro",
+      "description": "Gato amarelo com bochechas grandes. Acha que é engraçado, mas repete piadas velhas.",
+      "danger": "Arranha os móveis e gera 'vergonha alheia' extrema nos habitantes.",
+      "solution": "Denunciá-lo por plágio ou mostrar um desenho do Garfield.",
+      "type": "Normal"
+    },
+    {
+      "id": "toon_004",
+      "name": "Manuelita a Tartaruga",
+      "imageURL": "Imagenes/Toons/manuelita",
+      "description": "Tartaruga que viajou de Pehuajó. Anda muito devagar e carrega malas.",
+      "danger": "Bloqueia os corredores. Se enrugar, tem que passar a ferro, o que gasta muita luz.",
+      "solution": "Dar uma passagem para Paris para ela ir buscar seu tortugo.",
+      "type": "Normal"
+    },
+    {
+      "id": "toon_005",
+      "name": "Oaky",
+      "imageURL": "Imagenes/Toons/oaky",
+      "description": "Bebê milionário com fraldas e duas pistolas. Grita e atira para o alto.",
+      "danger": "Quebra vidros, lâmpadas e exige 'Lomblú, lomblú!'. Muito mimado.",
+      "solution": "Oferecer a mamadeira ou chamar seu pai Gold Silver.",
+      "type": "Normal"
+    },
+    {
+      "id": "toon_006",
+      "name": "Bruxa Cachavacha",
+      "imageURL": "Imagenes/Toons/cachavacha",
+      "description": "Bruxa nariguda com vassoura voadora e risada estridente. Mora em um casebre.",
+      "danger": "Transforma crianças em grilos e enche a casa de feitiços de má sorte.",
+      "solution": "Molhá-la com um balde de água ou quebrar sua vassoura.",
+      "type": "Extraño"
+    },
+    {
+      "id": "toon_007",
+      "name": "Larguirucho",
+      "imageURL": "Imagenes/Toons/larguirucho",
+      "description": "Personagem alto, distraído e de bom coração, mas muito desastrado. Diz 'Fala mais alto que não te escuto'.",
+      "danger": "Tenta consertar coisas e as quebra ainda mais. Causa caos involuntário.",
+      "solution": "Explicar as coisas devagar e dar um alfajor para ele ficar quieto.",
+      "type": "Extraño"
+    },
+    {
+      "id": "toon_008",
+      "name": "O Velho da Bengala",
+      "imageURL": "Imagenes/Toons/viejo",
+      "description": "Velho pixelado de 'Alejo y Valentina'. Aparece do nada dizendo incoerências.",
+      "danger": "Te confunde com frases como 'Você é louco, viu' e não te deixa ver TV.",
+      "solution": "Ignorá-lo ou dizer 'Bom, tchau' até ele desaparecer.",
+      "type": "Extraño"
+    },
+    {
+      "id": "toon_009",
+      "name": "Petete",
+      "imageURL": "Imagenes/Toons/petete",
+      "description": "Pinguim com chupeta e enciclopédia. Sabe tudo.",
+      "danger": "Não para de dar curiosidades e lições de moral. Entedia as visitas até dormirem.",
+      "solution": "Tirar o 'Livro Gordo' ou colocar a chupeta para ele calar a boca.",
+      "type": "Extraño"
+    },
+    {
+      "id": "toon_010",
+      "name": "Professor Neurus",
+      "imageURL": "Imagenes/Toons/neurus",
+      "description": "Cientista louco, baixinho e de óculos. Sempre planeja dominar Trulalá.",
+      "danger": "Instala máquinas estranhas no porão para conquistar o mundo. Grita com seus capangas.",
+      "solution": "Sabotar suas máquinas ou chamar o Hijitus para detê-lo.",
+      "type": "Especial"
+    },
+    {
+      "id": "toon_011",
+      "name": "Dibu",
+      "imageURL": "Imagenes/Toons/dibu",
+      "description": "Menino ruivo que é um desenho animado vivendo no mundo real.",
+      "danger": "Faz travessuras fisicamente impossíveis, atravessa paredes e mancha tudo com tinta.",
+      "solution": "Usar uma borracha gigante ou apagar a luz para ele não ser visto.",
+      "type": "Especial"
+    },
+    {
+      "id": "toon_012",
+      "name": "Mercano o Marciano",
+      "imageURL": "Imagenes/Toons/mercano",
+      "description": "Extraterrestre cabeçudo e verde. Vive triste pela economia argentina.",
+      "danger": "Deprime os habitantes da casa e traz tecnologia alienígena instável.",
+      "solution": "Dar um chimarrão e explicar que a inflação vai baixar algum dia.",
+      "type": "Especial"
+    },
+    {
+      "id": "toon_013",
+      "name": "Super Hijitus",
+      "imageURL": "Imagenes/Toons/hijitus",
+      "description": "Super-herói com chapéu e hélice. Voa em alta velocidade.",
+      "danger": "Quebra o teto ao entrar e sair voando. Gera correntes de ar fortes.",
+      "solution": "Esconder seu chapéu mágico para ele voltar a ser um menino normal.",
+      "type": "Especial"
+    },
+    {
+      "id": "toon_014",
+      "name": "O Lobisomem do Oeste",
+      "imageURL": "Imagenes/Toons/lobizon",
+      "description": "Personagem de história em quadrinhos gauchesca que se transforma. Uiva com sotaque do campo.",
+      "danger": "Come as galinhas e assusta o cachorro. Deixa pelos por todo o quintal.",
+      "solution": "Jogar um sapato velho ou convidá-lo para um churrasco (se não for lua cheia).",
+      "type": "Especial"
+    },
+    {
+      "id": "toon_015",
+      "name": "CyberSix",
+      "imageURL": "Imagenes/Toons/cybersix",
+      "description": "Mulher misteriosa vestida de couro preto, criação genética.",
+      "danger": "Pula pelos telhados à noite fazendo barulho e atrai monstros criados por Von Reichter.",
+      "solution": "Deixar leite para sua pantera ou não sair na varanda à noite.",
+      "type": "Extraño"
+    }
+  ],
+  "calls": [
+    {
+      "id": "call_t_001",
+      "callerName": "Mafalda",
+      "callerImageURL": "Imagenes/Calls/mafalda",
+      "message": "Olá. Olha, isso é o cúmulo. Tem um bebê na minha sala com dois revólveres quebrando tudo. E ainda diz que é rico! Isso é o capitalismo selvagem?",
+      "correctPestID": "toon_005",
+      "day": 1,
+      "callType": "Consejo",
+      "audio": ""
+    },
+    {
+      "id": "call_t_002",
+      "callerName": "Manolito",
+      "callerImageURL": "Imagenes/Calls/manolito",
+      "message": "Ei! Alguém está roubando as moedas da caixa registradora. É um cara magro, de boné e muita tosse. Deixa cinzas nos produtos.",
+      "correctPestID": "toon_001",
+      "day": 1,
+      "callType": "Consejo",
+      "audio": ""
+    },
+    {
+      "id": "call_t_003",
+      "callerName": "Susanita",
+      "callerImageURL": "Imagenes/Calls/susanita",
+      "message": "Ai, que nojo, que nojo. Tem um bicho sem mãos na cozinha. Comeu todas as azeitonas importadas que comprei pro meu casamento! Façam alguma coisa!",
+      "correctPestID": "toon_002",
+      "day": 1,
+      "callType": "Consejo",
+      "audio": ""
+    },
+    {
+      "id": "call_t_004",
+      "callerName": "Seu Fulgêncio",
+      "callerImageURL": "Imagenes/Calls/fulgencio",
+      "message": "Senhor, não posso sair de casa. Tem uma tartaruga gigante no corredor. Peço licença e ela anda mais devagar. Diz que vai para Paris.",
+      "correctPestID": "toon_004",
+      "day": 1,
+      "callType": "Consejo",
+      "audio": ""
+    },
+    {
+      "id": "call_t_005",
+      "callerName": "Nik (O Plagiador)",
+      "callerImageURL": "Imagenes/Calls/nik",
+      "message": "Olá, sim. Tem um gato no meu estúdio. Parece muito com um meu, mas esse é amarelo e tem bochechas grandes. Está riscando meus originais.",
+      "correctPestID": "toon_003",
+      "day": 1,
+      "callType": "Consejo",
+      "audio": ""
+    },
+    {
+      "id": "call_t_101",
+      "callerName": "Vizinha da Mafalda",
+      "callerImageURL": "Imagenes/Calls/vecina",
+      "message": "Com licença, escuto tiros e gritos de 'tiro, lío e cosha golda' no apartamento ao lado.",
+      "correctPestID": "toon_005",
+      "day": 1,
+      "callType": "Consejo",
+      "audio": ""
+    },
+    {
+      "id": "call_t_102",
+      "callerName": "Merceeiro Seu Mateo",
+      "callerImageURL": "Imagenes/Calls/mateo",
+      "message": "Tenho o depósito cheio de fumaça. Tem um magricela fumando lá atrás que não quer sair.",
+      "correctPestID": "toon_001",
+      "day": 1,
+      "callType": "Consejo",
+      "audio": ""
+    },
+    {
+      "id": "call_t_006",
+      "callerName": "Alejo",
+      "callerImageURL": "Imagenes/Calls/alejo",
+      "message": "Olá, viu. Tchê, tem um velho na minha casa. Aparece e desaparece. Me diz que sou louco. Você é louco, viu? Tira ele daqui.",
+      "correctPestID": "toon_008",
+      "day": 2,
+      "callType": "Consejo",
+      "audio": ""
+    },
+    {
+      "id": "call_t_007",
+      "callerName": "Valentina",
+      "callerImageURL": "Imagenes/Calls/valentina",
+      "message": "Olá, como estão meninas? Olhem, tem uma senhora nariguda voando de vassoura pela sala. Ri muito feio e meu cachorro virou grilo.",
+      "correctPestID": "toon_006",
+      "day": 2,
+      "callType": "Consejo",
+      "audio": ""
+    },
+    {
+      "id": "call_t_008",
+      "callerName": "Delegado",
+      "callerImageURL": "Imagenes/Calls/comisario",
+      "message": "Desacato! Tem um sujeito alto e desengonçado tentando 'consertar' a viatura, mas está quebrando tudo. Fala mais alto que não o escuto!",
+      "correctPestID": "toon_007",
+      "day": 2,
+      "callType": "Consejo",
+      "audio": ""
+    },
+    {
+      "id": "call_t_201",
+      "callerName": "Menino Entediado",
+      "callerImageURL": "Imagenes/Calls/chico",
+      "message": "Socorro... tem um pinguim que não para de falar... está me explicando a fotossíntese... tenho sono... façam ele calar a boca!",
+      "correctPestID": "toon_009",
+      "day": 2,
+      "callType": "Consejo",
+      "audio": ""
+    },
+    {
+      "id": "call_t_202",
+      "callerName": "Vovozinha",
+      "callerImageURL": "Imagenes/Calls/abuela",
+      "message": "Meu filho, tem uma mulher vestida de preto pulando pelo meu telhado. Parece um gato grande. Tenho medo.",
+      "correctPestID": "toon_015",
+      "day": 2,
+      "callType": "Consejo",
+      "audio": ""
+    },
+    {
+      "id": "call_t_009",
+      "callerName": "Pai do Dibu",
+      "callerImageURL": "Imagenes/Calls/pepe",
+      "message": "Não aguento mais! Meu filho trouxe um amigo... mas ele é plano. Ou seja, é um desenho. Pintou minhas paredes e atravessa as portas. É incontrolável!",
+      "correctPestID": "toon_011",
+      "day": 3,
+      "callType": "Consejo",
+      "audio": ""
+    },
+    {
+      "id": "call_t_010",
+      "callerName": "Hijitus (Civil)",
+      "callerImageURL": "Imagenes/Calls/hijitus_normal",
+      "message": "Oi, amiguitus. Tem um senhor baixinho e bravo instalando um laboratório no meu galpão. Diz que vai conquistar Trulalá. Intringulis!",
+      "correctPestID": "toon_010",
+      "day": 3,
+      "callType": "Consejo",
+      "audio": ""
+    },
+    {
+      "id": "call_t_011",
+      "callerName": "Presidente",
+      "callerImageURL": "Imagenes/Calls/presidente",
+      "message": "Temos uma invasão alienígena. É um marciano verde e cabeçudo. Está chorando na Praça de Maio pelo preço do dólar. Tirem ele.",
+      "correctPestID": "toon_012",
+      "day": 3,
+      "callType": "Consejo",
+      "audio": ""
+    },
+    {
+      "id": "call_t_301",
+      "callerName": "Gaúcho",
+      "callerImageURL": "Imagenes/Calls/gaucho",
+      "message": "Minha nossa! O lobisomem apareceu, mas fala estranho, como em quadrinhos. Correu com minhas ovelhas.",
+      "correctPestID": "toon_014",
+      "day": 3,
+      "callType": "Consejo",
+      "audio": ""
+    },
+    {
+      "id": "call_t_302",
+      "callerName": "Vizinho Chato",
+      "callerImageURL": "Imagenes/Calls/vecino",
+      "message": "Meu telhado quebrou! Passou um redemoinho voando e gritando 'fufuuu e chiquicha'. Quero fazer uma denúncia!",
+      "correctPestID": "toon_013",
+      "day": 3,
+      "callType": "Consejo",
+      "audio": ""
+    },
+    {
+      "id": "call_conf_t1",
+      "callerName": "Mafalda",
+      "callerImageURL": "Imagenes/Calls/mafalda",
+      "message": "Obrigada. Dei a mamadeira pro bebê e ele dormiu. Finalmente um pouco de paz para pensar na humanidade.",
+      "correctPestID": "",
+      "day": 2,
+      "callType": "Confirmacion",
+      "audio": ""
+    },
+    {
+      "id": "call_conf_t2",
+      "callerName": "Manolito",
+      "callerImageURL": "Imagenes/Calls/manolito",
+      "message": "Galego bruto! Gritei com aquele magricela e ele saiu correndo. Mas deixou meu chão todo sujo. Desconto do salário dele!",
+      "correctPestID": "",
+      "day": 2,
+      "callType": "Confirmacion",
+      "audio": ""
+    },
+    {
+      "id": "call_conf_t3",
+      "callerName": "Alejo",
+      "callerImageURL": "Imagenes/Calls/alejo",
+      "message": "Tchê, viu, o velho foi embora. Agora posso ver meu programa tranquilo. Você é um gênio, viu.",
+      "correctPestID": "",
+      "day": 3,
+      "callType": "Confirmacion",
+      "audio": ""
+    },
+    {
+      "id": "call_conf_neg_t1",
+      "callerName": "Susanita",
+      "callerImageURL": "Imagenes/Calls/susanita",
+      "message": "Ai não, horrível! Joguei o osso pro bicho listrado e ele mordeu meu dedo. Agora tenho que ir na manicure com urgência! Péssimo serviço.",
+      "correctPestID": "",
+      "day": 2,
+      "callType": "Confirmacion",
+      "audio": ""
+    },
+    {
+      "id": "call_extra_t1",
+      "callerName": "Carlitos (O Produtor)",
+      "callerImageURL": "Imagenes/Calls/carlitos",
+      "message": "Cortem, cortem! Quem deixou esses desenhos entrarem no estúdio? Misturaram meus roteiros. Que barbaridade!",
+      "correctPestID": "",
+      "day": 2,
+      "callType": "Extra",
+      "audio": ""
+    },
+    {
+      "id": "call_extra_t2",
+      "callerName": "???",
+      "callerImageURL": "Imagenes/Calls/static",
+      "message": "...(Música de fundo estranha)... Me disseram que no Reino do Avesso... nada o pássaro e voa o peixe... Você está aí?...",
+      "correctPestID": "",
+      "day": 3,
+      "callType": "Extra",
+      "audio": ""
+    }
+  ]
+}

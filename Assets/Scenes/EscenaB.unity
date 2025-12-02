@@ -1102,7 +1102,7 @@ GameObject:
   - component: {fileID: 312811654}
   - component: {fileID: 312811655}
   m_Layer: 5
-  m_Name: Tematica2
+  m_Name: Toons
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1126,8 +1126,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 222.5244, y: 10.783546}
-  m_SizeDelta: {x: 251.73, y: 62.965}
+  m_AnchoredPosition: {x: 283.739, y: 10.783546}
+  m_SizeDelta: {x: 333.3495, y: 62.965}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &312811655
 MonoBehaviour:
@@ -1489,6 +1489,7 @@ MonoBehaviour:
   callMessageText: {fileID: 1177626663}
   callerImage: {fileID: 1643187133}
   submitAnswerButton: {fileID: 2143746235}
+  submitButtonText: {fileID: 892318728}
   entryInfoTitleText: {fileID: 834777904}
   entryInfoDescriptionText: {fileID: 1864720439}
   entryInfoDangerText: {fileID: 1850345635}
@@ -2038,8 +2039,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -52, y: -159}
-  m_SizeDelta: {x: -876.518, y: -778.3112}
+  m_AnchoredPosition: {x: 39, y: -205}
+  m_SizeDelta: {x: -489.0837, y: -778.3112}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &466084158
 MonoBehaviour:
@@ -4690,22 +4691,17 @@ MonoBehaviour:
   gameView: {fileID: 347740310}
   panelDeJuego: {fileID: 136807197}
   archivosArgentina:
-    "espa\xF1ol": {fileID: 4900000, guid: 29e065bbb8f472546bf2c3b67632fc50, type: 3}
+    "espa\xF1ol": {fileID: 4900000, guid: f0d098d0d1f0f164d9020486d82f5e9c, type: 3}
     ingles: {fileID: 4900000, guid: 624a69fc9dd9a4e4da2e52736bb0fb5d, type: 3}
     portugues: {fileID: 4900000, guid: e62f6917511fc324887ade7ecae3ce8a, type: 3}
   archivosUrbanas:
-    "espa\xF1ol": {fileID: 4900000, guid: 29e065bbb8f472546bf2c3b67632fc50, type: 3}
-    ingles: {fileID: 4900000, guid: 624a69fc9dd9a4e4da2e52736bb0fb5d, type: 3}
-    portugues: {fileID: 4900000, guid: e62f6917511fc324887ade7ecae3ce8a, type: 3}
-  archivosEspacio:
-    "espa\xF1ol": {fileID: 4900000, guid: 29e065bbb8f472546bf2c3b67632fc50, type: 3}
+    "espa\xF1ol": {fileID: 4900000, guid: f0d098d0d1f0f164d9020486d82f5e9c, type: 3}
     ingles: {fileID: 4900000, guid: 624a69fc9dd9a4e4da2e52736bb0fb5d, type: 3}
     portugues: {fileID: 4900000, guid: e62f6917511fc324887ade7ecae3ce8a, type: 3}
   panelMenu: {fileID: 2087528262}
   btnIniciar: {fileID: 940031724}
   toggleArgentina: {fileID: 287720270}
   toggleUrbanas: {fileID: 287720270}
-  toggleEspacio: {fileID: 287720270}
   toggleES: {fileID: 1653108521}
   toggleEN: {fileID: 897412969}
   togglePT: {fileID: 765530918}
@@ -4794,7 +4790,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'PERSONAJES
+  m_Text: 'DIBUJOS ANIMADOS
 
 '
 --- !u!222 &1097448324
@@ -7519,22 +7515,17 @@ MonoBehaviour:
   gameView: {fileID: 347740310}
   panelDeJuego: {fileID: 136807197}
   archivosArgentina:
-    "espa\xF1ol": {fileID: 0}
-    ingles: {fileID: 0}
-    portugues: {fileID: 0}
+    "espa\xF1ol": {fileID: 4900000, guid: f0d098d0d1f0f164d9020486d82f5e9c, type: 3}
+    ingles: {fileID: 4900000, guid: 624a69fc9dd9a4e4da2e52736bb0fb5d, type: 3}
+    portugues: {fileID: 4900000, guid: e62f6917511fc324887ade7ecae3ce8a, type: 3}
   archivosUrbanas:
-    "espa\xF1ol": {fileID: 0}
-    ingles: {fileID: 0}
-    portugues: {fileID: 0}
-  archivosEspacio:
-    "espa\xF1ol": {fileID: 0}
-    ingles: {fileID: 0}
-    portugues: {fileID: 0}
+    "espa\xF1ol": {fileID: 4900000, guid: 2491033a622fbdf45a57ff4c52c263f3, type: 3}
+    ingles: {fileID: 4900000, guid: b9b4e5f97ce8cc1459e22d1ec5dc8263, type: 3}
+    portugues: {fileID: 4900000, guid: 549d13c3a5be2d94c914cf275d5b62da, type: 3}
   panelMenu: {fileID: 2087528262}
   btnIniciar: {fileID: 940031724}
   toggleArgentina: {fileID: 287720270}
   toggleUrbanas: {fileID: 312811655}
-  toggleEspacio: {fileID: 312811655}
   toggleES: {fileID: 1653108521}
   toggleEN: {fileID: 897412969}
   togglePT: {fileID: 765530918}

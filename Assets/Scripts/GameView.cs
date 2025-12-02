@@ -170,8 +170,8 @@ public class GameView : MonoBehaviour, IGameView
 
     private void PlayCallAudio(string audioPath)
     {
-        // Solo reproducir audio si estamos en Español
-        if (LocalizationManager.CurrentLanguage != "ES") return;
+        // Solo reproducir audio si estamos en Español Y NO estamos en modo Toons
+        if (LocalizationManager.CurrentLanguage != "ES" || GameManager.IsToonsMode) return;
 
         if (string.IsNullOrEmpty(audioPath)) return;
         if (voiceAudioSource == null) return;

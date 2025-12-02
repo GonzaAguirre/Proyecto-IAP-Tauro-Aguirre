@@ -8,22 +8,25 @@ public class GameManager
 
     private ArchivosPorIdioma archivosArgentina;
     private ArchivosPorIdioma archivosUrbanas;
-    private ArchivosPorIdioma archivosEspacio;
     
     private GamePresenter presenter;
 
-    public GameManager(DataManager dm, GameView gv, GameObject panel, ArchivosPorIdioma argentina, ArchivosPorIdioma urbanas, ArchivosPorIdioma espacio)
+    public GameManager(DataManager dm, GameView gv, GameObject panel, ArchivosPorIdioma argentina, ArchivosPorIdioma urbanas)
     {
         dataManager = dm;
         gameView = gv;
         panelDeJuego = panel;
         archivosArgentina = argentina;
         archivosUrbanas = urbanas;
-        archivosEspacio = espacio;
     }
     
+    public static bool IsToonsMode = false;
+
     public void IniciarJuego(string tematica, string idioma)
     {
+        // Detectar si es modo Toons (Urbana)
+        IsToonsMode = (tematica == "Urbana");
+
         // Setear idioma global
         LocalizationManager.CurrentLanguage = idioma;
 
@@ -33,7 +36,6 @@ public class GameManager
         switch (tematica)
         {
             case "Urbana": paqueteSeleccionado = archivosUrbanas; break;
-            case "Espacio": paqueteSeleccionado = archivosEspacio; break;
             case "Argentina": paqueteSeleccionado = archivosArgentina; break;
         }
 
