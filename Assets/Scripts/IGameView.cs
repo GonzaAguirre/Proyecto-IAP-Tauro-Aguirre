@@ -23,7 +23,7 @@ public interface IGameView
     void ShowWaitingScreen(); // Mostrar pantalla de espera
     void HideWaitingScreen(); // Ocultar pantalla de espera
     void ShowDayComplete(int day, int correctAnswers, int totalAnswers);
-    void ShowGameComplete();
+    void ShowGameComplete(int totalCorrectAnswers, int totalAnswers);
     void UpdateDayInfo(int day);
     void UpdateCallCounter(int current, int total);
     Coroutine StartCoroutine(System.Collections.IEnumerator routine);
