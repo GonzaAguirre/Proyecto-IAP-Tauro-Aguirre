@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Defensa de Proyecto - Home Safety Hotline</title>
+    <style>
+        :root {
+            /* Paleta Académica (Misma base, toque 'Software') */
+            --primary: #2c3e50;       
+            --accent: #2980b9;        
+            --highlight: #e74c3c;     
+            --bg: #fdfdfd;            
+            --text: #2c3e50;
+            --success: #27ae60;
+            --code-bg: #1e1e1e;
+            
+            /* Escalas Aumentadas para Proyección */
+            --font-h1: 4rem;
+            --font-h2: 3rem;
+            --font-p: 1.5rem;
+            --container-w: 90vw;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            overflow: hidden; 
+            font-weight: 400;
+        }
+
+        /* NAVEGACIÓN HORIZONTAL */
+        main {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            height: 100vh;
+            width: 100vw;
+            scroll-behavior: smooth;
+            scrollbar-width: none; 
+            -ms-overflow-style: none;
+        }
+        main::-webkit-scrollbar { display: none; }
+
+        section {
+            min-width: 100vw;
+            height: 100vh;
+            scroll-snap-align: start;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            position: relative;
+            background: radial-gradient(circle at center, #ffffff, #ecf0f1);
+            border-right: 1px solid #ddd;
+        }
+
+        /* TIPOGRAFÍA */
+        h1 { font-size: var(--font-h1); color: var(--primary); text-align: center; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 2px; line-height: 1.1; }
+        h2 { font-size: var(--font-h2); color: var(--primary); margin-bottom: 40px; border-bottom: 5px solid var(--accent); display: inline-block; padding-bottom: 15px; }
+        h3 { font-size: 2rem; color: #555; margin-bottom: 15px; font-weight: 300; }
+        p { font-size: var(--font-p); max-width: var(--container-w); text-align: center; margin-bottom: 30px; line-height: 1.5; font-weight: 400; color: #444; }
+        strong { font-weight: 600; color: var(--primary); }
+
+        /* TAG DE MATERIA */
+        .syllabus-tag {
+            position: absolute;
+            top: 30px;
+            right: 40px;
+            background: #eee;
+            color: #555;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: 600;
+            z-index: 10;
+        }
+
+        /* PORTADA */
+        .cover-box { 
+            border: 2px solid var(--primary); 
+            padding: 40px; 
+            border-radius: 20px; 
+            background: white;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            margin-top: 40px;
+        }
+
+        /* ÍNDICE */
+        .index-grid { 
+            display: grid; 
+            grid-template-columns: repeat(2, 1fr); 
+            gap: 30px; 
+            width: var(--container-w); 
+        }
+        .index-item { 
+            background: white; 
+            padding: 30px; 
+            border-left: 8px solid var(--accent); 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05); 
+            font-size: 1.5rem; 
+            color: #333; 
+            display: flex; 
+            align-items: center; 
+            cursor: pointer;
+        }
+        .index-item:hover { background: #f0f8ff; }
+
+        /* --- VISUALIZACIONES ESPECÍFICAS DE SOFTWARE --- */
+
+        /* MVP DIAGRAM (Adaptado del Audio Driver) */
+        .mvp-layout { display: flex; gap: 40px; align-items: center; justify-content: center; width: 95vw; margin-top: 30px; }
+        .mvp-box { 
+            padding: 30px; border: 4px solid #ccc; border-radius: 20px; background: white; 
+            text-align: center; width: 300px; font-size: 1.5rem; color: #555; position: relative;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .mvp-arrow { font-size: 3rem; color: var(--accent); animation: pulseArrow 2s infinite; }
+        
+        @keyframes pulseArrow { 0% { transform: scale(1); opacity: 0.5; } 50% { transform: scale(1.2); opacity: 1; } 100% { transform: scale(1); opacity: 0.5; } }
+
+        /* SOLID BLOCKS */
+        .solid-container { display: flex; gap: 20px; margin-top: 30px; justify-content: center; z-index: 10; }
+        .solid-box { padding: 20px 30px; border-radius: 12px; font-weight: bold; color: white; font-size: 1.4rem; box-shadow: 0 5px 15px rgba(0,0,0,0.1); text-align: center; width: 250px; }
+        .solid-box.s { background: #e74c3c; } /* SRP */
+        .solid-box.o { background: #f39c12; } /* OCP */
+        .solid-box.i { background: #27ae60; } /* ISP */
+        
+        /* JSON DATA VIZ (Adaptado de Matrix Grid) */
+        .json-viz {
+            background: var(--code-bg); color: #a9b7c6; 
+            padding: 30px; border-radius: 15px; font-family: 'Consolas', monospace;
+            font-size: 1.4rem; width: 50vw; box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+            text-align: left;
+            position: relative;
+        }
+        .json-key { color: #cc7832; }
+        .json-string { color: #6a8759; }
+        .json-num { color: #6897bb; }
+
+        /* LANGUAGE FLAGS */
+        .lang-container { display: flex; gap: 60px; justify-content: center; margin: 40px 0; }
+        .lang-circle { 
+            width: 150px; height: 150px; border-radius: 50%; background: #ddd; 
+            display: flex; align-items: center; justify-content: center; font-size: 4rem;
+            border: 5px solid white; box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+            transition: transform 0.3s;
+        }
+        .lang-circle:hover { transform: scale(1.1); }
+        .lang-circle.active { border-color: var(--success); background: #e8f5e9; }
+
+        /* GAME LOOP TIMELINE */
+        .timeline-container { width: 90vw; margin-top: 40px; }
+        .timeline-bar { display: flex; width: 100%; border: 2px solid #ccc; height: 80px; border-radius: 10px; overflow: hidden; margin-bottom: 20px; }
+        .timeline-cycle { flex: 1; border-right: 1px dashed #999; display: flex; flex-direction: column; align-items: center; justify-content: center; background: #f9f9f9; color: #555; font-weight: bold; }
+        .timeline-cycle span { font-size: 0.9rem; font-weight: normal; margin-top: 5px; color: #888; }
+        
+        .timeline-cycle.day1 { border-bottom: 5px solid #27ae60; }
+        .timeline-cycle.day2 { border-bottom: 5px solid #f1c40f; }
+        .timeline-cycle.day3 { border-bottom: 5px solid #e74c3c; }
+
+        /* INTERFACE MOCKUP */
+        .mockup-container {
+            width: 70vw; height: 50vh; background: #333; border-radius: 15px; border: 10px solid #555;
+            position: relative; overflow: hidden; display: flex;
+        }
+        .mockup-sidebar { width: 30%; background: #2c3e50; border-right: 2px solid #444; padding: 20px; }
+        .mockup-main { width: 70%; background: #ecf0f1; padding: 20px; display: flex; align-items: center; justify-content: center; }
+        .mockup-img { width: 150px; height: 150px; background: #bdc3c7; border-radius: 10px; }
+
+        /* CONCLUSIONES */
+        .conc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; width: 90vw; }
+        .conc-card { background: white; padding: 40px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); }
+        .conc-list { list-style: none; font-size: 1.6rem; text-align: left; }
+        .conc-list li { margin-bottom: 20px; padding-left: 40px; position: relative; }
+        .conc-list li::before { content: '✔'; color: var(--success); position: absolute; left: 0; }
+        
+        .arrow-nav { position: fixed; bottom: 30px; right: 30px; background: rgba(0,0,0,0.05); padding: 15px 30px; border-radius: 50px; font-size: 1rem; color: #888; pointer-events: none; z-index: 100; }
+        .click-layer { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 5; cursor: pointer; }
+
+    </style>
+</head>
+<body>
+
+<main id="mainContainer">
+
+    <section>
+        <div class="click-layer" onclick="nextSlide()"></div>
+        <h3>Ingeniería de Aplicaciones 2025</h3>
+        <h1>Home Safety Hotline<br>Recreación en Unity</h1>
+        <p style="font-size: 2rem; color: var(--accent); margin-top: 20px;">Defensa de Proyecto Final</p>
+        
+        <div class="cover-box">
+            <p style="margin: 0; font-size: 1.8rem; color: var(--primary);">Gonzalo Aguirre</p>
+        </div>
+    </section>
+
+    <section>
+        <div class="click-layer" onclick="nextSlide()"></div>
+        <h2>Agenda de la Presentación</h2>
+        <div class="index-grid">
+            <div class="index-item">1. Objetivos del Proyecto</div>
+            <div class="index-item">2. Arquitectura (MVP)</div>
+            <div class="index-item">3. Estructura de Datos (JSON)</div>
+            <div class="index-item">4. Ciclo de Juego (Game Loop)</div>
+            <div class="index-item">5. Interfaz y Lógica (View)</div>
+            <div class="index-item">6. Multilenguaje y Audio</div>
+            <div class="index-item">7. Principios SOLID</div>
+            <div class="index-item">8. Conclusiones</div>
+        </div>
+    </section>
+
+    <section>
+        <div class="click-layer" onclick="nextSlide()"></div>
+        <div class="syllabus-tag">Requerimientos</div>
+        <h2>Objetivos & Desafíos</h2>
+        <p>Desarrollar un sistema interactivo escalable basado en un juego existente.</p>
+        
+        <div style="display: flex; gap: 40px; width: 90vw; justify-content: center; margin-top: 40px;">
+            <div class="mvp-box" style="border-color: var(--accent); width: 30%;">
+                <div style="font-size: 4rem;">🏗️</div>
+                <strong>Arquitectura Limpia</strong>
+                <p style="font-size: 1rem; margin-top: 10px;">Implementación estricta de MVP para separar lógica de UI.</p>
+            </div>
+            <div class="mvp-box" style="border-color: var(--highlight); width: 30%;">
+                <div style="font-size: 4rem;">🌍</div>
+                <strong>Escalabilidad</strong>
+                <p style="font-size: 1rem; margin-top: 10px;">Soporte para múltiples idiomas y carga dinámica de datos.</p>
+            </div>
+            <div class="mvp-box" style="border-color: var(--success); width: 30%;">
+                <div style="font-size: 4rem;">🎮</div>
+                <strong>Experiencia UX</strong>
+                <p style="font-size: 1rem; margin-top: 10px;">Feedback visual y auditivo (Audio Clips/TTS).</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="click-layer" onclick="nextSlide()"></div>
+        <div class="syllabus-tag">Arquitectura</div>
+        <h2>Patrón Model - View - Presenter</h2>
+        <p>Decisión de diseño central para garantizar testabilidad y orden.</p>
+
+        <div class="mvp-layout">
+            <div class="mvp-box" style="background: #e8f6f3; border-color: #1abc9c;">
+                <h3 style="color: #16a085;">MODEL</h3>
+                <small>DataManager.cs</small>
+                <hr style="margin: 10px 0;">
+                <p style="font-size:1rem; text-align: left;">
+                • Datos Crudos (JSON)<br>
+                • Lógica de Negocio<br>
+                • Fetch de Imágenes
+                </p>
+            </div>
+
+            <div class="mvp-arrow">↔</div>
+
+            <div class="mvp-box" style="background: #fff; border-color: #2c3e50; transform: scale(1.1); z-index: 2;">
+                <h3 style="color: #2c3e50;">PRESENTER</h3>
+                <small>GamePresenter.cs</small>
+                <hr style="margin: 10px 0;">
+                <p style="font-size:1rem; text-align: left;">
+                • Orquestador<br>
+                • Reglas del Juego<br>
+                • Procesa Input
+                </p>
+            </div>
+
+            <div class="mvp-arrow">↔</div>
+
+            <div class="mvp-box" style="background: #fdf2e9; border-color: #e67e22;">
+                <h3 style="color: #d35400;">VIEW</h3>
+                <small>IGameView.cs</small>
+                <hr style="margin: 10px 0;">
+                <p style="font-size:1rem; text-align: left;">
+                • Renderizado UI<br>
+                • Detecta Clics<br>
+                • Reproduce Audio
+                </p>
+            </div>
+        </div>
+        <p style="margin-top: 40px; color: #7f8c8d;">La Vista nunca toca los Datos directamente.</p>
+    </section>
+
+    <section>
+        <div class="click-layer" onclick="nextSlide()"></div>
+        <div class="syllabus-tag">Persistencia</div>
+        <h2>Gestión de Datos (JSON)</h2>
+        <p>Sistema flexible para cargar Plagas y Llamadas sin recompilar.</p>
+
+        <div style="display: flex; align-items: center; gap: 50px;">
+            <div class="json-viz">
+<span class="json-key">"pests"</span>: [
+  {
+    <span class="json-key">"id"</span>: <span class="json-string">"pest_006"</span>,
+    <span class="json-key">"name"</span>: <span class="json-string">"El Pombero"</span>,
+    <span class="json-key">"type"</span>: <span class="json-string">"Extraño"</span>,
+    <span class="json-key">"solution"</span>: <span class="json-string">"Dejar miel y tabaco..."</span>
+  }
+],
+<span class="json-key">"calls"</span>: [
+  {
+    <span class="json-key">"callerName"</span>: <span class="json-string">"Leo M."</span>,
+    <span class="json-key">"callType"</span>: <span class="json-string">"Consejo"</span>,
+    <span class="json-key">"day"</span>: <span class="json-num">2</span>
+  }
+]
+            </div>
+            
+            <div style="text-align: left; font-size: 1.4rem;">
+                <ul style="line-height: 2;">
+                    <li>✅ Serialización nativa de Unity</li>
+                    <li>✅ Carga Local (TextAsset) o Remota (WebReq)</li>
+                    <li>✅ Estructura extensible</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="click-layer" onclick="nextSlide()"></div>
+        <div class="syllabus-tag">Lógica de Juego</div>
+        <h2>Progresión: El Ciclo de 3 Días</h2>
+        <p>Dificultad incremental gestionada por el <strong>GamePresenter</strong>.</p>
+
+        <div class="timeline-container">
+            <div class="timeline-bar">
+                <div class="timeline-cycle day1" style="flex: 1;">
+                    DÍA 1
+                    <span>Plagas Normales</span>
+                    <span style="color: #27ae60;">(7 Llamadas)</span>
+                </div>
+                <div class="timeline-cycle day2" style="flex: 1.2;">
+                    DÍA 2
+                    <span>+ Extrañas</span>
+                    <span style="color: #f1c40f;">(8 Llamadas)</span>
+                </div>
+                <div class="timeline-cycle day3" style="flex: 1.5;">
+                    DÍA 3
+                    <span>+ Especiales</span>
+                    <span style="color: #e74c3c;">(10 Llamadas + Lore)</span>
+                </div>
+            </div>
+        </div>
+
+        <div style="display: flex; gap: 30px; margin-top: 30px;">
+             <div class="solid-box s" style="background: #95a5a6;">Consejos</div>
+             <div class="solid-box s" style="background: #95a5a6;">Confirmaciones</div>
+             <div class="solid-box s" style="background: #34495e;">Eventos "Extra"</div>
+        </div>
+        <p style="margin-top: 20px;">Variedad de tipos de llamadas para enriquecer la narrativa.</p>
+    </section>
+
+    <section>
+        <div class="click-layer" onclick="nextSlide()"></div>
+        <div class="syllabus-tag">UI / UX</div>
+        <h2>Diseño de Interfaz (View)</h2>
+        <p>Implementación de <strong>IGameView</strong> para desacoplar Unity de la lógica.</p>
+
+        <div class="mockup-container">
+            <div class="mockup-sidebar">
+                <div style="background: #34495e; padding: 10px; margin-bottom: 10px; border-radius: 5px; color: white;">📞 Llamada Entrante...</div>
+                <div style="background: #7f8c8d; height: 10px; margin-bottom: 5px; width: 80%;"></div>
+                <div style="background: #7f8c8d; height: 10px; margin-bottom: 20px; width: 60%;"></div>
+                
+                <div style="color: #bdc3c7; font-size: 0.8rem; margin-top: 20px;">LISTA DE PLAGAS</div>
+                <div style="background: #95a5a6; padding: 5px; margin-top: 5px;">Cucaracha</div>
+                <div style="background: #95a5a6; padding: 5px; margin-top: 5px;">Pombero</div>
+            </div>
+            <div class="mockup-main">
+                <div style="text-align: center;">
+                    <div class="mockup-img" style="margin: 0 auto 20px auto;">🖼️</div>
+                    <h3 style="margin: 0;">DETALLE DE PLAGA</h3>
+                    <p style="font-size: 1rem;">Descripción cargada dinámicamente desde JSON.</p>
+                </div>
+            </div>
+        </div>
+        <p style="margin-top: 20px;">Componentes Modulares: <em>EntriesListView</em>, <em>NewCallPopup</em>.</p>
+    </section>
+
+    <section>
+        <div class="click-layer" onclick="nextSlide()"></div>
+        <div class="syllabus-tag">Funcionalidad</div>
+        <h2>Soporte Multilenguaje</h2>
+        <p>Selección dinámica de <code>TextAssets</code> basada en la configuración del menú.</p>
+
+        <div class="lang-container">
+            <div class="lang-circle active">🇪🇸</div>
+            <div class="lang-circle">🇺🇸</div>
+            <div class="lang-circle">🇧🇷</div>
+        </div>
+
+        <div class="solid-container">
+            <div class="solid-box" style="background: #3498db; width: 400px;">
+                Carga de Archivo
+                <div style="font-size: 0.9rem; font-weight: normal; margin-top: 5px;">Dependiendo del idioma, el GameManager inyecta el JSON correspondiente al DataManager.</div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="click-layer" onclick="nextSlide()"></div>
+        <div class="syllabus-tag">Calidad de Código</div>
+        <h2>Principios SOLID Aplicados</h2>
+        
+        <div class="solid-container" style="flex-direction: column; width: 80vw;">
+            <div style="display: flex; align-items: center; gap: 20px;">
+                <div class="solid-box s">S</div>
+                <div style="text-align: left;">
+                    <strong>Single Responsibility Principle</strong>
+                    <p style="text-align: left; margin: 0; font-size: 1.2rem;">DataService solo descarga. Presenter solo lógica. View solo muestra.</p>
+                </div>
+            </div>
+
+            <div style="display: flex; align-items: center; gap: 20px;">
+                <div class="solid-box o">O</div>
+                <div style="text-align: left;">
+                    <strong>Open/Closed Principle</strong>
+                    <p style="text-align: left; margin: 0; font-size: 1.2rem;">Nuevas plagas y llamadas se agregan en JSON sin tocar C#.</p>
+                </div>
+            </div>
+
+            <div style="display: flex; align-items: center; gap: 20px;">
+                <div class="solid-box i">I</div>
+                <div style="text-align: left;">
+                    <strong>Interface Segregation</strong>
+                    <p style="text-align: left; margin: 0; font-size: 1.2rem;">Uso de <code>IGameView</code> para que el Presenter no dependa de Unity UI.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="click-layer" onclick="nextSlide()"></div>
+        <h2>Conclusiones</h2>
+        
+        <div class="conc-grid">
+            <div class="conc-card">
+                <h3 style="color: var(--primary);">🏆 Logros</h3>
+                <ul class="conc-list">
+                    <li>Arquitectura profesional desacoplada (MVP).</li>
+                    <li>Sistema de datos totalmente configurable vía JSON.</li>
+                    <li>Integración exitosa de audio y assets dinámicos.</li>
+                </ul>
+            </div>
+            
+            <div class="conc-card">
+                <h3 style="color: var(--accent);">🚀 Futuro</h3>
+                <ul class="conc-list" style="list-style: none;">
+                    <li>➤ Guardado persistente de progreso entre sesiones.</li>
+                    <li>➤ Implementación de TTS (Text-to-Speech) real en tiempo real.</li>
+                    <li>➤ Expansión a versión WebGL para jugar en navegador.</li>
+                </ul>
+            </div>
+        </div>
+        
+        <p style="margin-top: 60px; color: #888;">Gonzalo Aguirre - 2025</p>
+    </section>
+
+</main>
+
+<div class="arrow-nav">Usa las flechas ⬅ ➡ o Click</div>
+
+<script>
+    const main = document.getElementById('mainContainer');
+    
+    // Función para ir a la siguiente diapositiva (Click)
+    function nextSlide() {
+        main.scrollBy({ left: window.innerWidth, behavior: 'smooth' });
+    }
+
+    // Teclado
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'Enter') {
+            main.scrollBy({ left: window.innerWidth, behavior: 'smooth' });
+        } else if (e.key === 'ArrowLeft') {
+            main.scrollBy({ left: -window.innerWidth, behavior: 'smooth' });
+        }
+    });
+</script>
+
+</body>
+</html>
