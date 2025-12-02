@@ -201,25 +201,25 @@ public class GameView : MonoBehaviour, IGameView
     {
         Debug.Log($"Día {day} Completado! Respuestas correctas: {correctAnswers}/{totalAnswers}");
         
-        // TODO: Implementar UI de resumen del día
-        // Por ahora solo mostramos en consola
-        feedbackText.gameObject.SetActive(true);
-        feedbackCanvas.gameObject.SetActive(true);
-        feedbackText.text = $"DÍA {day} COMPLETADO\n{correctAnswers}/{totalAnswers} CORRECTAS";
-        feedbackText.color = Color.cyan;
-        
-        Invoke("HideFeedback", 3f);
+        // No mostramos feedback aquí - se mostrará todo en el resumen final
+        // El resumen completo se mostrará en ShowGameComplete() al finalizar el día 3
     }
 
-    public void ShowGameComplete()
+    public void ShowGameComplete(int totalCorrectAnswers, int totalAnswers)
     {
         Debug.Log("¡Juego Completado!");
         
-        // TODO: Implementar pantalla de victoria
-        feedbackText.gameObject.SetActive(true);
-        feedbackCanvas.gameObject.SetActive(true);
-        feedbackText.text = "¡JUEGO COMPLETADO!\n¡FELICITACIONES!";
-        feedbackText.color = Color.yellow;
+        // Calcular porcentaje de aciertos
+        float percentage = totalAnswers > 0 ? ((float)totalCorrectAnswers / totalAnswers) * 100f : 0f;
+        
+        // Mostrar pantalla de resumen final con todas las estadísticas
+        if (feedbackText != null && feedbackCanvas != null)
+        {
+            feedbackText.gameObject.SetActive(true);
+            feedbackCanvas.gameObject.SetActive(true);
+            feedbackText.text = $"¡JUEGO COMPLETADO!\n\nRESUMEN FINAL:\n{totalCorrectAnswers}/{totalAnswers} CORRECTAS\n{percentage:F1}% de Aciertos\n\n¡FELICITACIONES!";
+            feedbackText.color = Color.yellow;
+        }
     }
 
     // --- Reloj Digital ---

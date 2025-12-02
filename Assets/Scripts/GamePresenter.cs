@@ -17,6 +17,10 @@ public class GamePresenter
     private int _correctAnswers = 0;
     private int _totalAnswers = 0;
     
+    // Estadísticas totales del juego (acumuladas)
+    private int _totalCorrectAnswers = 0;
+    private int _totalGameAnswers = 0;
+    
     // Contador de llamadas
     private int _totalCallsInDay = 0;
     private int _currentCallNumber = 0;
@@ -270,6 +274,10 @@ public class GamePresenter
     {
         Debug.Log($"Día {_currentDay} Terminado.");
         
+        // Acumular estadísticas del día en el total del juego
+        _totalCorrectAnswers += _correctAnswers;
+        _totalGameAnswers += _totalAnswers;
+        
         // Mostrar resumen del día con estadísticas
         _view.ShowDayComplete(_currentDay, _correctAnswers, _totalAnswers);
         
@@ -287,7 +295,8 @@ public class GamePresenter
         else
         {
             Debug.Log("¡Juego Completado!");
-            _view.ShowGameComplete();
+            // Pasar las estadísticas totales al resumen final
+            _view.ShowGameComplete(_totalCorrectAnswers, _totalGameAnswers);
         }
     }
 
