@@ -57,9 +57,8 @@ public class GameManager
             jsonFinal = paqueteSeleccionado.español;
         }
 
-        // 3. Cargar y Arrancar
-        dataManager.jsonFile = jsonFinal;
-        dataManager.LoadLocalData();
+        // 3. Cargar y Arrancar - Pasamos el JSON directamente sin sobrescribir la referencia
+        dataManager.LoadLocalData(jsonFinal);
 
         if (panelDeJuego != null) panelDeJuego.SetActive(true);
         

@@ -26,19 +26,22 @@ public class DataManager : MonoBehaviour
 
     }
 
-    public void LoadLocalData()
+    public void LoadLocalData(TextAsset customJsonFile = null)
     {
         Debug.Log("Cargando datos desde archivo local...");
 
         try
         {
-            if (jsonFile == null)
+            // Usar el JSON custom si se provee, sino usar el del inspector
+            TextAsset activeJsonFile = customJsonFile != null ? customJsonFile : jsonFile;
+            
+            if (activeJsonFile == null)
             {
                 Debug.LogError("El archivo JSON es NULL en el Inspector.");
                 return;
             }
 
-            string jsonText = jsonFile.text;
+            string jsonText = activeJsonFile.text;
 
             if (string.IsNullOrEmpty(jsonText))
             {
